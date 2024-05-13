@@ -9,5 +9,6 @@ namespace MyBlog.DataAccessLayer.Abstract
 {
     public interface IAuthorDal:IGenericDal<Author>
     {
+        int GetAuthorCount();
     }
 }

@@ -14,8 +14,6 @@
     <Folder Include="ValidationRules\" />
     <Folder Include="Container\" />
     <Folder Include="ErrorMessage\" />
-    <Folder Include="Concrete\" />
-    <Folder Include="Abstract\" />
   </ItemGroup>
 
 </Project>

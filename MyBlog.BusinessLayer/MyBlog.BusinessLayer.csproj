@@ -10,4 +10,12 @@
     <ProjectReference Include="..\MyBlog.DataAccessLayer\MyBlog.DataAccessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ValidationRules\" />
+    <Folder Include="Container\" />
+    <Folder Include="ErrorMessage\" />
+    <Folder Include="Concrete\" />
+    <Folder Include="Abstract\" />
+  </ItemGroup>
+
 </Project>

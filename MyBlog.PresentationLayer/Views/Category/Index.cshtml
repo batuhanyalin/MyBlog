@@ -3,6 +3,8 @@
     Layout = null;
 }
 
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
 <!DOCTYPE html>
 
 <html>
@@ -25,12 +27,13 @@
                 <tr>
                     <td>@item.CategoryId</td>
                     <td>@item.CategoryName</td>
-                    <td><a class="btn btn-danger-outline" href="/Category/CategoryDelete/@item.CategoryId">Sil</a></td>
-                    <td><a clas="btn btn-success-outline" href="/Category/CategoryUpdate/@item.CategoryId">Güncelle</a>@item.CategoryName</td>
+                    <td><a class="btn btn-outline-danger" href="/Category/CategoryDelete/@item.CategoryId">Sil</a></td>
+                    <td><a class="btn btn-outline-success" href="/Category/CategoryUpdate/@item.CategoryId">Güncelle</a></td>
+                    
                 </tr>
             }
         </table>
-        <a href="/Category/CategoryCreate" class="btn btn-success-primary">Yeni Kategori Girişi</a>
+        <a href="/Category/CategoryCreate" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
     </div>
 </body>
 </html>

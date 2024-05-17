@@ -1,6 +1,15 @@
+using MyBlog.BusinessLayer.Abstract;
+using MyBlog.BusinessLayer.Concrete;
+using MyBlog.DataAccessLayer.Abstract;
+using MyBlog.DataAccessLayer.EntityFramework;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
+//DEPENDENCY INJECTIONIN GEÇERLÝ OLABÝLMESÝ ÝÇÝN DIÞARIDAN DAHÝL EDÝLECEK ALANLAR BU ÞEKÝLDE GÖSTERÝLÝYOR, ENJEKTE EDÝLÝYOR.
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

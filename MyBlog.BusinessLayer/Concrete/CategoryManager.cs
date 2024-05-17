@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace MyBlog.BusinessLayer.Concrete
 {
-    public class CategoryManager : ICategoryService
+    public class CategoryManager : ICategoryService //Interface ICategoryService business katmanından geliyor.
     {
         //DEPENDENCY INECJTION
-        private readonly ICategoryDal _categoryDal;
+        private readonly ICategoryDal _categoryDal; //_categoryDal adında field oluşturuluyor.
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryManager(ICategoryDal categoryDal) // CONSTRUCTOR METHOD OLUŞTURULUYOR. YAPICI METOT
         {
             _categoryDal = categoryDal;
         }
 
-        public void TDelete(int id)
+        public void TDelete(int id) //IGenericService business katmanında gelen metotlar
         {
             _categoryDal.Delete(id);
         }

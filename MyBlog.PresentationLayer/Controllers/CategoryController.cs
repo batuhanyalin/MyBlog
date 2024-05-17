@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
+using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Controllers
 {
@@ -15,6 +16,17 @@ namespace MyBlog.PresentationLayer.Controllers
         {
             var values=_categoryService.TGetListAll();
             return View(values);
+        }
+        [HttpGet]
+        public IActionResult CategoryCreate()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CategoryCreate(Category category)
+        {
+            _categoryService.TInsert(category);
+            return RedirectToAction("Index");
         }
     }
 }

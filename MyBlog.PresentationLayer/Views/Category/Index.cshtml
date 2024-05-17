@@ -5,35 +5,25 @@
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Anasayfa</title>
-</head>
-<body>
-    <div class="container">
-        <br />
-        <table class="table table-bordered table-hover">
+<div class="container">
+    <br />
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>#</th>
+            <th>Kategori Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>#</th>
-                <th>Kategori Adı</th>
-                <th>Sil</th>
-                <th>Güncelle</th>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td><a class="btn btn-outline-danger" href="/Category/CategoryDelete/@item.CategoryId">Sil</a></td>
+                <td><a class="btn btn-outline-success" href="/Category/CategoryUpdate/@item.CategoryId">Güncelle</a></td>
+
             </tr>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.CategoryId</td>
-                    <td>@item.CategoryName</td>
-                    <td><a class="btn btn-outline-danger" href="/Category/CategoryDelete/@item.CategoryId">Sil</a></td>
-                    <td><a class="btn btn-outline-success" href="/Category/CategoryUpdate/@item.CategoryId">Güncelle</a></td>
-                    
-                </tr>
-            }
-        </table>
-        <a href="/Category/CategoryCreate" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
-    </div>
-</body>
-</html>
+        }
+    </table>
+    <a href="/Category/CategoryCreate" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
+</div>

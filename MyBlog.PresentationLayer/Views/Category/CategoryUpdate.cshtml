@@ -1,0 +1,20 @@
+﻿@model MyBlog.EntityLayer.Concrete.Category
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<form method="post">
+    <div class="container">
+        <br />
+        <h2>Kategori Güncelleme</h2>
+        <br />
+        <label>ID</label>
+        <input type="text" asp-for="CategoryId" />
+        <br />
+        <label>Kategori Adı</label>
+        <input type="text" name="CategoryName" class="form-control" asp-for="CategoryName" />
+        <br />
+        <button class="btn btn-outline-info">Kategoriyi Kaydet</button>
+    </div>
+</form>

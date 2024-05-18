@@ -12,9 +12,9 @@ namespace MyBlog.PresentationLayer.Controllers
             _categoryService = categoryService;
         }
 
-        public IActionResult Index() 
+        public IActionResult Index()
         {
-            var values=_categoryService.TGetListAll();
+            var values = _categoryService.TGetListAll();
             return View(values);
         }
         [HttpGet]
@@ -27,6 +27,23 @@ namespace MyBlog.PresentationLayer.Controllers
         {
             _categoryService.TInsert(category);
             return RedirectToAction("Index");
+        }
+        public IActionResult CategoryDelete(int id)
+        {
+            _categoryService.TDelete(id);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult CategoryUpdate(int id)
+        {
+            var values = _categoryService.TGetById(id);
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CategoryUpdate(Category category)
+        {
+            _categoryService.TUpdate(category);
+            return RedirectToAction("Index");   
         }
     }
 }

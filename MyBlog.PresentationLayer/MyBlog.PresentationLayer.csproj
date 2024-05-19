@@ -18,8 +18,4 @@
     <ProjectReference Include="..\MyBlog.BusinessLayer\MyBlog.BusinessLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Shared\Components\_DefaultHeadComponentPartial\" />
-  </ItemGroup>
-
 </Project>

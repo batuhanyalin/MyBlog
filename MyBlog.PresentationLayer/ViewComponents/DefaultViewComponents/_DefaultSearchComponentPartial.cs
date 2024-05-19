@@ -2,7 +2,7 @@
 
 namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 {
-    public class _DefaultHeadComponentPartial:ViewComponent
+    public class _DefaultSearchComponentPartial:ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
+
+builder.Services.AddScoped<IArticleService, ArticleManager>();
+builder.Services.AddScoped<IArticleDal, EFArticleDal>();
 //DEPENDENCY INJECTIONIN GEÇERLÝ OLABÝLMESÝ ÝÇÝN DIÞARIDAN DAHÝL EDÝLECEK ALANLAR BU ÞEKÝLDE GÖSTERÝLÝYOR, ENJEKTE EDÝLÝYOR.
 
 builder.Services.AddControllersWithViews();

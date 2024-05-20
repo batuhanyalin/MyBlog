@@ -7,6 +7,12 @@ namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 
     {
         private readonly IArticleService _articleService;
+
+        public _DefaultBlogListComponentPartial(IArticleService articleService)
+        {
+            _articleService = articleService;
+        }
+
         public IViewComponentResult Invoke()
         {
             var values = _articleService.TGetListAll();

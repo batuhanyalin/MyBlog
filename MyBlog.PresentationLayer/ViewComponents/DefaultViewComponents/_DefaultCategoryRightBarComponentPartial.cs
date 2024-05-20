@@ -2,8 +2,9 @@
 
 namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 {
-    public class _DefaultCategoriesComponentPartial:ViewComponent
-    {public IViewComponentResult Invoke()
+    public class _DefaultCategoryRightBarComponentPartial:ViewComponent
+    {
+      public IViewComponentResult Invoke()
         {
             return View();
         }

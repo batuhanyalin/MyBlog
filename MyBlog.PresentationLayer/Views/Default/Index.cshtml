@@ -8,19 +8,15 @@
 @await Component.InvokeAsync("_DefaultHeadComponentPartial")
 <body>
     <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
     <!-- Humberger Begin -->
     @await Component.InvokeAsync("_DefaultSideBarComponentPartial")
     <!-- Humberger End -->
-
     <!-- Header Section Begin -->
     @await Component.InvokeAsync("_DefaultHeaderComponentPartial")
     <!-- Header Section End -->
 
     <!-- Categories Section Begin -->
-    @await Component.InvokeAsync("_DefaultCategoriesComponentPartial")
+    @await Component.InvokeAsync("_DefaultBlogListComponentPartial")
     <!-- Categories Section End -->
 
     <!-- Footer Section Begin -->

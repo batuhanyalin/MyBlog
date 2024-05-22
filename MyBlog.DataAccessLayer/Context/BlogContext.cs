@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.Context
 {
-    public class BlogContext:DbContext
+    public class BlogContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -21,5 +21,6 @@ namespace MyBlog.DataAccessLayer.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }

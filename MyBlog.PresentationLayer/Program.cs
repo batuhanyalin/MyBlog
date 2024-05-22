@@ -11,6 +11,9 @@ builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
 
 builder.Services.AddScoped<IArticleService, ArticleManager>();
 builder.Services.AddScoped<IArticleDal, EFArticleDal>();
+
+builder.Services.AddScoped<ISocialMediaService,SocialMediaManager>();
+builder.Services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
 //DEPENDENCY INJECTIONIN GEÇERLÝ OLABÝLMESÝ ÝÇÝN DIÞARIDAN DAHÝL EDÝLECEK ALANLAR BU ÞEKÝLDE GÖSTERÝLÝYOR, ENJEKTE EDÝLÝYOR.
 
 builder.Services.AddControllersWithViews();

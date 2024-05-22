@@ -1,15 +1,22 @@
-﻿
+﻿@model SocialMedia
 @{
     Layout = null;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>SocialMediaCreate</title>
-</head>
-<body>
-</body>
-</html>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<form method="post">
+    <div class="container">
+        <br />
+        <h2>Yeni Sosyal Medya Girişi</h2>
+        <label>Sosyal Medya Adı</label>
+        <input type="text" class="form-control" asp-for="Title" />
+        <br />
+        <label>Icon</label>
+        <input type="text" class="form-control" asp-for="IconUrl" />
+        <br />
+        <label>Link</label>
+        <input type="text" class="form-control" asp-for="LinkUrl" />
+        <br />
+        <button class="btn btn-outline-info">Sosyal Medyayı Kaydet</button>
+    </div>
+</form>

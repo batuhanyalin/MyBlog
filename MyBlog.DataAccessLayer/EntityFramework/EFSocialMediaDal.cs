@@ -11,5 +11,6 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 {
     public class EFSocialMediaDal:GenericRepository<SocialMedia>,ISocialMediaDal
     {
+       
     }
 }

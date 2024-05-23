@@ -11,18 +11,21 @@
         <label>Adınız</label>
         <input type="text" asp-for="Name" class="form-control" />
         <br />
-        <label>Adınız</label>
+        <label>Soyadınız</label>
         <input type="text" asp-for="Surname" class="form-control" />
         <br />
-        <label>Adınız</label>
+        <label>E-posta Adresi</label>
         <input type="email" asp-for="Email" class="form-control" />
         <br />
-        <label>Adınız</label>
+        <label>Kullanıcı Adı</label>
         <input type="text" asp-for="Username" class="form-control" />
         <br />
-        label>Adınız</label>
+        <label>Parola</label>
         <input type="password" asp-for="Password" class="form-control" />
         <br />
+       <div class="text-danger" asp-validation-summary="ModelOnly">
+
+       </div>
         <button class="btn btn-outline-info">Kayıt Ol</button>
     </form>
 </div>

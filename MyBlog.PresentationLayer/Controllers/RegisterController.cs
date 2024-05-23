@@ -39,6 +39,14 @@ namespace MyBlog.PresentationLayer.Controllers
             {
                 return RedirectToAction("Index","Login");
             }
+            else 
+            {
+                foreach (var item in result.Errors) //resulttan gelen errorların okunacağı bir hata döngüsü
+                {
+                    //modelstate controllardaki hataları view tarafına yansıtmak için kullanılıyor.
+                    ModelState.AddModelError("", item.Description);
+                }
+            }
             return View();
         }
     }

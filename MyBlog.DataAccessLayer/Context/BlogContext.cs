@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.Context
 {
-    public class BlogContext : DbContext 
+    public class BlogContext : IdentityDbContext<AppUser,AppRole,int> //AppUser sınıfı buraya ekleniyor ve rol veripi idsinin int olacağı tanıtılıyor.
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;initial catalog=DbMyBlog;integrated security=true");
         }
+
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Article> Articles { get; set; }

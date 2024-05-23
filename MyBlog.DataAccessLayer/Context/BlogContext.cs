@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.Context
 {
-    public class BlogContext : IdentityDbContext
+    public class BlogContext : DbContext 
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -1,11 +1,14 @@
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.BusinessLayer.Concrete;
 using MyBlog.DataAccessLayer.Abstract;
+using MyBlog.DataAccessLayer.Context;
 using MyBlog.DataAccessLayer.EntityFramework;
+using MyBlog.EntityLayer.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//DEPENDENCY INJECTIONIN GEÇERLÝ OLABÝLMESÝ ÝÇÝN DIÞARIDAN DAHÝL EDÝLECEK ALANLAR BU ÞEKÝLDE GÖSTERÝLÝYOR, ENJEKTE EDÝLÝYOR.
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
 
@@ -14,7 +17,11 @@ builder.Services.AddScoped<IArticleDal, EFArticleDal>();
 
 builder.Services.AddScoped<ISocialMediaService,SocialMediaManager>();
 builder.Services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
-//DEPENDENCY INJECTIONIN GEÇERLÝ OLABÝLMESÝ ÝÇÝN DIÞARIDAN DAHÝL EDÝLECEK ALANLAR BU ÞEKÝLDE GÖSTERÝLÝYOR, ENJEKTE EDÝLÝYOR.
+//Burada da DbContext olarak BlogContexti bildiriyoruz.
+builder.Services.AddDbContext<BlogContext>();
+//Burada identity projeye tanýtýlýp ilgili sýnýflar gösteriliyor ve AddEntityFrameworkStores la çalýþýlan context sýnýfý yazýlýyor.
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogContext>();
+
 
 builder.Services.AddControllersWithViews();
 

@@ -28,5 +28,13 @@ namespace MyBlog.PresentationLayer.Models
                 Description = "Lütfen en az 6 karakter veri girişi yapınız."
             };
         }
+        public override IdentityError PasswordRequiresNonAlphanumeric()
+        {
+            return new IdentityError
+            {
+                Code = "PasswordRequiresNonAlphanumeric",
+                Description = "Lütfen en az 1 tane sembol girişi yapınız."
+            };
+        }
     }
 }

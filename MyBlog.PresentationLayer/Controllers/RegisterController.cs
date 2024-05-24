@@ -19,6 +19,7 @@ namespace MyBlog.PresentationLayer.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Index(RegisterViewModel model) //asenkron metot kullanılırken async Task<> ifadesi kullanılır.
 //Burada Models klasörü içine oluşturulan RegisterViewModel sınıfı çağırılıyor. Burada kullanıcıdan sadece istenen değerler alınacak. Bunlar da RegisterViewModel içerisinde belirtilmiş halde bulunuyor.

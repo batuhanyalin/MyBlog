@@ -6,9 +6,9 @@ namespace MyBlog.PresentationLayer.Models
     {
         public override IdentityError PasswordRequiresLower()
         {
-            return new IdentityError()
+            return new IdentityError() //Bu metodu istediğimiz şekilde döndürmek için yazıyoruz.
             {
-                Code = "PasswordRequiresLower",
+                Code = "PasswordRequiresLower", //Hata keyi
                 Description = "Lütfen en az 1 tane küçük harf girişi yapınız ('a'-'z')."
             };
         }

@@ -7,7 +7,7 @@ namespace MyBlog.PresentationLayer.Controllers
 {
     public class RegisterController : Controller
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<AppUser> _userManager; //Identityle birlike gelen UserManager sınıfından bir field oluşturuyoruz ve özelleştirilen, IdentityUserdan miras alawn AppUser sınıfını dahil ediyoruz.
 
         public RegisterController(UserManager<AppUser> userManager)
         {

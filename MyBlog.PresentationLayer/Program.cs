@@ -22,6 +22,7 @@ builder.Services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
 builder.Services.AddDbContext<BlogContext>();
 //Burada identity projeye tanýtýlýp ilgili sýnýflar gösteriliyor ve AddEntityFrameworkStores la çalýþýlan context sýnýfý yazýlýyor.
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogContext>().AddErrorDescriber<CustomIdentityValidator>();
+//EntityFrameworkStores metodu identitynin hangi contexten geldiðini belirtir.
 
 
 builder.Services.AddControllersWithViews();

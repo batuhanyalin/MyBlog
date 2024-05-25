@@ -22,7 +22,6 @@ namespace MyBlog.DataAccessLayer.Context
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Author> Authors { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }

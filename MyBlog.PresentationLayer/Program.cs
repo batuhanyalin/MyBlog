@@ -42,6 +42,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); //Login iþlemi için verilen registration. Middleware olarak geliyor, yönlendirme saðlar.
+
 app.UseAuthorization();
 
 app.MapControllerRoute(

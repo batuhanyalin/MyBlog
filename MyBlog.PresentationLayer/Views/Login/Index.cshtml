@@ -1,0 +1,17 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <form method="post">
+        <label>Kullanıcı Adı</label>
+        <input type="text" class="form-control" asp-for="Username" />
+        <br />
+        <label>Şifreniz</label>
+        <input type="password" class="form-control" asp-for="Password" />
+    </form>
+    <button class="btn btn-outline-info">Giriş Yap</button>
+</div>

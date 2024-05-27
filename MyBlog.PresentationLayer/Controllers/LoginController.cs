@@ -19,6 +19,7 @@ namespace MyBlog.PresentationLayer.Controllers
         {
             return View();
         }
+        [HttpPost]
         public async Task<IActionResult> Index(LoginViewModel model)
         {
             AppUser appUser = new AppUser()

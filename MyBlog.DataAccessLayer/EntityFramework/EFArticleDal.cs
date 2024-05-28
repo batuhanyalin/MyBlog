@@ -1,4 +1,5 @@
-﻿using MyBlog.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.DataAccessLayer.Abstract;
 using MyBlog.DataAccessLayer.Context;
 using MyBlog.DataAccessLayer.Repositories;
 using MyBlog.EntityLayer.Concrete;
@@ -17,6 +18,12 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         {
             //ArticleDal içerisinde tanımlanan metodun içi burada dolduruluyor.
             var values= context.Articles.Where(x=>x.AppUser.Id==id).ToList();
+            return values;
+        }
+
+        public List<Article> GetArticlesWithCategory()
+        {
+            var values=context.Articles.Include(x=>x.Category).ToList(); //Include kullanarak articlea categorileri dahil etmiş oluyoruz.
             return values;
         }
     }

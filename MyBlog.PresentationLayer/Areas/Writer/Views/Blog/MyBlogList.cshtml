@@ -28,6 +28,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Başlık</th>
+                                        <th>Categori</th>
                                         <th>Oluşturulma Tarihi</th>
                                         <th>Sil</th>
                                         <th>Güncelle</th>
@@ -39,6 +40,7 @@
                                         <tr>
                                             <td>@item.ArticleId</td>
                                             <td>@item.Title</td>
+                                            <td>@item.Category.CategoryName</td>
                                             <td>@item.CreatedDate</td>
                                             <td><a href="/Writer/Blog/DeleteBlog/@item.ArticleId" class="btn btn-outline-danger">Sil</a> </td>
                                            <td><a href="/Writer/Blog/UpdateBlog/@item.ArticleId" class="btn btn-outline-success">Güncelle</a> </td>

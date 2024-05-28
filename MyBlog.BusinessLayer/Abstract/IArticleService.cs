@@ -11,6 +11,6 @@ namespace MyBlog.BusinessLayer.Abstract
     public interface IArticleService:IGenericService<Article>
     {
         List<Article> TGetArticlesByWriter(int id); //Article için oluşturulan özel metot buraya da başında T harfi konarak oluşturuluyor.
-        List<Article> TGetArticlesWithCategory();
+        List<Article> TGetArticlesWithCategory(int id); 
     }
 }

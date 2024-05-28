@@ -18,7 +18,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         public async Task<IActionResult> MyBlogList() //Giriş yapan yazara ait blogları tutacak olan
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var values = _articleService.TGetArticlesByWriter(user.Id);
+            var values = _articleService.TGetArticlesWithCategory(user.Id);
             return View(values);
 
         }

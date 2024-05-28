@@ -21,9 +21,9 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             return values;
         }
 
-        public List<Article> GetArticlesWithCategory()
+        public List<Article> GetArticlesWithCategoryByWriter(int id)
         {
-            var values=context.Articles.Include(x=>x.Category).ToList(); //Include kullanarak articlea categorileri dahil etmiş oluyoruz.
+            var values=context.Articles.Where(x=>x.AppUserId==id).Include(x=>x.Category).ToList(); //Include kullanarak articlea categorileri dahil etmiş oluyoruz.
             return values;
         }
     }

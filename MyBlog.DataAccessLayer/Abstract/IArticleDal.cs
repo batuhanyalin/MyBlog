@@ -12,6 +12,6 @@ namespace MyBlog.DataAccessLayer.Abstract
         //Entitye özgü metotlar yazılıyor.
         List<Article> GetArticlesByWriter(int id);
 
-        List<Article> GetArticlesWithCategory();
+        List<Article> GetArticlesWithCategoryByWriter(int id);
     }
 }

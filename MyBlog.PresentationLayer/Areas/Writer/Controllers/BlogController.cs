@@ -22,5 +22,10 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
             return View(values);
 
         }
+        public IActionResult DeleteBlog(int id)
+        {
+            _articleService.TDelete(id);
+            return RedirectToAction("MyBlogList");
+        }
     }
 }

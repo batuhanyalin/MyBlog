@@ -27,5 +27,28 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
             _articleService.TDelete(id);
             return RedirectToAction("MyBlogList");
         }
+        [HttpGet]
+        public IActionResult UpdateBlog(int id)
+        {
+            var values = _articleService.TGetById(id);
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult UpdateBlog(Article model)
+        {
+            _articleService.TUpdate(model);
+            return RedirectToAction("MyBlogList");
+        }
+        [HttpGet]
+        public IActionResult CreateBlog()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateBlog(Article model)
+        {
+            _articleService.TInsert(model);
+            return RedirectToAction("MyBlogList");
+        }
     }
 }

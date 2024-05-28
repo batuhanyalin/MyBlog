@@ -1,0 +1,14 @@
+﻿@model MyBlog.EntityLayer.Concrete.Article
+@{
+    ViewData["Title"] = "UpdateBlog";
+    Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
+}
+
+<div class="container">
+    <form method="post">
+        <label>ID</label>
+        <input type="text" name="@Model.Title" />
+        <label>Title</label>
+    </for>
+</div>
+

@@ -21,7 +21,8 @@
                   <div class="card-body">
                     <h4 class="card-title">Profil Bilgilerini Güncelleme Paneli</h4>
                     <p class="card-description">Aşağıdaki alanları eksiksiz olarak doldurunuz.</p>
-                    <form class="forms-sample" method="post">
+                    @* Burada enctype kullanarak forma dosya (profil fotoğrafı) gönderileceği belirtiliyor. *@
+                    <form class="forms-sample" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label>Adınız</label>
                         <input type="text" asp-for=Name class="form-control" />
@@ -44,11 +45,15 @@
                       </div>
                        <div class="form-group">
                         <label>Fotoğrafınız</label>
-                        <input type="file" asp-for="ImageUrl" class="form-control" />
+                        <input type="file" asp-for="Image" class="form-control" />
                       </div>
                        <div class="form-group">
                         <label>Telefon Numaranız</label>
-                        <input type="text" asp-for="PhoneNumber" class="form-control" />
+                        <input type="tel" asp-for="PhoneNumber" class="form-control" />
+                      </div>
+                      <div class="form-group">
+                        <label>Şifreniz</label>
+                        <input type="password" asp-for="Password" class="form-control" />
                       </div>
                       <button type="submit" class="btn btn-success mr-2"> Bilgileri Güncelle </button>
                     </form>

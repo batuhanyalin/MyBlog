@@ -36,6 +36,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         public async Task<IActionResult> EditProfile(UserEditViewModel p)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
             if (p.Image != null)
             {
                 var resource = Directory.GetCurrentDirectory(); //başlangıçtaki proje yolunu al.
@@ -46,11 +47,11 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
                 await p.Image.CopyToAsync(stream);
                 user.ImageUrl = imageName;
             }
-            p.Name = user.Name;
-            p.Email = user.Email;
-            p.PhoneNumber = user.PhoneNumber;
-            p.Surname = user.Surname;
-            p.City = user.City;
+            user.Name = p.Name;
+            user.Surname = p.Surname;
+            user.PhoneNumber = p.PhoneNumber;
+            user.City = p.City;
+            user.Email = p.Email;
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password); //password şifrelenerek alınıyor.
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)

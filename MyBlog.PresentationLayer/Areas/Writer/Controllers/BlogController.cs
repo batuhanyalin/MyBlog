@@ -37,7 +37,6 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         [HttpGet]
         public IActionResult UpdateBlog(int id)
         {
-            var values = _articleService.TGetById(id);
             List<SelectListItem> category = (from x in _categoryService.TGetListAll()
                                              select new SelectListItem
                                              {
@@ -45,6 +44,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
                                                  Value = x.CategoryId.ToString()
                                              }).ToList();
             ViewBag.category = category;
+            var values = _articleService.TGetById(id);
             return View(values);
         }
         [HttpPost]

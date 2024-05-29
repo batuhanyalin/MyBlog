@@ -7,11 +7,11 @@
      <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Blog Güncelleme</h3>
+              <h3 class="page-title">Blog Güncelleme Sayfası</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Blog Listem</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Blog </li>
+                  <li class="breadcrumb-item active" aria-current="page">Blog</li>
                 </ol>
               </nav>
             </div>
@@ -24,6 +24,8 @@
                     <form class="forms-sample" method="post">
                       <div class="form-group">
                           <input type="hidden" asp-for="ArticleId" />
+                          <input type="hidden" asp-for="AppUserId" />
+                          <input type="hidden" asp-for="CreatedDate" />
                         <label>Blog Başlığı</label>
                         <input type="text" asp-for=Title class="form-control" />
                       </div>
@@ -43,7 +45,7 @@
                         <label>Blog İçeriği</label>
                         <textarea class="form-control" asp-for="Detail" rows="10"></textarea>
                       </div>
-                      <button type="submit" class="btn btn-primary mr-2"> Bloğu Güncelle </button>
+                      <button type="submit" class="btn btn-success mr-2"> Bloğu Güncelle </button>
                     </form>
                   </div>
                 </div>

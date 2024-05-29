@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
+using MyBlog.DataAccessLayer.Context;
+using MyBlog.DataAccessLayer.Repositories;
 using MyBlog.EntityLayer.Concrete;
+using NuGet.Protocol.Core.Types;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
@@ -10,10 +14,13 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IArticleService _articleService;
-        public BlogController(UserManager<AppUser> userManager, IArticleService articleService)
+        private readonly ICategoryService _categoryService;
+
+        public BlogController(UserManager<AppUser> userManager, IArticleService articleService, ICategoryService categoryService)
         {
             _userManager = userManager;
             _articleService = articleService;
+            _categoryService = categoryService;
         }
         public async Task<IActionResult> MyBlogList() //Giriş yapan yazara ait blogları tutacak olan
         {
@@ -31,6 +38,13 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         public IActionResult UpdateBlog(int id)
         {
             var values = _articleService.TGetById(id);
+            List<SelectListItem> category = (from x in _categoryService.TGetListAll()
+                                             select new SelectListItem
+                                             {
+                                                 Text = x.CategoryName,
+                                                 Value = x.CategoryId.ToString()
+                                             }).ToList();
+            ViewBag.category = category;
             return View(values);
         }
         [HttpPost]
@@ -42,11 +56,22 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         [HttpGet]
         public IActionResult CreateBlog()
         {
+
+            List<SelectListItem> values = (from x in _categoryService.TGetListAll()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryId.ToString()
+                                           }).ToList();
+            ViewBag.categories = values;
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> CreateBlog(Article model)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            model.CreatedDate = DateTime.Now;
+            model.AppUserId = user.Id;
             _articleService.TInsert(model);
             return RedirectToAction("MyBlogList");
         }

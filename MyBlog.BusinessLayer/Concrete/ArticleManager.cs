@@ -36,6 +36,11 @@ namespace MyBlog.BusinessLayer.Concrete
             return _articleDal.GetArticlesWithCategoryByWriter(id);
         }
 
+        public Article TGetArticleWithCategoryByArticleId(int id)
+        {
+            return _articleDal.GetArticleWithCategoryByArticleId(id);
+        }
+
         public Article TGetById(int id)
         {
             return _articleDal.GetById(id);

@@ -19,8 +19,10 @@ namespace MyBlog.PresentationLayer.Controllers
             ViewBag.createdDateDay = values.CreatedDate.ToString("dd");
             ViewBag.createdDateMonth = values.CreatedDate.ToString("MMM");
             ViewBag.title = values.Title;
-            var values2=_articleService.TGetArticlesWithCategory();
-            ViewBag.categoryName = values2;
+            ViewBag.detail = values.Detail;
+
+            var values2=_articleService.TGetArticleWithCategoryByArticleId(id);
+            ViewBag.categoryName = values2.Category.CategoryName;         
             return View(values);
         }
     }

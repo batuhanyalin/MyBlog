@@ -13,5 +13,6 @@ namespace MyBlog.BusinessLayer.Abstract
         List<Article> TGetArticlesByWriter(int id); //Article için oluşturulan özel metot buraya da başında T harfi konarak oluşturuluyor.
         List<Article> TGetArticlesWithCategoryByWriter(int id);
         List<Article> TGetArticlesWithCategory();
+        Article TGetArticleWithCategoryByArticleId(int id);
     }
 }

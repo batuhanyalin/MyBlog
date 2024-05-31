@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.Abstract
 {
-    public interface IArticleDal:IGenericDal<Article>
+    public interface IArticleDal : IGenericDal<Article>
     {
         //Entitye özgü metotlar yazılıyor.
         List<Article> GetArticlesByWriter(int id);
 
         List<Article> GetArticlesWithCategoryByWriter(int id);
+
+        List<Article> GetArticlesWithCategory();
     }
 }

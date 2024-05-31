@@ -58,6 +58,13 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
             {
                 RedirectToAction("MyBlogList", "Blog", new { Area = "Writer" });
             }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+            }
             return View();
         }
     }

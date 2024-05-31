@@ -1,4 +1,5 @@
-﻿using MyBlog.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.DataAccessLayer.Abstract;
 using MyBlog.DataAccessLayer.Context;
 using MyBlog.DataAccessLayer.Repositories;
 using MyBlog.EntityLayer.Concrete;
@@ -12,8 +13,11 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 {
     public class EFCommetDal : GenericRepository<Comment>, ICommentDal
     {
-        BlogContext context=new BlogContext();
-       
+        BlogContext context = new BlogContext();
 
+        public List<Comment> GetCommentsByArticle(int id)
+        {
+            return context.Comments.Where(x => x.ArticleId == id).Include(y => y.Article.AppUser).ToList();
+        }
     }
 }

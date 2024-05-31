@@ -12,9 +12,10 @@ namespace MyBlog.PresentationLayer.ViewComponents.CommentViewComponents
             _commentService = commentService;
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            return View();
+            var values = _commentService.TGetCommentsByArticle(id);
+            return View(values);
         }
     }
 }

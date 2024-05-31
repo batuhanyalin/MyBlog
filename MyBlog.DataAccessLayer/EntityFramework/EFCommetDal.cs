@@ -12,6 +12,8 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 {
     public class EFCommetDal : GenericRepository<Comment>, ICommentDal
     {
+        BlogContext context=new BlogContext();
+       
 
     }
 }

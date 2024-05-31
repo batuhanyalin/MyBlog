@@ -18,6 +18,11 @@ builder.Services.AddScoped<IArticleDal, EFArticleDal>();
 
 builder.Services.AddScoped<ISocialMediaService,SocialMediaManager>();
 builder.Services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
+
+builder.Services.AddScoped<ICommentService, CommentManager>();
+builder.Services.AddScoped<ICommentDal,EFCommetDal>();
+
+
 //Burada da DbContext olarak BlogContexti bildiriyoruz.
 builder.Services.AddDbContext<BlogContext>();
 //Burada identity projeye tanýtýlýp ilgili sýnýflar gösteriliyor ve AddEntityFrameworkStores la çalýþýlan context sýnýfý yazýlýyor.

@@ -15,5 +15,6 @@ namespace MyBlog.EntityLayer.Concrete
         public string? ImageUrl { get; set; }
         public List<Article> Articles { get; set; }
         //MVCde Virtual kullanılırken burada gerekmiyor. Burada LazyLoad ve EagerLoad kavramları öne çıkıyor. Bütün veriye değil sadece ihtiyaç duyulan verinin yüklenmesi amaçlanıyor. Include kavramı burada devreye girecek. 
+        public List<Comment> Comments { get; set; }
     }
 }

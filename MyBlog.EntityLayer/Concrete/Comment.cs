@@ -14,5 +14,7 @@ namespace MyBlog.EntityLayer.Concrete
         public bool Status { get; set; }
         public int? ArticleId { get; set; }
         public Article Article { get; set; }
+        public int? AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
     }
 }

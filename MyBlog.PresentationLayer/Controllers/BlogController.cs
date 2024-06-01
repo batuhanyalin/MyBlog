@@ -14,12 +14,13 @@ namespace MyBlog.PresentationLayer.Controllers
 
         public IActionResult BlogDetail(int id)
         {
-            id = 2;
             var values = _articleService.TGetById(id);
             ViewBag.createdDateDay = values.CreatedDate.ToString("dd");
             ViewBag.createdDateMonth = values.CreatedDate.ToString("MMM");
             ViewBag.title = values.Title;
             ViewBag.detail = values.Detail;
+
+            ViewBag.commentsById = id; //Burada gelen blog idsini viewbage aktarıp, _CommentListByBlogComponentPartial viewcomponentine idyi taşıyarak, ilgili bloğa ait verilerin gelmesini sağlıyoruz.
 
             var values2=_articleService.TGetArticleWithCategoryByArticleId(id);
             ViewBag.categoryName = values2.Category.CategoryName;         

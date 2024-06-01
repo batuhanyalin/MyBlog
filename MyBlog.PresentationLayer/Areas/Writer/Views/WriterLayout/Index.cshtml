@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<!-- Head -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -18,12 +19,14 @@
 <body>
     <div class="container-scroller">
         <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <!-- Side Bar Logo -->
             <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
                 <a class="sidebar-brand brand-logo" href="../../index.html"><img src="~/breeze-admin-template/template/assets/images/logo.svg" alt="logo" /></a>
                 <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="../../index.html"><img src="~/breeze-admin-template/template/assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
             <ul class="nav">
                 <li class="nav-item nav-profile">
+                    <!-- Side Bar Profil Logo ve Bilgiler -->
                     <a href="#" class="nav-link">
                         <div class="nav-profile-image">
                             <img src="~/breeze-admin-template/template/assets/images/faces/face1.jpg" alt="profile" />
@@ -43,76 +46,10 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                        <span class="menu-title">Basic UI Elements</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="collapse" id="ui-basic">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/breeze-admin-template/template/pages/ui-features/buttons.html">Buttons</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/breeze-admin-template/template/pages/ui-features/dropdowns.html">Dropdowns</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="~/breeze-admin-template/template/pages/ui-features/typography.html">Typography</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="~/breeze-admin-template/template/pages/icons/mdi.html">
-                        <i class="mdi mdi-contacts menu-icon"></i>
-                        <span class="menu-title">Icons</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="~/breeze-admin-template/template/pages/forms/basic_elements.html">
-                        <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                        <span class="menu-title">Forms</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="~/breeze-admin-template/template/pages/charts/chartjs.html">
-                        <i class="mdi mdi-chart-bar menu-icon"></i>
-                        <span class="menu-title">Charts</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="~~/breeze-admin-template/template/pages/tables/basic-table.html">
-                        <i class="mdi mdi-table-large menu-icon"></i>
-                        <span class="menu-title">Tables</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-link" href="#">
-                        <span class="menu-title">Docs</span>
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://www.bootstrapdash.com/demo/breeze-free/documentation/documentation.html">
-                        <i class="mdi mdi-file-document-box menu-icon"></i>
-                        <span class="menu-title">Documentation</span>
-                    </a>
-                </li>
-                <li class="nav-item sidebar-actions">
-                    <div class="nav-link">
-                        <div class="mt-4">
-                            <div class="border-none">
-                                <p class="text-black">Notification</p>
-                            </div>
-                            <ul class="mt-4 pl-0">
-                                <li>Sign Out</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
             </ul>
         </nav>
         <div class="container-fluid page-body-wrapper">
+            <!-- Tema Ayarları -->
             <div id="theme-settings" class="settings-panel">
                 <i class="settings-close mdi mdi-close"></i>
                 <p class="settings-heading">SIDEBAR SKINS</p>
@@ -128,13 +65,16 @@
                     <div class="tiles dark"></div>
                 </div>
             </div>
+            <!-- NAVBAR -->
             <nav class="navbar col-lg-12 col-12 p-lg-0 fixed-top d-flex flex-row">
                 <div class="navbar-menu-wrapper d-flex align-items-stretch justify-content-between">
                     <a class="navbar-brand brand-logo-mini align-self-center d-lg-none" href="../../index.html"><img src="~/breeze-admin-template/template/assets/images/logo-mini.svg" alt="logo" /></a>
+                    <!-- sidebar küçültme butonu -->
                     <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
                         <i class="mdi mdi-menu"></i>
                     </button>
                     <ul class="navbar-nav">
+                        <!-- notifications -->
                         <li class="nav-item dropdown">
                             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                                 <i class="mdi mdi-bell-outline"></i>
@@ -176,6 +116,7 @@
                                 <p class="p-3 mb-0">View all activities</p>
                             </div>
                         </li>
+                        <!-- message -->
                         <li class="nav-item dropdown d-none d-sm-flex">
                             <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown">
                                 <i class="mdi mdi-email-outline"></i>
@@ -207,6 +148,7 @@
                                 <h6 class="p-3 mb-0">See all activity</h6>
                             </div>
                         </li>
+                        <!-- search -->
                         <li class="nav-item nav-search border-0 ml-1 ml-md-3 ml-lg-5 d-none d-md-flex">
                             <form class="nav-link form-inline mt-2 mt-md-0">
                                 <div class="input-group">
@@ -220,18 +162,8 @@
                             </form>
                         </li>
                     </ul>
+                    <!-- sağ üst profil alanı -->
                     <ul class="navbar-nav navbar-nav-right ml-lg-auto">
-                        <li class="nav-item dropdown d-none d-xl-flex border-0">
-                            <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
-                                <i class="mdi mdi-earth"></i> English
-                            </a>
-                            <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-                                <a class="dropdown-item" href="#"> French </a>
-                                <a class="dropdown-item" href="#"> Spain </a>
-                                <a class="dropdown-item" href="#"> Latin </a>
-                                <a class="dropdown-item" href="#"> Japanese </a>
-                            </div>
-                        </li>
                         <li class="nav-item nav-profile dropdown border-0">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown">
                                 <img class="nav-profile-img mr-2" alt="" src="~/breeze-admin-template/template/assets/images/faces/face1.jpg" />
@@ -247,6 +179,7 @@
                             </div>
                         </li>
                     </ul>
+                    <!-- sağ üst profil alanı -->
                     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
                         <span class="mdi mdi-menu"></span>
                     </button>

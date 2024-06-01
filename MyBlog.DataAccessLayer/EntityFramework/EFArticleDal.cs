@@ -24,7 +24,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 
         public List<Article> GetArticlesWithCategory()
         {
-            var values = context.Articles.Include(x => x.Category).ToList();
+            var values = context.Articles.Include(x => x.Category).Include(x=>x.Comments).ToList();
             return values;
         }
 

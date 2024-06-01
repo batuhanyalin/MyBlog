@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
+using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 {
@@ -8,6 +9,7 @@ namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
     {
         private readonly IArticleService _articleService;
 
+
         public _DefaultBlogListComponentPartial(IArticleService articleService)
         {
             _articleService = articleService;
@@ -15,7 +17,7 @@ namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var values = _articleService.TGetListAll();
+            var values = _articleService.TGetArticlesWithCategory();
             return View(values);
         }
     }

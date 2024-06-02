@@ -17,7 +17,7 @@ namespace MyBlog.BusinessLayer.Concrete
             _articleDal = articleDal;
         }
 
-        public int GetWordCount(int id)
+        public int GetReadingTime(int id)
         {
            return _articleDal.GetReadingTime(id);
         }

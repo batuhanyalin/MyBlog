@@ -45,5 +45,37 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Comments.Where(x => x.Article.ArticleId == id).Count();
             return values;
         }
+        //Okuma süresi için
+        public int GetReadingTime(int id)
+        {
+            // Belirli bir makale Id'sine sahip makaleyi veritabanından al
+            var article = context.Articles.FirstOrDefault(a => a.ArticleId == id);
+
+            // Eğer makale bulunursa, kelime sayısını hesapla
+            if (article != null)
+            {
+                // Metindeki boşlukları ve noktalama işaretlerini temizle
+                string cleanText = System.Text.RegularExpressions.Regex.Replace(article.Detail, @"[\W_]+", " ");
+
+                // Metni boşluklardan ayırarak kelime sayısını hesapla
+                string[] words = cleanText.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+                // Kelime sayısını döndür
+
+                int wordCount = words.Length;
+                int readingTime = wordCount / 217; // 217 kelime için 1 dakika
+                                                   // Eğer kalan kelime sayısı varsa, bir dakika ekleyelim
+                if (wordCount % 217 != 0)
+                {
+                    readingTime++;
+                }
+
+                return readingTime; // Okuma süresini döndür
+
+            }
+
+            // Makale bulunamazsa veya içerik boşsa, kelime sayısını 0 olarak döndür
+            return 0;
+        }
+
     }
 }

@@ -17,6 +17,11 @@ namespace MyBlog.BusinessLayer.Concrete
             _articleDal = articleDal;
         }
 
+        public int GetWordCount(int id)
+        {
+           return _articleDal.GetReadingTime(id);
+        }
+
         public int TCommentsCountByArticle(int id)
         {
            return _articleDal.CommentsCountByArticle(id);

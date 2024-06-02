@@ -14,5 +14,6 @@ namespace MyBlog.BusinessLayer.Abstract
         List<Article> TGetArticlesWithCategoryByWriter(int id);
         List<Article> TGetArticlesWithCategory();
         Article TGetArticleWithCategoryByArticleId(int id);
+        public int TCommentsCountByArticle(int id);
     }
 }

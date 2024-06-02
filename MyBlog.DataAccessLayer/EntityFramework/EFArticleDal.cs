@@ -24,7 +24,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 
         public List<Article> GetArticlesWithCategory()
         {
-            var values = context.Articles.Include(x => x.Category).Include(x=>x.Comments).ToList();
+            var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).ToList();
             return values;
         }
 
@@ -37,6 +37,12 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         public Article GetArticleWithCategoryByArticleId(int id)
         {
             var values = context.Articles.Where(x => x.CategoryId == id).Include(y => y.Category).FirstOrDefault();
+            return values;
+        }
+
+        public int CommentsCountByArticle(int id)
+        {
+            var values = context.Comments.Where(x => x.Article.ArticleId == id).Count();
             return values;
         }
     }

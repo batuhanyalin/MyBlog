@@ -16,6 +16,12 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             _articleDal = articleDal;
         }
+
+        public int TCommentsCountByArticle(int id)
+        {
+           return _articleDal.CommentsCountByArticle(id);
+        }
+
         public void TDelete(int id)
         {
             _articleDal.Delete(id);

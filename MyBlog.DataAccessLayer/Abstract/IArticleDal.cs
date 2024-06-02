@@ -16,5 +16,6 @@ namespace MyBlog.DataAccessLayer.Abstract
 
         List<Article> GetArticlesWithCategory();
         Article GetArticleWithCategoryByArticleId(int id);
+        public int CommentsCountByArticle(int id);
     }
 }

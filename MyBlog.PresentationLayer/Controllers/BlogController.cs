@@ -22,6 +22,8 @@ namespace MyBlog.PresentationLayer.Controllers
 
             ViewBag.commentsById = id; //Burada gelen blog idsini viewbage aktarıp, _CommentListByBlogComponentPartial viewcomponentine idyi taşıyarak, ilgili bloğa ait verilerin gelmesini sağlıyoruz.
 
+            ViewBag.commentscount=_articleService.
+
             var values2=_articleService.TGetArticleWithCategoryByArticleId(id);
             ViewBag.categoryName = values2.Category.CategoryName;         
             return View(values);

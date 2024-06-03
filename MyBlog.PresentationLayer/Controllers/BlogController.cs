@@ -20,7 +20,7 @@ namespace MyBlog.PresentationLayer.Controllers
             ViewBag.title = values.Title;
             ViewBag.detail = values.Detail;
 
-            ViewBag.commentsById = id; //Burada gelen blog idsini viewbage aktarıp, _CommentListByBlogComponentPartial viewcomponentine idyi taşıyarak, ilgili bloğa ait verilerin gelmesini sağlıyoruz.
+            ViewBag.articleId = id; //Burada gelen blog idsini viewbage aktarıp, _CommentListByBlogComponentPartial viewcomponentine idyi taşıyarak, ilgili bloğa ait verilerin gelmesini sağlıyoruz.
 
             ViewBag.commentscount = _articleService.TCommentsCountByArticle(id);
  

@@ -16,6 +16,7 @@ namespace MyBlog.BusinessLayer.Concrete
         {
            _authorDal = authorDal;
         }
+
         public void TDelete(int id)
         {
             _authorDal.Delete(id);

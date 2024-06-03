@@ -9,10 +9,9 @@ namespace MyBlog.EntityLayer.Concrete
     public class Author
     {
         public int AuthorId { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string ImageUrl { get; set; }
+        public int? AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
+        public int? ArticleId { get; set; }
+        public List<Article> Articles { get; set; }
     }
 }

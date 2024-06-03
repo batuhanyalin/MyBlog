@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.BusinessLayer.Abstract
 {
-    public interface IAuthorService:IGenericService<Author>
+    public interface IAuthorService : IGenericService<Author>
     {
     }
 }

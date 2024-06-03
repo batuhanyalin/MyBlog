@@ -24,7 +24,7 @@ namespace MyBlog.PresentationLayer.Controllers
 
             ViewBag.commentscount = _articleService.TCommentsCountByArticle(id);
  
-            ViewBag.GetReadingTime = _articleService.GetReadingTime(id);
+            ViewBag.GetReadingTime = _articleService.TGetReadingTime(id);
 
             return View(values);
         }

@@ -18,5 +18,6 @@ namespace MyBlog.DataAccessLayer.Abstract
         Article GetArticleWithCategoryByArticleId(int id);
         public int CommentsCountByArticle(int id);
         public int GetReadingTime(int id);
+        public List<Article> GetAppUserInfoByArticleId(int id);
     }
 }

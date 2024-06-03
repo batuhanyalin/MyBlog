@@ -22,6 +22,11 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             return values;
         }
 
+        public List<Article> GetAppUserInfoByArticleId(int id)
+        {
+            var values = context.Articles.Include(x => x.AppUser).Where(x=>x.ArticleId==id).ToList();
+            return values;
+        }
         public List<Article> GetArticlesWithCategory()
         {
             var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).ToList();

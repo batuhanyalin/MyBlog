@@ -15,6 +15,7 @@ namespace MyBlog.BusinessLayer.Abstract
         List<Article> TGetArticlesWithCategory();
         Article TGetArticleWithCategoryByArticleId(int id);
         public int TCommentsCountByArticle(int id);
-        public int GetReadingTime(int id);
+        public int TGetReadingTime(int id);
+        public List<Article> TGetAppUserInfoByArticleId(int id);
     }
 }

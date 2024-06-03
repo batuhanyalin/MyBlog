@@ -17,7 +17,7 @@ namespace MyBlog.BusinessLayer.Concrete
             _articleDal = articleDal;
         }
 
-        public int GetReadingTime(int id)
+        public int TGetReadingTime(int id)
         {
            return _articleDal.GetReadingTime(id);
         }
@@ -70,6 +70,11 @@ namespace MyBlog.BusinessLayer.Concrete
         public void TUpdate(Article entity)
         {
             _articleDal.Update(entity);
+        }
+
+        public List<Article> TGetAppUserInfoByArticleId(int id)
+        {
+           return _articleDal.GetAppUserInfoByArticleId(id);
         }
     }
 }

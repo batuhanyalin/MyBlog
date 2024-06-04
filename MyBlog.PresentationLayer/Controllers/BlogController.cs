@@ -23,9 +23,14 @@ namespace MyBlog.PresentationLayer.Controllers
             ViewBag.articleId = id; //Burada gelen blog idsini viewbage aktarıp, _CommentListByBlogComponentPartial viewcomponentine idyi taşıyarak, ilgili bloğa ait verilerin gelmesini sağlıyoruz.
 
             ViewBag.commentscount = _articleService.TCommentsCountByArticle(id);
- 
+
             ViewBag.GetReadingTime = _articleService.TGetReadingTime(id);
 
+            return View(values);
+        }
+        public IActionResult BlogList(int id)
+        {
+            var values= _articleService.TGetArticlesByWriter(id);
             return View(values);
         }
     }

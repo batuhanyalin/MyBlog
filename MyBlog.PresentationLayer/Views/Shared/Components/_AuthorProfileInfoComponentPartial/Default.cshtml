@@ -3,13 +3,13 @@
     @foreach (var item in Model)
     {
         <div class="single-post__author__profile__pic">
-            <img src="~/foodeiblog-master/img/categories/single-post/author-profile.jpg" alt="">
+            <img src="@item.AppUser.ImageUrl" alt="">
         </div>
 
         <div class="single-post__author__profile__text">
             <h4>@item.AppUser.Name @item.AppUser.Surname</h4>
             <p>
-                @item.AppUser.City
+                @item.AppUser.About
             </p>
             <div class="single-post__author__profile__social">
                 <a href="@item.AppUser.FacebookUrl"><i class="fa fa-facebook"></i></a>
@@ -17,6 +17,5 @@
                 <a href="@item.AppUser.InstagramUrl"><i class="fa fa-instagram"></i></a>
             </div>
         </div>
-    }
-   
+    }  
 </div>

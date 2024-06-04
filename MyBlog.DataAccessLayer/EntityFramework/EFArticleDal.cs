@@ -29,7 +29,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Article> GetArticlesWithCategory()
         {
-            var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).ToList();
+            var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).Include(x=>x.AppUser).ToList();
             return values;
         }
 
@@ -81,6 +81,5 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             // Makale bulunamazsa veya içerik boşsa, kelime sayısını 0 olarak döndür
             return 0;
         }
-
     }
 }

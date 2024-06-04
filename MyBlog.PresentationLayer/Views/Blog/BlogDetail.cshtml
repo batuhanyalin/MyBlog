@@ -28,11 +28,11 @@
                         </div>
                         <div class="single-post__title__text">
                             <ul class="label">
-                                <li>Kategori: x</li>
+                                <li>Kategori: @ViewBag.categoryname</li>
                             </ul>
                             <h4>@ViewBag.title</h4>
                             <ul class="widget">
-                                <li>by Admin</li>
+                                <li>@ViewBag.username</li>
                                 <li>@ViewBag.GetReadingTime Dakikalık Okuma Süresi</li>
                                 <li>@ViewBag.commentscount Yorum</li>
                             </ul>

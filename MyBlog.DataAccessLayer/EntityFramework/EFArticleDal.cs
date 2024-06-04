@@ -18,7 +18,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         public List<Article> GetArticlesByWriter(int id)
         {
             //ArticleDal içerisinde tanımlanan metodun içi burada dolduruluyor.
-            var values = context.Articles.Where(x => x.AppUser.Id == id).ToList();
+            var values = context.Articles.Where(x => x.AppUser.Id == id).Include(x=>x.Category).Include(x=>x.Comments).Include(x=>x.AppUser).ToList();
             return values;
         }
 
@@ -80,6 +80,11 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 
             // Makale bulunamazsa veya içerik boşsa, kelime sayısını 0 olarak döndür
             return 0;
+        }
+        public Article GetCategoryNameByArticleId(int id)
+        {
+            var values = context.Articles.Where(x => x.ArticleId == id).Include(x=>x.AppUser).Include(x => x.Category).FirstOrDefault();
+            return values;
         }
     }
 }

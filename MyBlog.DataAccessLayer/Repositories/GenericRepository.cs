@@ -38,7 +38,6 @@ namespace MyBlog.DataAccessLayer.Repositories
         {
             context.Set<T>().Update(entity);
             context.SaveChanges();
-            throw new NotImplementedException();
         }
     }
 }

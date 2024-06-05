@@ -21,5 +21,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<Article> GetAppUserInfoByArticleId(int id);
 
         public Article GetCategoryNameByArticleId(int id);
+        public List<Article> GetArticlesByCategoryId(int id);
+        public List<int> GetReadingTimeAll();
     }
 }

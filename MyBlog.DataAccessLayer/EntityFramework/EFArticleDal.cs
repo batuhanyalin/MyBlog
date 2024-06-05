@@ -18,18 +18,18 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         public List<Article> GetArticlesByWriter(int id)
         {
             //ArticleDal içerisinde tanımlanan metodun içi burada dolduruluyor.
-            var values = context.Articles.Where(x => x.AppUser.Id == id).Include(x=>x.Category).Include(x=>x.Comments).Include(x=>x.AppUser).ToList();
+            var values = context.Articles.Where(x => x.AppUser.Id == id).Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).ToList();
             return values;
         }
 
         public List<Article> GetAppUserInfoByArticleId(int id)
         {
-            var values = context.Articles.Include(x => x.AppUser).Where(x=>x.ArticleId==id).ToList();
+            var values = context.Articles.Include(x => x.AppUser).Where(x => x.ArticleId == id).ToList();
             return values;
         }
         public List<Article> GetArticlesWithCategory()
         {
-            var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).Include(x=>x.AppUser).ToList();
+            var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).ToList();
             return values;
         }
 
@@ -83,8 +83,47 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public Article GetCategoryNameByArticleId(int id)
         {
-            var values = context.Articles.Where(x => x.ArticleId == id).Include(x=>x.AppUser).Include(x => x.Category).FirstOrDefault();
+            var values = context.Articles.Where(x => x.ArticleId == id).Include(x => x.AppUser).Include(x => x.Category).FirstOrDefault();
             return values;
         }
+        public List<Article> GetArticlesByCategoryId(int id)
+        {
+            var values = context.Articles.Where(x => x.CategoryId == id).Include(x => x.Category).Include(x => x.Comments).ToList();
+            return values;
+        }
+        //Liste türünde okuma sürelerini hesaplatıyorum.
+        public List<int> GetReadingTimeAll()
+        {
+            // Belirli bir makale Id'sine sahip makaleyi veritabanından al
+            var article = context.Articles.ToList();
+            //int liste oluşturup alacağım liste değerini buna dolduracağım.
+            List<int> readingTimes = new List<int>();
+
+            foreach (var item in article)
+            {
+                string cleanText = System.Text.RegularExpressions.Regex.Replace(item.Detail, @"[\W_]+", " ");
+                // Metni boşluklardan ayırarak kelime sayısını hesapla
+                string[] words = cleanText.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+                // Kelime sayısını bul
+                int wordCount = words.Length;
+
+                // Okuma süresini hesapla
+                int readingTime = wordCount / 217; // 217 kelime için 1 dakika
+                                                   // Eğer kalan kelime sayısı varsa, bir dakika ekleyelim
+                if (wordCount % 217 != 0)
+                {
+                    readingTime++;
+                }
+
+                // Okuma süresini listeye ekle
+                readingTimes.Add(readingTime);
+            }
+
+            // Okuma sürelerini döndür
+            return readingTimes;
+        }
+
     }
 }
+

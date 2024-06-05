@@ -19,5 +19,7 @@ namespace MyBlog.BusinessLayer.Abstract
         public List<Article> TGetAppUserInfoByArticleId(int id);
 
         public Article TGetCategoryNameByArticleId(int id);
+        public List<Article> TGetArticlesByCategoryId(int id);
+        public List<int> TGetReadingTimeAll();
     }
 }

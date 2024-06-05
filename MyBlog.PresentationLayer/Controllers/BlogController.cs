@@ -6,15 +6,17 @@ namespace MyBlog.PresentationLayer.Controllers
     public class BlogController : Controller
     {
         private readonly IArticleService _articleService;
+        private readonly ICategoryService _categoryService;
 
-        public BlogController(IArticleService articleService)
+        public BlogController(IArticleService articleService, ICategoryService categoryService)
         {
             _articleService = articleService;
+            _categoryService = categoryService;
         }
 
         public IActionResult BlogDetail(int id)
         {
-            var values = _articleService.TGetById(id);   
+            var values = _articleService.TGetById(id);
             ViewBag.createdDateDay = values.CreatedDate.ToString("dd");
             ViewBag.createdDateMonth = values.CreatedDate.ToString("MMM");
             ViewBag.title = values.Title;
@@ -34,6 +36,14 @@ namespace MyBlog.PresentationLayer.Controllers
             ViewBag.userId = id;
             ViewBag.name = x.AppUser.Name;
             ViewBag.surname = x.AppUser.Surname;
+            return View(values);
+        }
+        public IActionResult BlogListForCategory(int id)
+        {
+            var values = _articleService.TGetArticlesByCategoryId(id);
+            var values2 = _categoryService.TGetById(id);
+
+            ViewBag.categoryname = values2.CategoryName;
             return View(values);
         }
     }

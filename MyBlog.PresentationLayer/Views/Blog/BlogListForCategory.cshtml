@@ -25,9 +25,8 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="breadcrumb__text">
-                                <h2>@ViewBag.name @ViewBag.surname<span> Blogları</span></h2>
+                                <h2>@ViewBag.categoryname Kategorisindeki<span> Tüm Bloglar</span></h2>
                             </div>
-                            @await Component.InvokeAsync("_AuthorProfileInfoComponentPartial", new { id = ViewBag.userId })
                             <div class="row">
                                 @foreach (var item in Model)
                                 {
@@ -41,7 +40,7 @@
                                                 </div>
                                             </div>
                                             <div class="categories__post__item__text">
-                                                <span class="post__label">@item.Category.CategoryName</span>
+                                                <span class="post__label">@item.AppUser.Name @item.AppUser.Surname</span>
                                                 <h3><a href="#">@item.Title</a></h3>
                                                 <ul class="post__widget">
                                                     <li>3 min read</li>
@@ -49,7 +48,6 @@
                                                 </ul>
                                                 <p>
                                                     @{
-
                                                         if (item.Detail?.Length > 200)
                                                         {
                                                             @item.Detail.Substring(0, 200)
@@ -65,7 +63,7 @@
                                                 </p>
                                             </div>
                                         </div>
-                                   </div>
+                                    </div>
                                 }
                                 <div class="col-lg-12 text-center">
                                 </div>

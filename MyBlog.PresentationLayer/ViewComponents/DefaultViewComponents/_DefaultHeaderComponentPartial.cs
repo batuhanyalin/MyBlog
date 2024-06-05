@@ -14,8 +14,8 @@ namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 
         public IViewComponentResult Invoke()
         {
-
-            return View();
+            var values = _categoryService.TGetCategory();
+            return View(values);
         }
     }
 }

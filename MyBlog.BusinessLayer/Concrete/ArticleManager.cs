@@ -19,12 +19,12 @@ namespace MyBlog.BusinessLayer.Concrete
 
         public int TGetReadingTime(int id)
         {
-           return _articleDal.GetReadingTime(id);
+            return _articleDal.GetReadingTime(id);
         }
 
         public int TCommentsCountByArticle(int id)
         {
-           return _articleDal.CommentsCountByArticle(id);
+            return _articleDal.CommentsCountByArticle(id);
         }
 
         public void TDelete(int id)
@@ -39,7 +39,7 @@ namespace MyBlog.BusinessLayer.Concrete
 
         public List<Article> TGetArticlesWithCategory()
         {
-           return _articleDal.GetArticlesWithCategory();
+            return _articleDal.GetArticlesWithCategory();
         }
 
         public List<Article> TGetArticlesWithCategoryByWriter(int id)
@@ -74,12 +74,22 @@ namespace MyBlog.BusinessLayer.Concrete
 
         public List<Article> TGetAppUserInfoByArticleId(int id)
         {
-           return _articleDal.GetAppUserInfoByArticleId(id);
+            return _articleDal.GetAppUserInfoByArticleId(id);
         }
 
         public Article TGetCategoryNameByArticleId(int id)
         {
             return _articleDal.GetCategoryNameByArticleId(id);
+        }
+
+        public List<Article> TGetArticlesByCategoryId(int id)
+        {
+            return _articleDal.GetArticlesByCategoryId(id);
+        }
+
+        public List<int> TGetReadingTimeAll()
+        {
+           return _articleDal.GetReadingTimeAll();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.Abstract
 {
-    public interface IAboutDal:IGenericDal<About>
+    public interface IAboutDal : IGenericDal<About>
     {
     }
 }

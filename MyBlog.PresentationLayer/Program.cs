@@ -16,12 +16,14 @@ builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
 builder.Services.AddScoped<IArticleService, ArticleManager>();
 builder.Services.AddScoped<IArticleDal, EFArticleDal>();
 
-builder.Services.AddScoped<ISocialMediaService,SocialMediaManager>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
 builder.Services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
 
 builder.Services.AddScoped<ICommentService, CommentManager>();
-builder.Services.AddScoped<ICommentDal,EFCommetDal>();
+builder.Services.AddScoped<ICommentDal, EFCommetDal>();
 
+builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<IAboutDal, EFAboutDal>();
 
 //Burada da DbContext olarak BlogContexti bildiriyoruz.
 builder.Services.AddDbContext<BlogContext>();

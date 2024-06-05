@@ -23,6 +23,7 @@ namespace MyBlog.DataAccessLayer.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<About> Abouts { get; set; }
         public object AppUser { get; internal set; }
     }
 }

@@ -14,7 +14,7 @@ namespace MyBlog.PresentationLayer.Controllers
 
         public IActionResult Index()
         {
-            var values=_aboutService.TGetListAll();
+            var values = _aboutService.TGetListAll();
             return View(values);
         }
     }

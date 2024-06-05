@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Controllers
@@ -13,10 +14,10 @@ namespace MyBlog.PresentationLayer.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            return View(user);
+            var values = _userManager.Users.Include(x=>x.Comments).Include(x=>x.Articles).ToList();
+            return View(values);
         }
     }
 }

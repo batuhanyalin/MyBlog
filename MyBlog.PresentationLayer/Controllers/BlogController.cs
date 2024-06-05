@@ -35,10 +35,10 @@ namespace MyBlog.PresentationLayer.Controllers
         public IActionResult BlogList(int id)
         {
             var values = _articleService.TGetArticlesByWriter(id);
-            var x = values.Find(x => x.AppUser.Id == id);
+            var y = values.Find(x => x.AppUser.Id == id);
             ViewBag.userId = id;
-            ViewBag.name = x.AppUser.Name;
-            ViewBag.surname = x.AppUser.Surname;
+            ViewBag.name = y.AppUser.Name;
+            ViewBag.surname = y.AppUser.Surname;
             return View(values);
         }
         public IActionResult BlogListForCategory(int id)

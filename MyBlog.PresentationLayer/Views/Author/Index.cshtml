@@ -25,25 +25,36 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="breadcrumb__text">
-                                <h2>@ViewBag.name @ViewBag.surname<span> Blogları</span></h2>
+                                <h2>Tüm<span>Yazarlar</span></h2>
                             </div>
                             <div class="row">
                                 @foreach (var item in Model)
                                 {
-                                   @*  <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="categories__post__item">
                                             <div class="categories__post__item__pic small__item set-bg"
                                                  data-setbg="@item.ImageUrl">
                                             </div>
                                             <div class="categories__post__item__text">
-                                                <span class="post__label">@item.Category.CategoryName</span>
-                                                <h3><a href="#">@item.Title</a></h3>
+                                                <span class="post__label">@item.Profession</span>
+                                                <h3><a href="#">@item.Name @item.Surname</a></h3>
                                                 <ul class="post__widget">
-                                                    <li>3 min read</li>
-                                                    <li>@item.Comments.Count Yorum</li>
+                                                    <li>Toplam Blog Sayısı: @(item.Articles != null ? item.Articles.Count() : 0)</li>
+                                                    <li>Toplam Aldığı Yorum: @(item.Comments != null ? item.Comments.Count() : 0)</li>
                                                 </ul>
                                                 <p>
-                                                    @item.About.Substring(0, 200)...
+                                                    @{
+                                                        if (item.About?.Length > 200)
+                                                        {
+                                                            @item.About.Substring(0, 200)
+                                                            ;
+                                                        }
+                                                        else
+                                                        {
+                                                            @item.About?.ToString()
+                                                            ;
+                                                        }
+                                                    }...
                                                 </p>
                                             </div>
                                             <div class="categories__post__item__social__media">
@@ -54,7 +65,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> *@
+                                    </div>
                                 }
                                 <div class="col-lg-12 text-center">
                                 </div>

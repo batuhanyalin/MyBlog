@@ -10,6 +10,7 @@ namespace MyBlog.BusinessLayer.Abstract
 {
     public interface ICategoryService : IGenericService<Category>
     {
+        public List<Category> TGetCategory();
     }
 
 }

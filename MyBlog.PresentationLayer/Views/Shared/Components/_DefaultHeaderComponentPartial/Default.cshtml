@@ -1,4 +1,5 @@
-﻿<header class="header">
+﻿@model List<Category>
+<header class="header">
     <div class="header__top">
         <div class="container">
             <div class="row">
@@ -12,7 +13,15 @@
                         <ul>
                             <li><a href="/Default/Index">Anasayfa</a></li>
                             <li><a href="#">Blog Listesi</a></li>
-                            <li><a href="#">Kategoriler</a></li>
+                            <li class="dropdown">
+                                <a href="#">Kategoriler</a>
+                                <ul class="dropdown__menu">
+                                    @foreach (var item in Model)
+                                    {
+                                        <li><a href="/Blog/BlogListForCategory/@item.CategoryId">@item.CategoryName</a></li>
+                                    }
+                                </ul>
+                            </li>
                             <li><a href="#">Hakkımızda</a></li>
                             <li><a href="./about.html">Yazarlar</a></li>
                             <li><a href="./contact.html">Bize Yazın</a></li>

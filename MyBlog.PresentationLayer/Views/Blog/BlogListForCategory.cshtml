@@ -1,4 +1,5 @@
-﻿@model List<Article>
+﻿@using MyBlog.DataAccessLayer.EntityFramework
+@model List<Article>
 @{
     Layout = null;
 }
@@ -43,7 +44,7 @@
                                                 <span class="post__label">@item.AppUser.Name @item.AppUser.Surname</span>
                                                 <h3><a href="#">@item.Title</a></h3>
                                                 <ul class="post__widget">
-                                                    <li>3 min read</li>
+                                                    <li>@item.ReadingTime Dakikalık Okuma Süresi</li>
                                                     <li>@item.Comments.Count Yorum</li>
                                                 </ul>
                                                 <p>

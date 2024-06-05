@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
+using MyBlog.DataAccessLayer.EntityFramework;
+using MyBlog.EntityLayer.Concrete;
+using MyBlog.PresentationLayer.Models;
 
 namespace MyBlog.PresentationLayer.Controllers
 {
@@ -41,9 +44,12 @@ namespace MyBlog.PresentationLayer.Controllers
         public IActionResult BlogListForCategory(int id)
         {
             var values = _articleService.TGetArticlesByCategoryId(id);
-            var values2 = _categoryService.TGetById(id);
+            ViewBag.categoryname = _categoryService.TGetById(id).CategoryName;
 
-            ViewBag.categoryname = values2.CategoryName;
+            foreach (var x in values)
+            {
+                x.ReadingTime = _articleService.TGetReadingTime(x.ArticleId);
+            }
             return View(values);
         }
     }

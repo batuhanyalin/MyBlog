@@ -50,7 +50,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Comments.Where(x => x.Article.ArticleId == id).Count();
             return values;
         }
-        //Okuma süresi için
+        //Okuma süresi için 
         public int GetReadingTime(int id)
         {
             // Belirli bir makale Id'sine sahip makaleyi veritabanından al
@@ -88,7 +88,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Article> GetArticlesByCategoryId(int id)
         {
-            var values = context.Articles.Where(x => x.CategoryId == id).Include(x => x.Category).Include(x => x.Comments).ToList();
+            var values = context.Articles.Where(x => x.CategoryId == id).Include(x => x.Category).Include(x=>x.AppUser).Include(x => x.Comments).ToList();
             return values;
         }
         //Liste türünde okuma sürelerini hesaplatıyorum.

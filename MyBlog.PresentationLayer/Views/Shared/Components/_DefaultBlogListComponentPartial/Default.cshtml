@@ -30,7 +30,7 @@
                                             <span class="post__label">Kategori: @item.Category.CategoryName</span>
                                             <h3><a href="/Blog/BlogDetail/@item.ArticleId">@item.Title</a></h3>
                                             <ul class="post__widget">
-                                                <li><span><a href="/Blog/BlogList/@item.AppUserId">@item.AppUser.UserName</a></span> tarafından yazıldı.</li>
+                                                <li><span>Yazar: <a href="/Blog/BlogList/@item.AppUserId">@item.AppUser.UserName</a></span></li>
                                                 <li>@item.ReadingTime Dakikalık Okuma Süresi</li>
                                                 <li>@item.Comments.Count() Yorum</li>
                                             </ul>

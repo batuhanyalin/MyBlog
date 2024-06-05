@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.EntityFramework
 {
-    internal class EFAppUser
+    public class EFAboutDal
     {
     }
 }

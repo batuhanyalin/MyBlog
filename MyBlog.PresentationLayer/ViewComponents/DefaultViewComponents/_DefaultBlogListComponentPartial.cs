@@ -4,7 +4,7 @@ using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 {
-    public class _DefaultBlogListComponentPartial:ViewComponent
+    public class _DefaultBlogListComponentPartial : ViewComponent
 
     {
         private readonly IArticleService _articleService;
@@ -18,6 +18,10 @@ namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
         public IViewComponentResult Invoke()
         {
             var values = _articleService.TGetArticlesWithCategory();
+            foreach (var x in values)
+            {
+                x.ReadingTime = _articleService.TGetReadingTime(x.ArticleId);
+            }
             return View(values);
         }
     }

@@ -1,8 +1,8 @@
-﻿@using MyBlog.DataAccessLayer.EntityFramework
-@model List<Article>
+﻿@model List<About>
 @{
     Layout = null;
 }
+
 
 <!DOCTYPE html>
 
@@ -26,40 +26,16 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="breadcrumb__text">
-                                <h2>@ViewBag.categoryname Kategorisindeki<span> Tüm Bloglar</span></h2>
+                                <h2>Hakkımızda<span></span></h2>
                             </div>
                             <div class="row">
                                 @foreach (var item in Model)
                                 {
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="categories__post__item">
-                                            <div class="categories__post__item__pic small__item set-bg"
-                                                 data-setbg="@item.ThumbImageUrl">
-                                                <div class="post__meta">
-                                                    <h4>@item.CreatedDate.ToString("dd")</h4>
-                                                    <span>@item.CreatedDate.ToString("MMM")</span>
-                                                </div>
-                                            </div>
                                             <div class="categories__post__item__text">
-                                                <span class="post__label">@item.AppUser.Name @item.AppUser.Surname</span>
-                                                <h3><a href="#">@item.Title</a></h3>
-                                                <ul class="post__widget">
-                                                    <li>@item.ReadingTime Dakikalık Okuma Süresi</li>
-                                                    <li>@item.Comments.Count Yorum</li>
-                                                </ul>
                                                 <p>
-                                                    @{
-                                                        if (item.Detail?.Length > 200)
-                                                        {
-                                                            @item.Detail.Substring(0, 200)
-                                                            ;
-                                                        }
-                                                        else
-                                                        {
-                                                            @item.Detail?.ToString()
-                                                            ;
-                                                        }
-                                                    }...
+                                                    @item.AboutText
                                                 </p>
                                             </div>
                                         </div>

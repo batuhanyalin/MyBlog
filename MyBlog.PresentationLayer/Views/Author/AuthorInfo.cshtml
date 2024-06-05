@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+<body>
+    <!-- Page Preloder -->
+    <!-- Humberger Begin -->
+    @await Component.InvokeAsync("_DefaultSideBarComponentPartial")
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    @await Component.InvokeAsync("_DefaultHeaderComponentPartial")
+    <!-- Header Section End -->
+    <!-- Categories Section Begin -->
+
+
+    <section class="categories categories-grid spad">
+        <div class="categories__post">
+            <div class="container">
+                <div class="categories__grid__post">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="breadcrumb__text">
+                                <h2>Hakkımızda<span></span></h2>
+                            </div>
+                            <div class="row">
+@*                                 @foreach (var item in Model)
+                                {
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                        <div class="categories__post__item">
+                                            <div class="categories__post__item__text">
+                                                <p>
+                                                    @item.AboutText
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                } *@
+                                <div class="col-lg-12 text-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+    <!-- Footer Section Begin -->
+    @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+    <!-- Footer Section End -->
+    <!-- Search Begin -->
+    @await Component.InvokeAsync("_DefaultSearchComponentPartial")
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    @await Component.InvokeAsync("_DefaultJSPluginsComponentPartial")
+</body>
+</html>

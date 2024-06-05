@@ -39,6 +39,10 @@ namespace MyBlog.PresentationLayer.Controllers
             ViewBag.userId = id;
             ViewBag.name = y.AppUser.Name;
             ViewBag.surname = y.AppUser.Surname;
+            foreach (var x in values)
+            {
+                x.ReadingTime = _articleService.TGetReadingTime(x.ArticleId);
+            }
             return View(values);
         }
         public IActionResult BlogListForCategory(int id)

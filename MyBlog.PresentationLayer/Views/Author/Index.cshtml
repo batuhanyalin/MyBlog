@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="categories__post__item__text">
                                                 <span class="post__label">@item.Profession</span>
-                                                <h3><a href="#">@item.Name @item.Surname</a></h3>
+                                                <h3><a href="/Blog/BlogList/@item.Id">@item.Name @item.Surname</a></h3>
                                                 <ul class="post__widget">
                                                     <li>Toplam Blog Sayısı: @(item.Articles != null ? item.Articles.Count() : 0)</li>
                                                     <li>Toplam Aldığı Yorum: @(item.Comments != null ? item.Comments.Count() : 0)</li>
@@ -56,6 +56,7 @@
                                                         }
                                                     }...
                                                 </p>
+                                                <a href="/Author/AuthorInfo/@item.Id" class="primary-btn">Devamını Oku</a>
                                             </div>
                                             <div class="categories__post__item__social__media">
                                                 <div class="single-post__author__profile__social">

@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="categories__post__item__text">
-                                            <span class="post__label">Kategori: @item.Category.CategoryName</span>
+                                            <span class="post__label">Kategori: <a href="/Blog/BlogListForCategory/@item.CategoryId">@item.Category.CategoryName</a></span>
                                             <h3><a href="/Blog/BlogDetail/@item.ArticleId">@item.Title</a></h3>
                                             <ul class="post__widget">
                                                 <li><span>Yazar: <a href="/Blog/BlogList/@item.AppUserId">@item.AppUser.UserName</a></span></li>

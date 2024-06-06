@@ -20,7 +20,6 @@ namespace MyBlog.EntityLayer.Concrete
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
-        public int? FeaturePostsId { get; set; }
-        public FeaturePost FeaturePosts { get; set; }
+        public List<FeaturePost> FeaturePosts { get; set; }
     }
 }

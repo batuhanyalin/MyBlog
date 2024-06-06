@@ -9,6 +9,7 @@ namespace MyBlog.EntityLayer.Concrete
     public class FeaturePost
     {
         public int FeaturePostId { get; set; }
-        public List<Article> Articles { get; set; }
+        public int? ArticleId { get; set; }
+        public Article Article { get; set; }
     }
 }

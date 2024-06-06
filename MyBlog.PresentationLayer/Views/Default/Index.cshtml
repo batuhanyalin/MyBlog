@@ -5,12 +5,14 @@
 
 <!DOCTYPE html>
 <html lang="zxx">
-@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+    @await Component.InvokeAsync("_DefaultHeadComponentPartial")
 <body>
     <!-- Page Preloder -->
+
     <!-- Humberger Begin -->
     @await Component.InvokeAsync("_DefaultSideBarComponentPartial")
     <!-- Humberger End -->
+
     <!-- Header Section Begin -->
     @await Component.InvokeAsync("_DefaultHeaderComponentPartial")
     <!-- Header Section End -->
@@ -28,6 +30,7 @@
     <!-- Search End -->
 
     <!-- Js Plugins -->
-@await Component.InvokeAsync("_DefaultJSPluginsComponentPartial")
+    @await Component.InvokeAsync("_DefaultJSPluginsComponentPartial")
 </body>
 </html>
+

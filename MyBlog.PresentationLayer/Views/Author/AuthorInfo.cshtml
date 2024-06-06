@@ -1,4 +1,4 @@
-﻿
+﻿@model List<AppUser>
 @{
     Layout = null;
 }
@@ -25,21 +25,28 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="breadcrumb__text">
-                                <h2>Hakkımızda<span></span></h2>
+                                <h2>@foreach (var item in Model)
+                                    {
+                                        @item.Name
+
+                                        @Html.Raw(" ") //Boşluk atmak için kullanıyorum.
+
+                                        @item.Surname
+                                    }<span> Hakkında</span></h2>
                             </div>
                             <div class="row">
-@*                                 @foreach (var item in Model)
+                                @foreach (var item in Model)
                                 {
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
                                         <div class="categories__post__item">
                                             <div class="categories__post__item__text">
                                                 <p>
-                                                    @item.AboutText
+                                                    @item.About
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                } *@
+                                }
                                 <div class="col-lg-12 text-center">
                                 </div>
                             </div>

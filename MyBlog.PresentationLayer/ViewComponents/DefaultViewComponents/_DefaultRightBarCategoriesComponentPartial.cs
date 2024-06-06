@@ -17,8 +17,7 @@ namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 
         public IViewComponentResult Invoke()
         {
-            var value=_categoryService.TGetListAll();
-            ViewBag.categoryCount = 0;
+            var value = _categoryService.TGetCategoryWithArticles();
             return View(value);
         }
     }

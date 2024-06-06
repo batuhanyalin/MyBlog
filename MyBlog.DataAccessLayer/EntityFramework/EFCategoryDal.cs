@@ -1,4 +1,5 @@
-﻿using MyBlog.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.DataAccessLayer.Abstract;
 using MyBlog.DataAccessLayer.Context;
 using MyBlog.DataAccessLayer.Repositories;
 using MyBlog.EntityLayer.Concrete;
@@ -16,6 +17,11 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         public List<Category> GetCategory()
         {
             var values = context.Categories.ToList();
+            return values;
+        }
+        public List<Category> GetCategoryWithArticles()
+        {
+            var values=context.Categories.Include(x=>x.Articles).ToList();
             return values;
         }
 

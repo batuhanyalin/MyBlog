@@ -123,7 +123,6 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             // Okuma sürelerini döndür
             return readingTimes;
         }
-
     }
 }
 

@@ -6,7 +6,7 @@
     <ul>
         @foreach (var item in Model)
         {
-            <li><a href="#">@item.CategoryName<span>@ViewBag.categoryCount</span></a></li>
+            <li><a href="/Blog/BlogListForCategory/@item.CategoryId">@item.CategoryName<span>@item.Articles.Count()</span></a></li>
         }
     </ul>
 </div>

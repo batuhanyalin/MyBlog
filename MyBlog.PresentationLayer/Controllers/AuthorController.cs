@@ -19,9 +19,10 @@ namespace MyBlog.PresentationLayer.Controllers
             var values = _userManager.Users.Include(x=>x.Comments).Include(x=>x.Articles).ToList();
             return View(values);
         }
-        public IActionResult AuthorInfo()
+        public IActionResult AuthorInfo(int id)
         {
-            return View();
+            var values = _userManager.Users.Where(x=>x.Id == id).ToList();
+            return View(values);
         }
     }
 }

@@ -10,5 +10,6 @@ namespace MyBlog.DataAccessLayer.Abstract
     public interface ICategoryDal:IGenericDal<Category>
     {
         public List<Category> GetCategory();
+        public List<Category> GetCategoryWithArticles();
     }
 }

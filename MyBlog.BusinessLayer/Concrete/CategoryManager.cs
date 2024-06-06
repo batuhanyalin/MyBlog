@@ -35,6 +35,11 @@ namespace MyBlog.BusinessLayer.Concrete
             return _categoryDal.GetCategory();
         }
 
+        public List<Category> TGetCategoryWithArticles()
+        {
+            return _categoryDal.GetCategoryWithArticles();
+        }
+
         public List<Category> TGetListAll()
         {
             return _categoryDal.GetListAll();

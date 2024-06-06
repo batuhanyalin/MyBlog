@@ -1,12 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyBlog.BusinessLayer.Abstract;
 
 namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 {
     public class _DefaultRightBarFeaturePostsComponentPartial : ViewComponent
     {
-      public IViewComponentResult Invoke()
+        private readonly IFeaturePostService _featurePostService;
+
+        public _DefaultRightBarFeaturePostsComponentPartial(IFeaturePostService featurePostService)
         {
-            return View();
+            _featurePostService = featurePostService;
+        }
+
+        public IViewComponentResult Invoke()
+        {
+            var values = _featurePostService.TGetListAll();
+            return View(values);
         }
     }
 }

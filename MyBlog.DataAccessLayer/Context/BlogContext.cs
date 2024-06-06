@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.Context
 {
-    public class BlogContext : IdentityDbContext<AppUser,AppRole,int> //AppUser sınıfı buraya ekleniyor ve rol veripi idsinin int olacağı tanıtılıyor.
+    public class BlogContext : IdentityDbContext<AppUser, AppRole, int> //AppUser sınıfı buraya ekleniyor ve rol veripi idsinin int olacağı tanıtılıyor.
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -24,6 +24,7 @@ namespace MyBlog.DataAccessLayer.Context
         public DbSet<Author> Authors { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<About> Abouts { get; set; }
+        public DbSet<FeaturePost> FeaturePosts { get; set; }
         public object AppUser { get; internal set; }
     }
 }

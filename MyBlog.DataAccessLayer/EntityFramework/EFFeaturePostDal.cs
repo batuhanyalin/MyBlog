@@ -1,4 +1,5 @@
-﻿using MyBlog.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.DataAccessLayer.Abstract;
 using MyBlog.DataAccessLayer.Context;
 using MyBlog.DataAccessLayer.Repositories;
 using MyBlog.EntityLayer.Concrete;
@@ -13,9 +14,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
     public class EFFeaturePostDal:GenericRepository<FeaturePost>,IFeaturePostDal
     {
         BlogContext context=new BlogContext();
-        public int GetFeaturePostsWithArticle()
+        public List<FeaturePost> GetFeaturePostsWithArticle()
         {
-            return 0;
+            var values = context.FeaturePosts.Include(x=>x.Article).Include(x=>x.Article.Category).ToList();
+            return values;
         }
     }
 }

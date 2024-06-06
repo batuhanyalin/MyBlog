@@ -9,5 +9,6 @@ namespace MyBlog.BusinessLayer.Abstract
 {
     public interface IFeaturePostService:IGenericService<FeaturePost>
     {
+        public List<FeaturePost> TGetFeaturePostsWithArticle();
     }
 }

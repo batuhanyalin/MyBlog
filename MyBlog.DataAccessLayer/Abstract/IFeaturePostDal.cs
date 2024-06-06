@@ -9,5 +9,6 @@ namespace MyBlog.DataAccessLayer.Abstract
 {
     public interface IFeaturePostDal:IGenericDal<FeaturePost>
     {
+        public List<FeaturePost> GetFeaturePostsWithArticle();
     }
 }

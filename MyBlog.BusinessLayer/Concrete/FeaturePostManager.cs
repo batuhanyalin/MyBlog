@@ -28,6 +28,11 @@ namespace MyBlog.BusinessLayer.Concrete
             return _featurePostDal.GetById(id);
         }
 
+        public List<FeaturePost> TGetFeaturePostsWithArticle()
+        {
+            return _featurePostDal.GetFeaturePostsWithArticle();
+        }
+
         public List<FeaturePost> TGetListAll()
         {
            return _featurePostDal.GetListAll();

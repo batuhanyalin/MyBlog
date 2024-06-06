@@ -15,7 +15,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
     {
         BlogContext context = new BlogContext();
 
-        public List<Comment> GetCommentsByArticle(int id)
+        public List<Comment> GetCommentsWithArticle(int id)
         {
             return context.Comments.Where(x => x.ArticleId == id).ToList();
         }

@@ -5,16 +5,16 @@ namespace MyBlog.PresentationLayer.ViewComponents.DefaultViewComponents
 {
     public class _DefaultRightBarFeaturePostsComponentPartial : ViewComponent
     {
-        private readonly IFeaturePostService _featurePostService;
+        private readonly IArticleService _articleService;
 
-        public _DefaultRightBarFeaturePostsComponentPartial(IFeaturePostService featurePostService)
+        public _DefaultRightBarFeaturePostsComponentPartial(IArticleService articleService)
         {
-            _featurePostService = featurePostService;
+            _articleService = articleService;
         }
 
         public IViewComponentResult Invoke()
         {
-            var values = _featurePostService.TGetListAll();
+            var values = _articleService.TGetFeaturePost();
             return View(values);
         }
     }

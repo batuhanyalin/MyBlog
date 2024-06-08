@@ -16,7 +16,6 @@ namespace MyBlog.DataAccessLayer.Context
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;initial catalog=DbMyBlog;integrated security=true");
         }
 
-
         public DbSet<Category> Categories { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tag> Tags { get; set; }
@@ -24,7 +23,6 @@ namespace MyBlog.DataAccessLayer.Context
         public DbSet<Author> Authors { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<About> Abouts { get; set; }
-        public DbSet<FeaturePost> FeaturePosts { get; set; }
         public object AppUser { get; internal set; }
     }
 }

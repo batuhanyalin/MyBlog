@@ -1,5 +1,4 @@
-﻿using MyBlog.DataAccessLayer.Abstract;
-using MyBlog.EntityLayer.Concrete;
+﻿using MyBlog.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +20,6 @@ namespace MyBlog.BusinessLayer.Abstract
         public Article TGetCategoryNameByArticleId(int id);
         public List<Article> TGetArticlesByCategoryId(int id);
         public List<int> TGetReadingTimeAll();
+        public List<Article> TGetFeaturePost();
     }
 }

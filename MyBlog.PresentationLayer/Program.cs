@@ -25,8 +25,7 @@ builder.Services.AddScoped<ICommentDal, EFCommetDal>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IAboutDal, EFAboutDal>();
 
-builder.Services.AddScoped<IFeaturePostService, FeaturePostManager>();
-builder.Services.AddScoped<IFeaturePostDal, EFFeaturePostDal>();
+
 
 //Burada da DbContext olarak BlogContexti bildiriyoruz.
 builder.Services.AddDbContext<BlogContext>();

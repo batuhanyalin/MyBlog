@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyBlog.DataAccessLayer.Context;
 
@@ -11,9 +12,10 @@ using MyBlog.DataAccessLayer.Context;
 namespace MyBlog.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    partial class BlogContextModelSnapshot : ModelSnapshot
+    [Migration("20240608115841_mig20")]
+    partial class mig20
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,9 +299,6 @@ namespace MyBlog.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsFeaturePost")
-                        .HasColumnType("bit");
-
                     b.Property<int?>("ReadingTime")
                         .HasColumnType("int");
 
@@ -398,6 +397,23 @@ namespace MyBlog.DataAccessLayer.Migrations
                     b.HasIndex("ArticleId");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("MyBlog.EntityLayer.Concrete.FeaturePost", b =>
+                {
+                    b.Property<int>("FeaturePostId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeaturePostId"), 1L, 1);
+
+                    b.Property<string>("FeaturePostName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FeaturePostId");
+
+                    b.ToTable("FeaturePosts");
                 });
 
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.SocialMedia", b =>

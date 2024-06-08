@@ -12,8 +12,8 @@ using MyBlog.DataAccessLayer.Context;
 namespace MyBlog.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    [Migration("20240606121052_mig20")]
-    partial class mig20
+    [Migration("20240608142221_mig24")]
+    partial class mig24
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -299,8 +299,8 @@ namespace MyBlog.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FeaturePostsId")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsFeaturePost")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("ReadingTime")
                         .HasColumnType("int");
@@ -318,8 +318,6 @@ namespace MyBlog.DataAccessLayer.Migrations
                     b.HasIndex("AppUserId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("FeaturePostsId");
 
                     b.ToTable("Articles");
                 });
@@ -412,9 +410,12 @@ namespace MyBlog.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeaturePostId"), 1L, 1);
 
+                    b.Property<string>("FeaturePostName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("FeaturePostId");
 
-                    b.ToTable("FeaturePost");
+                    b.ToTable("FeaturePosts");
                 });
 
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.SocialMedia", b =>
@@ -520,15 +521,9 @@ namespace MyBlog.DataAccessLayer.Migrations
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("MyBlog.EntityLayer.Concrete.FeaturePost", "FeaturePosts")
-                        .WithMany("Articles")
-                        .HasForeignKey("FeaturePostsId");
-
                     b.Navigation("AppUser");
 
                     b.Navigation("Category");
-
-                    b.Navigation("FeaturePosts");
                 });
 
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.Comment", b =>
@@ -559,11 +554,6 @@ namespace MyBlog.DataAccessLayer.Migrations
                 });
 
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.Category", b =>
-                {
-                    b.Navigation("Articles");
-                });
-
-            modelBuilder.Entity("MyBlog.EntityLayer.Concrete.FeaturePost", b =>
                 {
                     b.Navigation("Articles");
                 });

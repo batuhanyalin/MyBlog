@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient.DataClassification;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyBlog.DataAccessLayer.Abstract;
 using MyBlog.DataAccessLayer.Context;
 using MyBlog.DataAccessLayer.Repositories;
@@ -88,7 +87,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Article> GetArticlesByCategoryId(int id)
         {
-            var values = context.Articles.Where(x => x.CategoryId == id).Include(x => x.Category).Include(x=>x.AppUser).Include(x => x.Comments).ToList();
+            var values = context.Articles.Where(x => x.CategoryId == id).Include(x => x.Category).Include(x => x.AppUser).Include(x => x.Comments).ToList();
             return values;
         }
         //Liste türünde okuma sürelerini hesaplatıyorum.
@@ -123,6 +122,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             // Okuma sürelerini döndür
             return readingTimes;
         }
+        public List<Article> GetFeaturePost()
+        {
+            var valeus = context.Articles.Where(x => x.IsFeaturePost == true).Include(x => x.Category).Include(x => x.AppUser).ToList();
+            return valeus;
+        }
     }
 }
-

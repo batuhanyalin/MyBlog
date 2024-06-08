@@ -89,7 +89,12 @@ namespace MyBlog.BusinessLayer.Concrete
 
         public List<int> TGetReadingTimeAll()
         {
-           return _articleDal.GetReadingTimeAll();
+            return _articleDal.GetReadingTimeAll();
+        }
+
+        public List<Article> TGetFeaturePost()
+        {
+            return _articleDal.GetFeaturePost();
         }
     }
 }

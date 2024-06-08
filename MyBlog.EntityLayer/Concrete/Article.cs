@@ -17,9 +17,9 @@ namespace MyBlog.EntityLayer.Concrete
         public DateTime CreatedDate { get; set; }
         public int? AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+        public bool IsFeaturePost { get; set; }
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
-        public List<FeaturePost> FeaturePosts { get; set; }
     }
 }

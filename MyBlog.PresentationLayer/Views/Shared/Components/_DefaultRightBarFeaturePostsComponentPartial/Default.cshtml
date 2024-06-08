@@ -1,33 +1,39 @@
-﻿@model List<FeaturePost>
+﻿@model List<Article>
 <div class="sidebar__feature__item">
     <div class="sidebar__item__title">
         <h6>Editörün Seçtikleri</h6>
     </div>
-    @foreach (var item in Model)
-    {
-        <div class="sidebar__feature__item__large set-bg"
-             data-setbg="@item.Article.ThumbImageUrl">
-            <div class="sidebar__feature__item__large--text">
-                <span>@item.Article.Category.CategoryName</span>
-                <h5>
-                    <a href="/Blog/BlogDetail/@item.ArticleId">@item.Article.Title</a>
-                </h5>
-            </div>
-        </div>
-        <div class="sidebar__feature__item__list">
+    <div class="sidebar__feature__item__list">
+        @foreach (var item in Model)
+        {
+
             <div class="sidebar__feature__item__list__single">
                 <div class="post__meta">
-                    <h4>@item.Article.CreatedDate.ToString("dd")</h4>
-                    <span>@item.Article.CreatedDate.ToString("MMM")</span>
+                    <h4>@item.CreatedDate.ToString("dd")</h4>
+                    <span>@item.CreatedDate.ToString("MMM")</span>
                 </div>
                 <div class="post__text">
-                    <span>@item.Article.Category.CategoryName</span>
-                    <h5><a href="/Blog/BlogDetail/@item.ArticleId">@item.Article.Title</a></h5>
+                    <span>@item.Category.CategoryName</span>
+                    <h5><a href="/Blog/BlogDetail/@item.ArticleId">@item.Title</a></h5>
+                    <p>
+                        @{
+                            if (item.Detail?.Length > 100)
+                            {
+                                @item.Detail.Substring(0, 100)
+                                ;
+                            }
+                            else
+                            {
+                                @item.Detail?.ToString()
+                                ;
+                            }
+                        }...
+                    </p>
                 </div>
             </div>
-        </div>
-    }
-   
+
+        }
+    </div>
 </div>
 <div class="sidebar__item__banner">
     <img src="~/foodeiblog-master/img/sidebar/banner.jpg" alt="">

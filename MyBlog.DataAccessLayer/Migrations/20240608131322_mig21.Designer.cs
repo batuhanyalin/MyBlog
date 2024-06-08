@@ -12,8 +12,8 @@ using MyBlog.DataAccessLayer.Context;
 namespace MyBlog.DataAccessLayer.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    [Migration("20240606123222_mig22")]
-    partial class mig22
+    [Migration("20240608131322_mig21")]
+    partial class mig21
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -299,6 +299,9 @@ namespace MyBlog.DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("FeaturePostId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("ReadingTime")
                         .HasColumnType("int");
 
@@ -315,6 +318,8 @@ namespace MyBlog.DataAccessLayer.Migrations
                     b.HasIndex("AppUserId");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("FeaturePostId");
 
                     b.ToTable("Articles");
                 });
@@ -407,12 +412,11 @@ namespace MyBlog.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeaturePostId"), 1L, 1);
 
-                    b.Property<int?>("ArticleId")
-                        .HasColumnType("int");
+                    b.Property<string>("FeaturePostName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("FeaturePostId");
-
-                    b.HasIndex("ArticleId");
 
                     b.ToTable("FeaturePosts");
                 });
@@ -520,9 +524,15 @@ namespace MyBlog.DataAccessLayer.Migrations
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId");
 
+                    b.HasOne("MyBlog.EntityLayer.Concrete.FeaturePost", "FeaturePost")
+                        .WithMany("Articles")
+                        .HasForeignKey("FeaturePostId");
+
                     b.Navigation("AppUser");
 
                     b.Navigation("Category");
+
+                    b.Navigation("FeaturePost");
                 });
 
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.Comment", b =>
@@ -540,15 +550,6 @@ namespace MyBlog.DataAccessLayer.Migrations
                     b.Navigation("Article");
                 });
 
-            modelBuilder.Entity("MyBlog.EntityLayer.Concrete.FeaturePost", b =>
-                {
-                    b.HasOne("MyBlog.EntityLayer.Concrete.Article", "Article")
-                        .WithMany("FeaturePosts")
-                        .HasForeignKey("ArticleId");
-
-                    b.Navigation("Article");
-                });
-
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.AppUser", b =>
                 {
                     b.Navigation("Articles");
@@ -559,11 +560,14 @@ namespace MyBlog.DataAccessLayer.Migrations
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.Article", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("FeaturePosts");
                 });
 
             modelBuilder.Entity("MyBlog.EntityLayer.Concrete.Category", b =>
+                {
+                    b.Navigation("Articles");
+                });
+
+            modelBuilder.Entity("MyBlog.EntityLayer.Concrete.FeaturePost", b =>
                 {
                     b.Navigation("Articles");
                 });

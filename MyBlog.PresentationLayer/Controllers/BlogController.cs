@@ -24,6 +24,7 @@ namespace MyBlog.PresentationLayer.Controllers
             ViewBag.createdDateMonth = values.CreatedDate.ToString("MMM");
             ViewBag.title = values.Title;
             ViewBag.detail = values.Detail;
+            ViewBag.CoverImageUrl = values.CoverImageUrl;
             ViewBag.articleId = id; //Burada gelen blog idsini viewbage aktarıp, _CommentListByBlogComponentPartial viewcomponentine idyi taşıyarak, ilgili bloğa ait verilerin gelmesini sağlıyoruz.
             ViewBag.commentscount = _articleService.TCommentsCountByArticle(id);
             ViewBag.GetReadingTime = _articleService.TGetReadingTime(id);

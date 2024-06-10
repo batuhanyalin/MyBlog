@@ -26,4 +26,16 @@
     <Folder Include="Areas\Writer\Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\login-form-11\.DS_Store" />
+    <None Include="wwwroot\login-form-11\css\.DS_Store" />
+    <None Include="wwwroot\login-form-11\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\login-form-11\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\login-form-11\fonts\.DS_Store" />
+    <None Include="wwwroot\login-form-11\images\.DS_Store" />
+    <None Include="wwwroot\login-form-11\js\.DS_Store" />
+    <None Include="wwwroot\login-form-11\scss\.DS_Store" />
+    <None Include="wwwroot\login-form-11\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
 </Project>

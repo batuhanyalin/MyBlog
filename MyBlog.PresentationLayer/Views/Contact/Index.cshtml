@@ -1,0 +1,95 @@
+﻿@model Contact
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+<body>
+    <!-- Page Preloder -->
+    <!-- Humberger Begin -->
+    @await Component.InvokeAsync("_DefaultSideBarComponentPartial")
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    @await Component.InvokeAsync("_DefaultHeaderComponentPartial")
+    <!-- Header Section End -->
+    <!-- Categories Section Begin -->
+
+
+    <section class="categories categories-grid spad">
+        <div class="categories__post">
+            <div class="container">
+                <div class="categories__grid__post">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="breadcrumb__text">
+                                <h2>İletişim<span></span></h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <form method="post">
+                                        <div class="categories__post__item">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Ad</label>
+                                                    <input type="text" asp-for="Name" class="form-control" />
+                                                </div>
+                                                <div class="col">
+                                                    <label>Soyad</label>
+                                                    <input type="text" asp-for="Surname" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>E-posta</label>
+                                                    <input type="email" asp-for="Email" class="form-control" />
+                                                </div>
+                                                <div class="col">
+                                                    <label>Konu</label>
+                                                    <input type="text" asp-for="Subject" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-md-12"></div>
+                                                <label>Mesaj</label>
+                                                <textarea asp-for="Text" cols="30" rows="7" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="categories__post__item">
+                                            <button class="primary-btn" type="submit">Gönder</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <div class="row">
+                                        <div style="background-color:darkgray;color:floralwhite;height:80px;width:50px;font-size:25px;text-align:center" class="col">
+                                            <b>E-posta Adresi:</b> info@batuhanyalin.com
+                                        </div>  
+                                        <div style="background-color:darkgray;color:floralwhite;height:80px;width:50px;font-size:25px;text-align:center" class="col">
+                                            <b>Telefon: </b> +90 555 555 55 55
+                                        </div>
+                                        <div style="background-color:darkgray;color:floralwhite;height:80px;width:50px;font-size:25px;text-align:center" class="col">
+                                            <b>Ofis Adresi: </b> Türkiye
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories Section End -->
+    <!-- Footer Section Begin -->
+    @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+    <!-- Footer Section End -->
+    <!-- Search Begin -->
+    @await Component.InvokeAsync("_DefaultSearchComponentPartial")
+    <!-- Search End -->
+    <!-- Js Plugins -->
+    @await Component.InvokeAsync("_DefaultJSPluginsComponentPartial")
+</body>
+</html>

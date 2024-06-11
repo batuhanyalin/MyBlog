@@ -38,7 +38,7 @@ builder.Services.AddDbContext<BlogContext>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogContext>().AddErrorDescriber<CustomIdentityValidator>();
 //EntityFrameworkStores metodu identitynin hangi contexten geldiðini belirtir.
 
-
+//Arealarda viewcomponent kullanýmý
 builder.Services.AddControllersWithViews().AddRazorOptions(options =>
 {
     options.ViewLocationExpanders.Add(new CustomViewLocationExpander());
@@ -53,14 +53,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-//Arealarda viewcomponent kullanýmý
-
-   
-
-
-
-
 
 ////Authentication
 //var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();

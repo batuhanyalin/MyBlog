@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.BusinessLayer.Concrete;
 using MyBlog.DataAccessLayer.Abstract;
 using MyBlog.DataAccessLayer.Context;
 using MyBlog.DataAccessLayer.EntityFramework;
 using MyBlog.EntityLayer.Concrete;
+using MyBlog.PresentationLayer.Infastructure;
 using MyBlog.PresentationLayer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,7 +39,10 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogCo
 //EntityFrameworkStores metodu identitynin hangi contexten geldiðini belirtir.
 
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorOptions(options =>
+{
+    options.ViewLocationExpanders.Add(new CustomViewLocationExpander());
+});
 
 var app = builder.Build();
 
@@ -47,6 +53,26 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+//Arealarda viewcomponent kullanýmý
+
+   
+
+
+
+
+
+////Authentication
+//var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+//builder.Services.AddControllersWithViews(opt =>
+//{
+//    opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
+//});
+//builder.Services.ConfigureApplicationCookie(opts =>
+//{
+//    opts.LoginPath = "/Login/Index";
+//    opts.AccessDeniedPath = new PathString("/Login/AccessDeniedPath");
+//});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

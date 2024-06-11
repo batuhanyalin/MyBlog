@@ -8,10 +8,12 @@ namespace MyBlog.PresentationLayer.Controllers
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public LoginController(SignInManager<AppUser> signInManager)
+        public LoginController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -24,17 +26,28 @@ namespace MyBlog.PresentationLayer.Controllers
         {
             AppUser appUser = new AppUser()
             {
-                UserName = model.Username
+                UserName = model.Username,
             };
             var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Profile");   
+                var p = await _userManager.FindByNameAsync(model.Username);
+
+                if (p.AppRoleId == 1 || p.AppRoleId == 2)
+                {
+                    return RedirectToAction("EditProfile", "Profile", new { area = "Writer" });
+                }
+
+                else if (p.AppRoleId == 3)
+                {
+                    return RedirectToAction("EditProfile", "Profile", new { area = "Admin" });
+                }
             }
             else
             {
-                return View();
+                ModelState.AddModelError("", "Kullanıcı veya parola yanlış");
             }
+            return View();
         }
     }
 }

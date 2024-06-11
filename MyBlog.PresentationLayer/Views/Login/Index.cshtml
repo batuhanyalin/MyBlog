@@ -13,6 +13,8 @@
         <label>Şifreniz</label>
         <input type="password" class="form-control" asp-for="Password" />
         <br />
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <br />
         <button class="btn btn-outline-info">Giriş Yap</button>
     </form>
 </div>

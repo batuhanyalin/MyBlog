@@ -21,6 +21,9 @@ namespace MyBlog.EntityLayer.Concrete
         public string? InstagramUrl { get; set; }
         public string? FacebookUrl { get; set; }
         public string? TwitterUrl { get; set; }
+        public int? AppRoleId { get; set; }
+        public AppRole AppRole { get; set; }
+
     }
 }
 

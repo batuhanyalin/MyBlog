@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyBlog.EntityLayer.Concrete;
-using MyBlog.PresentationLayer.Areas.Writer.Models;
+using MyBlog.PresentationLayer.Areas.Admin.Models;
 
-namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
+
+namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
-    [Area("Writer")]
-    [Route("Writer/Profile")] //Burada yönlendirme yapıyoruz. Area adı/Controller adı
+    [Area("Admin")]
+    [Route("Admin/Profile")] //Burada yönlendirme yapıyoruz. Area adı/Controller adı
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -21,8 +22,8 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         [Route("EditProfile")] //Burada area sayfalarında yönlendirme yapıyoruz. Area adı/Controller adı/View adı
         public async Task<IActionResult> EditProfile()
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            UserEditViewModel model = new UserEditViewModel();
+            var values= await _userManager.FindByNameAsync(User.Identity.Name);
+            AdminEditViewModel model = new AdminEditViewModel();
             model.Name = values.Name;
             model.Email = values.Email;
             model.PhoneNumber = values.PhoneNumber;
@@ -34,7 +35,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         }
         [HttpPost]
         [Route("EditProfile")]
-        public async Task<IActionResult> EditProfile(UserEditViewModel p)
+        public async Task<IActionResult> EditProfile(AdminEditViewModel p)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
@@ -57,7 +58,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                RedirectToAction("MyBlogList", "Blog", new { Area = "Writer" });
+                RedirectToAction("Index", "Dashboard", new { Area = "Admin" });
             }
             else
             {

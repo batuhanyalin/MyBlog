@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<!-- İstatistikler 4'lü -->
+@await Component.InvokeAsync("_AdminLayoutStatisticComponentPartial")
+<!-- Tablolar Chart -->
+@await Component.InvokeAsync("_AdminLayoutTableChartComponentPartial")
+<!-- Tablo listesi -->
+@await Component.InvokeAsync("_AdminLayoutTableListComponentPartial")
+<!-- Widgetlar -->
+@await Component.InvokeAsync("_AdminLayoutWidgetsComponentPartial")

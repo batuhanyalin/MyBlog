@@ -2,8 +2,7 @@
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class AdminLayoutController : Controller
+    public class NotificationController : Controller
     {
         public IActionResult Index()
         {

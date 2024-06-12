@@ -3,8 +3,10 @@
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class AdminLayoutController : Controller
+    [Route("Admin/Blog")]
+    public class BlogController : Controller
     {
+        [Route("Index")]
         public IActionResult Index()
         {
             return View();

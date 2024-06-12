@@ -1,8 +1,50 @@
-﻿
+﻿@model Article
 @{
     ViewData["Title"] = "UpdateBlog";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
+<form>
+    <div class="container">
+        <h6 class="mb-4">Basic Form</h6>
+        <div class="row">
+            <div class="col-sm-6 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
 
-<h1>UpdateBlog</h1>
-
+                    <input type="hidden" asp-for="ArticleId" />
+                    <div class="mb-3">
+                        <label class="form-label">Blog Başlığı</label>
+                        <input type="text" class="form-control" asp-for="Title">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Kategori</label>
+                        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categories, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Yazar</label>
+                        @Html.DropDownListFor(x=>x.AppUserId,(List<SelectListItem>)ViewBag.author,new {@class="form-control"})
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <input type="hidden" asp-for="ArticleId" />
+                    <div class="mb-3">
+                        <label class="form-label">Blog Başlığı</label>
+                        <input type="text" class="form-control" asp-for="Title">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label"></label>
+                        <input type="file" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-success" type="submit">Güncelle</button>
+        </div>
+    </div>
+</form>

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.EntityLayer.Concrete;
 
@@ -9,10 +11,14 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
     public class BlogController : Controller
     {
         private readonly IArticleService _articleService;
+        private readonly ICategoryService _categoryService;
+        private readonly UserManager<AppUser> _userManager;
 
-        public BlogController(IArticleService articleService)
+        public BlogController(IArticleService articleService, ICategoryService categoryService, UserManager<AppUser> userManager)
         {
             _articleService = articleService;
+            _categoryService = categoryService;
+            _userManager = userManager;
         }
 
         [Route("Index")]
@@ -40,7 +46,21 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult UpdateBlog(int id)
         {
+
             var values = _articleService.TGetById(id);
+            var categories = _categoryService.TGetListAll();
+            List<SelectListItem> cat = (from x in categories.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.CategoryName,
+                                            Value = x.CategoryId.ToString()
+                                        }).ToList();
+            ViewBag.categories = cat;
+            List<SelectListItem> auth = (from y in author.ToList()
+                                         select new SelectListItem
+                                         { Text = y.
+                                         
+                                         }
             return View(values);
         }
         [HttpPost]

@@ -15,8 +15,7 @@
     <div class="row">
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Hoverable Table</h6>
-                <table class="table table-hover">
+                <table style="text-align:center" class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -27,6 +26,9 @@
                             <th scope="col">Oluşturulma Tarihi</th>
                             <th scope="col">Yazar</th>
                             <th scope="col">Yorum Sayısı</th>
+                            <th scope="col">Yayına Git</th>
+                            <th scope="col">Güncelle</th>
+                            <th scope="col">Sil</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,12 +37,15 @@
                             <tr>
                                 <td>@item.ArticleId</td>
                                 <td>@item.Title</td>
-                                <td>@item.CoverImageUrl</td>
+                                <td><img src="@item.CoverImageUrl" style="height:75px;width:100px;" class="rounded mx-0 d-block" alt="@item.CoverImageUrl"></td>
                                 <td>@item.Detail?.Substring(0,50)</td>
                                 <td>@item.Category.CategoryName</td>
-                                <td>@item.CreatedDate</td>
-                                <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                                <td>@item.CreatedDate.ToString("dd.MM.yyy")</td>
+                                <td><a href="/Admin/Author/UpdateAuthor/@item.AppUserId">@item.AppUser.Name @item.AppUser.Surname</a></td>
                                 <td>@item.Comments.Count()</td>
+                                <td><a class="btn btn-outline-warning" href="/Blog/BlogDetail/@item.ArticleId"><i class="fas fa-paper-plane"></i></a></td>
+                                <td><a class="btn btn-outline-success" href="/Admin/Blog/UpdateBlog/@item.ArticleId">Güncelle</a></td>
+                                <td><a class="btn btn-outline-danger" href="/Admin/Blog/DeleteBlog/@item.ArticleId">Sil</a></td>
                             </tr>
                         }                      
                     </tbody>

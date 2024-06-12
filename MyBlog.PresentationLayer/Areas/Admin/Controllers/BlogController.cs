@@ -18,7 +18,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [Route("Index")]
         public IActionResult Index()
         {
-            var values = _articleService.TGetListAll();
+            var values = _articleService.TGetArticlesWithCategory();
             return View(values);
         }
         [HttpGet]

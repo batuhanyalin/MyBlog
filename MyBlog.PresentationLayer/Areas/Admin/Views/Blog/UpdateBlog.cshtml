@@ -9,7 +9,6 @@
         <div class="row">
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
-
                     <input type="hidden" asp-for="ArticleId" />
                     <div class="mb-3">
                         <label class="form-label">Blog Başlığı</label>
@@ -21,14 +20,25 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Yazar</label>
-                        @Html.DropDownListFor(x=>x.AppUserId,(List<SelectListItem>)ViewBag.author,new {@class="form-control"})
+                        @Html.DropDownListFor(x => x.AppUserId, (List<SelectListItem>)ViewBag.authors, new { @class = "form-control" })
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Yazar</label>
+                        @Html.DropDownListFor(x => x.AppUserId, (List<SelectListItem>)ViewBag.authors, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Öne Çıkar</label>
+                        <input type="hidden" asp-for="IsFeaturePost" value="false" />
+                        <input asp-for="IsFeaturePost" type="checkbox" class="form-check-input" />
+                        <label asp-for="IsFeaturePost" class="form-check-label"></label>
+                    </div>
+
                 </div>
             </div>
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
-                    <input type="hidden" asp-for="ArticleId" />
                     <div class="mb-3">
+                        k
                         <label class="form-label">Blog Başlığı</label>
                         <input type="text" class="form-control" asp-for="Title">
                     </div>
@@ -42,6 +52,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+<textarea asp-for="Detail"></textarea>
         </div>
         <div class="row">
             <button class="btn btn-success" type="submit">Güncelle</button>

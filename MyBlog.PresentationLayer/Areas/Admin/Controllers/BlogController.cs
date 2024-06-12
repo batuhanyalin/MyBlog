@@ -12,13 +12,14 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
     {
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly IAppUserService _appUserService;
 
-        public BlogController(IArticleService articleService, ICategoryService categoryService, UserManager<AppUser> userManager)
+
+        public BlogController(IArticleService articleService, ICategoryService categoryService, IAppUserService appUserService)
         {
             _articleService = articleService;
             _categoryService = categoryService;
-            _userManager = userManager;
+            _appUserService = appUserService;
         }
 
         [Route("Index")]
@@ -27,28 +28,34 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var values = _articleService.TGetArticlesWithCategory();
             return View(values);
         }
+        [Route("CreateBlog")]
         [HttpGet]
         public IActionResult CreateBlog()
         {
             return View();
         }
+        [Route("CreateBlog")]
         [HttpPost]
         public IActionResult CreateBlog(Article p)
         {
             _articleService.TInsert(p);
             return RedirectToAction("Index");
         }
+        [Route("DeleteBlog")]
         public IActionResult DeleteBlog(int id)
         {
             _articleService.TDelete(id);
             return RedirectToAction("Index");
         }
         [HttpGet]
+        [Route("UpdateBlog")]
         public IActionResult UpdateBlog(int id)
         {
 
             var values = _articleService.TGetById(id);
+            var author = _appUserService.TGetListAll();
             var categories = _categoryService.TGetListAll();
+            //Kategoriler listeleniyor
             List<SelectListItem> cat = (from x in categories.ToList()
                                         select new SelectListItem
                                         {
@@ -56,13 +63,18 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
                                             Value = x.CategoryId.ToString()
                                         }).ToList();
             ViewBag.categories = cat;
+            //Yazarlar listeleniyor
             List<SelectListItem> auth = (from y in author.ToList()
                                          select new SelectListItem
-                                         { Text = y.
-                                         
-                                         }
+                                         {
+                                             Text = $"{y.Name} {y.Surname}",  // Name ve Surname birleştiriliyor
+                                             Value = y.Id.ToString()
+                                         }).ToList();
+
+            ViewBag.authors = auth;
             return View(values);
         }
+        [Route("UpdateBlog")]
         [HttpPost]
         public IActionResult UpdateBlog(Article p)
         {

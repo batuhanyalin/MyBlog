@@ -19,6 +19,7 @@ namespace MyBlog.EntityLayer.Concrete
         public AppUser AppUser { get; set; }
         public bool IsFeaturePost { get; set; }
         public int? CategoryId { get; set; }
+        public bool IsApproved { get; set; }
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
     }

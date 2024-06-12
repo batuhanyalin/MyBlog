@@ -31,6 +31,8 @@ builder.Services.AddScoped<IAboutDal, EFAboutDal>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IContactDal, EFContactDal>();
 
+builder.Services.AddScoped<IAppUserService, AppUserManager>();
+builder.Services.AddScoped<IAppUserDal, EFAppUserDal>();
 
 //Burada da DbContext olarak BlogContexti bildiriyoruz.
 builder.Services.AddDbContext<BlogContext>();

@@ -7,7 +7,7 @@ using MyBlog.EntityLayer.Concrete;
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Route("Admin/Blog")]
+    [Route("Admin/[controller]")] // Yönlendirmeyi controllera yapıyorum.
     public class BlogController : Controller
     {
         private readonly IArticleService _articleService;
@@ -32,7 +32,8 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult CreateBlog()
         {
-            return View();
+            var values = _articleService.TGetById(1);
+            return View(values);
         }
         [Route("CreateBlog")]
         [HttpPost]
@@ -41,17 +42,16 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _articleService.TInsert(p);
             return RedirectToAction("Index");
         }
-        [Route("DeleteBlog")]
+        [Route("DeleteBlog/{id:int}")]
         public IActionResult DeleteBlog(int id)
         {
             _articleService.TDelete(id);
             return RedirectToAction("Index");
         }
+        [Route("UpdateBlog/{id:int}")] //Dışarıdan int değer geleceğini route ederek bildiriyorum.
         [HttpGet]
-        [Route("UpdateBlog")]
         public IActionResult UpdateBlog(int id)
         {
-
             var values = _articleService.TGetById(id);
             var author = _appUserService.TGetListAll();
             var categories = _categoryService.TGetListAll();
@@ -72,6 +72,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
                                          }).ToList();
 
             ViewBag.authors = auth;
+            ViewBag.CoverImageUrl=values.CoverImageUrl;
             return View(values);
         }
         [Route("UpdateBlog")]

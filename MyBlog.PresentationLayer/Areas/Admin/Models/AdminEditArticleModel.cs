@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyBlog.EntityLayer.Concrete;
 
-namespace MyBlog.EntityLayer.Concrete
+namespace MyBlog.PresentationLayer.Areas.Admin.Models
 {
-    public class Article
+    public class AdminEditArticleModel
     {
-        public int ArticleId { get; set; }
         public string Title { get; set; }
         public string CoverImageUrl { get; set; }
         public string ThumbImageUrl { get; set; }
         public string Detail { get; set; }
         public int? ReadingTime { get; set; }
         public DateTime CreatedDate { get; set; }
-        public DateTime UpdateDate { get; set; }
         public int? AppUserId { get; set; }
         public AppUser AppUser { get; set; }
         public bool IsFeaturePost { get; set; }

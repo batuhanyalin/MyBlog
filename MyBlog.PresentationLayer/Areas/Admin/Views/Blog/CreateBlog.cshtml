@@ -1,4 +1,4 @@
-﻿
+﻿@model Article
 @{
     ViewData["Title"] = "CreateBlog";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -6,3 +6,5 @@
 
 <h1>CreateBlog</h1>
 
+<input type="hidden" asp-for="ArticleId" />
+<<input type="text" asp-for="Title" />

@@ -38,7 +38,6 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         public async Task<IActionResult> EditProfile(AdminEditViewModel p)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
             if (p.Image != null)
             {
                 var resource = Directory.GetCurrentDirectory(); //başlangıçtaki proje yolunu al.

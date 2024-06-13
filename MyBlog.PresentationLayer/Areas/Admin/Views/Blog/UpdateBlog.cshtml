@@ -3,8 +3,10 @@
     ViewData["Title"] = "UpdateBlog";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
-<form>
-    <div class="container">
+
+<div class="container">
+    <form asp-action="UpdateBlog" asp-controller="Blog" asp-area="Admin" method="post" enctype="multipart/form-data">
+        <br />
         <h6 class="mb-4">Basic Form</h6>
         <div class="row">
             <div class="col-sm-6 col-xl-6">
@@ -22,42 +24,55 @@
                         <label class="form-label">Yazar</label>
                         @Html.DropDownListFor(x => x.AppUserId, (List<SelectListItem>)ViewBag.authors, new { @class = "form-control" })
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Yazar</label>
-                        @Html.DropDownListFor(x => x.AppUserId, (List<SelectListItem>)ViewBag.authors, new { @class = "form-control" })
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Öne Çıkar</label>
-                        <input type="hidden" asp-for="IsFeaturePost" value="false" />
-                        <input asp-for="IsFeaturePost" type="checkbox" class="form-check-input" />
-                        <label asp-for="IsFeaturePost" class="form-check-label"></label>
-                    </div>
+                    <div>
+                        <label class="form-label">Yazıyı Aktif Hale Getir: </label>
+                        <input asp-for="IsApproved" type="checkbox" class="form-check-input" />
+                        <input type="hidden" asp-for="IsApproved" value="false" />
 
+                        <label class="form-label">Öne Çıkar: </label>
+                        <input asp-for="IsFeaturePost" type="checkbox" class="form-check-input" />
+                        <input type="hidden" asp-for="IsFeaturePost" value="false" />
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
-                    <div class="mb-3">
-                        k
-                        <label class="form-label">Blog Başlığı</label>
-                        <input type="text" class="form-control" asp-for="Title">
+                    <div class="col">
+                        <h5>Güncel Blog Görseli</h5>
+                        <img height="100" width="150" src="@Model.CoverImageUrl" />
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label"></label>
-                        <input type="file" class="form-control" id="exampleInputPassword1">
+                    <br />
+                    <div class="col">
+                        <label class="form-label">Görseli Değiştir</label>
+                        <input type="file" class="form-control" asp-for="CoverImageUrl">
+                        @{
+                            if (Model.CoverImageUrl==null)
+                            {
+                                Model.CoverImageUrl = ViewBag.CoverImageUrl;
+                            }
+                        }
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    <div>
                     </div>
                 </div>
             </div>
         </div>
+        <br />
         <div class="row">
-<textarea asp-for="Detail"></textarea>
+            <div class="bg-light rounded h-100 p-4">
+                <label class="form-label">İçerik</label>
+            </div>
+            <div>
+                <textarea class="form-control" asp-for="Detail" id="editor"></textarea>
+            </div>
         </div>
         <div class="row">
             <button class="btn btn-success" type="submit">Güncelle</button>
         </div>
-    </div>
-</form>
+        <br />
+    </form>
+</div>
+
+<script>
+    CKEDITOR.replace('editor');
+</script>

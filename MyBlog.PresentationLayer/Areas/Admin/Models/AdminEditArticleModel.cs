@@ -17,5 +17,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Models
         public bool IsApproved { get; set; }
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
+        public IFormFile Image { get; set; } //Dosya isteği oluşturan bir interface türünde proporty oluşturuyoruz. Bunu kullanıcı profil fotoğrafını kaydetmek için tutacağız.
+
     }
 }

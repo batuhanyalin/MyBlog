@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.EntityLayer.Concrete;
+using MyBlog.PresentationLayer.Areas.Admin.Models;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
@@ -32,8 +33,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult CreateBlog()
         {
-            var values = _articleService.TGetById(1);
-            return View(values);
+            return View();
         }
         [Route("CreateBlog")]
         [HttpPost]
@@ -72,15 +72,33 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
                                          }).ToList();
 
             ViewBag.authors = auth;
-            ViewBag.CoverImageUrl=values.CoverImageUrl;
             return View(values);
         }
-        [Route("UpdateBlog")]
+        [Route("UpdateBlog/{id}")]
         [HttpPost]
-        public IActionResult UpdateBlog(Article p)
+        public IActionResult UpdateBlog(Article article, IFormFile CoverImageUrl)
         {
-            _articleService.TUpdate(p);
+            if (CoverImageUrl != null && CoverImageUrl.Length > 0)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(CoverImageUrl.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = Path.Combine(resource, "wwwroot/images", imageName);
+
+                using (var stream = new FileStream(saveLocation, FileMode.Create))
+                {
+                    CoverImageUrl.CopyTo(stream);
+                }
+
+                article.CoverImageUrl = $"/images/{imageName}";
+            }
+
+            article.CoverImageUrl = $"/images/no-image.jpg";
+
+            article.UpdateDate = DateTime.Now;
+            _articleService.TUpdate(article);
             return RedirectToAction("Index");
+
         }
     }
 }

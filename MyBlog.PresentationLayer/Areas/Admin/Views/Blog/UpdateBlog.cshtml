@@ -1,4 +1,5 @@
 ﻿@model Article
+
 @{
     ViewData["Title"] = "UpdateBlog";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -7,10 +8,11 @@
 <div class="container">
     <form asp-action="UpdateBlog" asp-controller="Blog" asp-area="Admin" method="post" enctype="multipart/form-data">
         <br />
-        <h6 class="mb-4">Basic Form</h6>
+        <h6 class="mb-4">Blog Güncelleme Sayfası</h6>
         <div class="row">
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
+                    <input type="hidden" />
                     <input type="hidden" asp-for="ArticleId" />
                     <div class="mb-3">
                         <label class="form-label">Blog Başlığı</label>
@@ -44,30 +46,39 @@
                     <br />
                     <div class="col">
                         <label class="form-label">Görseli Değiştir</label>
-                        <input type="file" class="form-control" asp-for="CoverImageUrl">
+                        <input type="file" class="form-control" asp-for="CoverImageUrl">                         
+                    </div>
+                    <br />
+                    <div class="col">
+                        <label class="form-label">Oluşturulma Tarihi:</label>
+                        <label class="form-label">@Model.CreatedDate.ToString("dd.MM.yyy")</label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Son Güncellenme Tarihi:</label>
                         @{
-                            if (Model.CoverImageUrl==null)
+                            if (Model.UpdateDate == null)
                             {
-                                Model.CoverImageUrl = ViewBag.CoverImageUrl;
+                                <label class="form-label">Henüz güncellenmemiş</label>
                             }
                         }
-                    </div>
-                    <div>
+                        <label class="form-label">@Model.UpdateDate?.ToString("dd.MM.yyy")</label>
                     </div>
                 </div>
             </div>
         </div>
         <br />
         <div class="row">
-            <div class="bg-light rounded h-100 p-4">
-                <label class="form-label">İçerik</label>
-            </div>
-            <div>
-                <textarea class="form-control" asp-for="Detail" id="editor"></textarea>
+            <div class="bg-light rounded h-200 p-4">
+                    <h7 class="mb-4">İçerik</h7>
+                <div>
+                    <textarea class="form-control" asp-for="Detail" id="editor"></textarea>
+                </div>
             </div>
         </div>
         <div class="row">
-            <button class="btn btn-success" type="submit">Güncelle</button>
+            <div class="bg-light rounded h-200 p-4">
+                <button class="btn btn-success" type="submit">Güncelle</button>
+            </div>
         </div>
         <br />
     </form>

@@ -18,7 +18,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="categories__post__item__pic set-bg"
-                                             data-setbg="@item.ThumbImageUrl">
+                                             data-setbg="@item.CoverImageUrl">
                                             <div class="post__meta">
                                                 <h4>@item.CreatedDate.ToString("dd")</h4>
                                                 <span>@item.CreatedDate.ToString("MMM")</span>
@@ -35,7 +35,13 @@
                                                 <li>@item.Comments.Count() Yorum</li>
                                             </ul>
                                             <p>
-                                                @item.Detail.Substring(0, 200)...
+                                                @{if (item.Detail.Length>200)
+                                                {
+                                                        @item.Detail.Substring(0, 200);
+                                                    }else
+                                                {
+                                                    @item.Detail?.ToString();
+                                                }}...
                                             </p>
                                         </div>
                                     </div>

@@ -30,10 +30,6 @@
                         <input type="text" asp-for="CoverImageUrl" class="form-control" />
                       </div>
                        <div class="form-group">
-                        <label>Küçük Kapak Url</label>
-                        <input type="text" asp-for="ThumbImageUrl" class="form-control" />
-                      </div>
-                       <div class="form-group">
                         <label>Kategori</label>
                         @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.categories,new{@class="form-control"})
                       </div>

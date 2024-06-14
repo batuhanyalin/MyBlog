@@ -26,6 +26,8 @@
                             <th scope="col">Oluşturulma Tarihi</th>
                             <th scope="col">Yazar</th>
                             <th scope="col">Yorum Sayısı</th>
+                            <th scope="col">Öne Çıkarılmış</th>
+                            <th scope="col">Yayında</th>
                             <th scope="col">Yayına Git</th>
                             <th scope="col">Güncelle</th>
                             <th scope="col">Sil</th>
@@ -42,21 +44,49 @@
                                     @{
                                         if (item.Detail.Length > 50)
                                         {
-                                            @item.Detail.Substring(0, 50)
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Detail, 50);
+                                            @Html.Raw(summary)
                                             ;
                                         }
                                         else
                                         {
-                                            @item.Detail?.ToString()
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Detail, 50);
+                                            @Html.Raw(summary)?.ToString()
                                             ;
                                         }
                                     }...
-
                                 </td>
                                 <td>@item.Category.CategoryName</td>
                                 <td>@item.CreatedDate.ToString("dd.MM.yyy")</td>
                                 <td><a href="/Admin/Author/UpdateAuthor/@item.AppUserId">@item.AppUser.Name @item.AppUser.Surname</a></td>
                                 <td>@item.Comments.Count()</td>
+                                <td>
+                                    <a href="/Admin/Blog/ChangeIsFeaturePostBlog/@item.ArticleId">
+                                    @{
+                                        if (item.IsFeaturePost == true)
+                                        {
+                                            <i style="color:lightskyblue;font-size:20px" class="fas fa-check-circle"></i>
+                                        }
+                                        else
+                                        {
+                                            <i style="color:palevioletred;font-size:20px" class="fas fa-times-circle"></i>
+                                        }
+                                    }
+                                    </a>
+                                </td>
+                                <td><a href="/Admin/Blog/ChangeIsApprovedBlog/@item.ArticleId">
+                                    @{
+                                        if (item.IsApproved == true)
+                                        {
+                                            <i style="color:green;font-size:20px" class="fas fa-play"></i>
+                                        }
+                                        else
+                                        {
+                                            <i style="color:red;font-size:20px" class="fas fa-pause"></i>
+                                        }
+                                        }
+                                    </a>
+                                </td>
                                 <td><a class="btn btn-outline-warning" href="/Blog/BlogDetail/@item.ArticleId"><i class="fas fa-paper-plane"></i></a></td>
                                 <td><a class="btn btn-outline-success" href="/Admin/Blog/UpdateBlog/@item.ArticleId">Güncelle</a></td>
                                 <td><a class="btn btn-outline-danger" href="/Admin/Blog/DeleteBlog/@item.ArticleId">Sil</a></td>

@@ -78,6 +78,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult UpdateBlog(Article article, IFormFile CoverImageUrl)
         {
+
             if (CoverImageUrl != null && CoverImageUrl.Length > 0)
             {
                 var resource = Directory.GetCurrentDirectory();
@@ -92,13 +93,32 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 
                 article.CoverImageUrl = $"/images/{imageName}";
             }
-
-            article.CoverImageUrl = $"/images/no-image.jpg";
-
+            else if (article.CoverImageUrl == null)
+            {
+                article.CoverImageUrl = $"/images/no-image.jpg";
+            }
             article.UpdateDate = DateTime.Now;
             _articleService.TUpdate(article);
             return RedirectToAction("Index");
-
+        }
+        public IActionResult ChangeIsApprovedBlog(int id)
+        {
+            var values=_articleService.TGetById(id);
+            if (values.IsApproved==true)
+            {
+                values.IsApproved = false;
+            }
+            else
+            {
+                values.IsApproved=true;
+            }
+            _articleService.TUpdate(values);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ChangeIsFeaturePostBlog(int id)
+        {
+            var values = _articleService.TGetById(id);
+            return RedirectToAction("Index");
         }
     }
 }

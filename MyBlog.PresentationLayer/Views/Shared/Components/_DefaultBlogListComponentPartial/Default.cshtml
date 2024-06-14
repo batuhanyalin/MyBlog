@@ -1,4 +1,5 @@
 ﻿@model List<Article>
+@using MyBlog.PresentationLayer
 <section class="categories categories-grid spad">
     <div class="categories__post">
         <div class="container">
@@ -35,13 +36,20 @@
                                                 <li>@item.Comments.Count() Yorum</li>
                                             </ul>
                                             <p>
-                                                @{if (item.Detail.Length>200)
-                                                {
-                                                        @item.Detail.Substring(0, 200);
-                                                    }else
-                                                {
-                                                    @item.Detail?.ToString();
-                                                }}...
+                                                @{
+                                                    if (item.Detail.Length > 200)
+                                                    {
+                                                        var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Detail, 200);
+                                                        @Html.Raw(summary)
+                                                        ;
+                                                    }
+                                                    else
+                                                    {
+                                                        var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Detail, 200);
+                                                        @Html.Raw(summary)?.ToString()
+                                                        ;
+                                                    }
+                                                }...                                              
                                             </p>
                                         </div>
                                     </div>

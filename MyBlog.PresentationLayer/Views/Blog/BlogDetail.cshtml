@@ -46,7 +46,7 @@
                         </ul>
                     </div>
                     <div class="single-post__top__text">
-                        <p> @ViewBag.detail </p>
+                        <p class="form-control" id="summernote">@Html.Raw(ViewBag.detail)</p>
                     </div>
                     <div class="single-post__tags">
                         <a href="#">Food</a>
@@ -118,5 +118,16 @@
     <!-- Js Plugins -->
     @await Component.InvokeAsync("_DefaultJSPluginsComponentPartial")
 </body>
-
 </html>
+<script>
+    $(document).ready(function () {
+        $('#summernote').summernote({
+            toolbar: true, // Toolbar'ı gizler
+            airMode: true, // Sadece görüntüleme modu
+            height: 'auto', // Yüksekliği içeriğe göre ayarlar
+            minHeight: 200, // Minimum yüksekliği ayarlar
+            maxHeight: 800, // Maksimum yüksekliği ayarlar
+            focus: true // Başlangıçta odaklanır
+        });
+    });
+</script>

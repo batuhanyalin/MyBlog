@@ -26,6 +26,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<Article> GetFeaturePost();
         public Article ChangeIsApprovedArticleById(int id);
         public Article ChangeIsFeaturePostArticleById(int id);
+        public List<Article> GetArticlesWithCategoryForIsApproved();
 
     }
 }

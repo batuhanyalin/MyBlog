@@ -136,7 +136,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             }
             else
             {
-                values.IsApproved= false;
+                values.IsApproved = false;
             }
             context.SaveChanges();
             return values;
@@ -153,6 +153,11 @@ namespace MyBlog.DataAccessLayer.EntityFramework
                 values.IsFeaturePost = false;
             }
             context.SaveChanges();
+            return values;
+        }
+        public List<Article> GetArticlesWithCategoryForIsApproved()
+        {
+            var values = context.Articles.Where(x => x.IsApproved == true).Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).ToList();
             return values;
         }
     }

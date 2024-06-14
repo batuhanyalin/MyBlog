@@ -106,5 +106,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _articleDal.ChangeIsFeaturePostArticleById(id);
         }
+
+        public List<Article> TGetArticlesWithCategoryForIsApproved()
+        {
+           return _articleDal.GetArticlesWithCategoryForIsApproved();
+        }
     }
 }

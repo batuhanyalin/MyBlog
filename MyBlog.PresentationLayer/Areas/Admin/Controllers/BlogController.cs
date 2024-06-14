@@ -110,7 +110,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [Route("ChangeIsFeaturePostBlog/{id}")]
         public IActionResult ChangeIsFeaturePostBlog(int id)
         {
-            var values = _articleService.TGetById(id);
+            var values = _articleService.TChangeIsFeaturePostArticleById(id);
             return RedirectToAction("Index");
         }
     }

@@ -24,5 +24,8 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<Article> GetArticlesByCategoryId(int id);
         public List<int> GetReadingTimeAll();
         public List<Article> GetFeaturePost();
+        public Article ChangeIsApprovedArticleById(int id);
+        public Article ChangeIsFeaturePostArticleById(int id);
+
     }
 }

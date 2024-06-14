@@ -21,5 +21,8 @@ namespace MyBlog.BusinessLayer.Abstract
         public List<Article> TGetArticlesByCategoryId(int id);
         public List<int> TGetReadingTimeAll();
         public List<Article> TGetFeaturePost();
+        public Article TChangeIsApprovedArticleById(int id);
+        public Article TChangeIsFeaturePostArticleById(int id);
+
     }
 }

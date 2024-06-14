@@ -127,5 +127,33 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var valeus = context.Articles.Where(x => x.IsFeaturePost == true).Include(x => x.Category).Include(x => x.AppUser).ToList();
             return valeus;
         }
+        public Article ChangeIsApprovedArticleById(int id)
+        {
+            var values = context.Articles.Find(id);
+            if (values.IsApproved == false)
+            {
+                values.IsApproved = true;
+            }
+            else
+            {
+                values.IsApproved= false;
+            }
+            context.SaveChanges();
+            return values;
+        }
+        public Article ChangeIsFeaturePostArticleById(int id)
+        {
+            var values = context.Articles.Find(id);
+            if (values.IsFeaturePost == false)
+            {
+                values.IsFeaturePost = true;
+            }
+            else
+            {
+                values.IsFeaturePost = false;
+            }
+            context.SaveChanges();
+            return values;
+        }
     }
 }

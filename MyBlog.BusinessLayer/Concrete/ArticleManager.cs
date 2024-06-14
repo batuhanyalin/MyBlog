@@ -96,5 +96,15 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _articleDal.GetFeaturePost();
         }
+
+        public Article TChangeIsApprovedArticleById(int id)
+        {
+            return _articleDal.ChangeIsApprovedArticleById(id);
+        }
+
+        public Article TChangeIsFeaturePostArticleById(int id)
+        {
+            return _articleDal.ChangeIsFeaturePostArticleById(id);
+        }
     }
 }

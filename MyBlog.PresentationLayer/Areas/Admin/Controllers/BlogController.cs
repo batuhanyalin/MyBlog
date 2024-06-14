@@ -101,20 +101,13 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _articleService.TUpdate(article);
             return RedirectToAction("Index");
         }
+        [Route("ChangeIsApprovedBlog/{id}")]
         public IActionResult ChangeIsApprovedBlog(int id)
         {
-            var values=_articleService.TGetById(id);
-            if (values.IsApproved==true)
-            {
-                values.IsApproved = false;
-            }
-            else
-            {
-                values.IsApproved=true;
-            }
-            _articleService.TUpdate(values);
+            var values=_articleService.TChangeIsApprovedArticleById(id);
             return RedirectToAction("Index");
         }
+        [Route("ChangeIsFeaturePostBlog/{id}")]
         public IActionResult ChangeIsFeaturePostBlog(int id)
         {
             var values = _articleService.TGetById(id);

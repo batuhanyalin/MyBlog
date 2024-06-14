@@ -3,35 +3,42 @@
     <div class="sidebar__item__title">
         <h6>Editörün Seçtikleri</h6>
     </div>
+    @{
+        int count = 0;
+    }
     <div class="sidebar__feature__item__list">
         @foreach (var item in Model)
         {
-
-            <div class="sidebar__feature__item__list__single">
-                <div class="post__meta">
-                    <h4>@item.CreatedDate.ToString("dd")</h4>
-                    <span>@item.CreatedDate.ToString("MMM")</span>
+            count++;
+            if (count<=4)
+            {
+                <div class="sidebar__feature__item__list__single">
+                    <div class="post__meta">
+                        <h4>@item.CreatedDate.ToString("dd")</h4>
+                        <span>@item.CreatedDate.ToString("MMM")</span>
+                    </div>
+                    <div class="post__text">
+                        <span>@item.Category.CategoryName</span>
+                        <h5><a href="/Blog/BlogDetail/@item.ArticleId">@item.Title</a></h5>
+                        <p>
+                            @{
+                                if (item.Detail.Length > 70)
+                                {
+                                    var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Detail, 70);
+                                    @Html.Raw(summary)
+                                    ;
+                                }
+                                else
+                                {
+                                    var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Detail, 70);
+                                    @Html.Raw(summary)?.ToString()
+                                    ;
+                                }
+                            }...
+                        </p>
+                    </div>
                 </div>
-                <div class="post__text">
-                    <span>@item.Category.CategoryName</span>
-                    <h5><a href="/Blog/BlogDetail/@item.ArticleId">@item.Title</a></h5>
-                    <p>
-                        @{
-                            if (item.Detail?.Length > 100)
-                            {
-                                @item.Detail.Substring(0, 100)
-                                ;
-                            }
-                            else
-                            {
-                                @item.Detail?.ToString()
-                                ;
-                            }
-                        }...
-                    </p>
-                </div>
-            </div>
-
+            }
         }
     </div>
 </div>

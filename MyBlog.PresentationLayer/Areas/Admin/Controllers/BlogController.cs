@@ -33,13 +33,48 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult CreateBlog()
         {
+            var categories = _categoryService.TGetListAll();
+            var authors = _appUserService.TGetListAll();
+            List<SelectListItem> cat = (from x in categories.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.CategoryName,
+                                            Value = x.CategoryId.ToString()
+                                        }).ToList();
+            List<SelectListItem> aut = (from x in authors.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = $"{x.Name} {x.Surname}",
+                                            Value = x.Id.ToString()
+                                        }).ToList();
+            ViewBag.categories = cat;
+            ViewBag.authors = aut;
             return View();
         }
         [Route("CreateBlog")]
         [HttpPost]
-        public IActionResult CreateBlog(Article p)
+        public IActionResult CreateBlog(Article article, IFormFile CoverImageUrl)
         {
-            _articleService.TInsert(p);
+            if (CoverImageUrl != null && CoverImageUrl.Length > 0)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(CoverImageUrl.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = Path.Combine(resource, "wwwroot/images", imageName);
+
+                using (var stream = new FileStream(saveLocation, FileMode.Create))
+                {
+                    CoverImageUrl.CopyTo(stream);
+                }
+
+                article.CoverImageUrl = $"/images/{imageName}";
+            }
+            else if (article.CoverImageUrl == null)
+            {
+                article.CoverImageUrl = $"/images/no-image.jpg";
+            }
+            article.CreatedDate = DateTime.Now;
+            _articleService.TInsert(article);
             return RedirectToAction("Index");
         }
         [Route("DeleteBlog/{id:int}")]
@@ -104,7 +139,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [Route("ChangeIsApprovedBlog/{id}")]
         public IActionResult ChangeIsApprovedBlog(int id)
         {
-            var values=_articleService.TChangeIsApprovedArticleById(id);
+            var values = _articleService.TChangeIsApprovedArticleById(id);
             return RedirectToAction("Index");
         }
         [Route("ChangeIsFeaturePostBlog/{id}")]

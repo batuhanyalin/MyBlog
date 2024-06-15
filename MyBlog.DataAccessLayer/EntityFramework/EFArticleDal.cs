@@ -157,7 +157,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Article> GetArticlesWithCategoryForIsApproved()
         {
-            var values = context.Articles.Where(x => x.IsApproved == true).Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).ToList();
+            var values = context.Articles.Where(x => x.IsApproved == true).Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).OrderByDescending(x=>x.CreatedDate).ToList();
             return values;
         }
     }

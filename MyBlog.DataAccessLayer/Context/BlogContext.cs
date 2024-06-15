@@ -24,6 +24,7 @@ namespace MyBlog.DataAccessLayer.Context
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<ArticleTag> ArticleTags { get; set; }
         public object AppUser { get; internal set; }
     }
 }

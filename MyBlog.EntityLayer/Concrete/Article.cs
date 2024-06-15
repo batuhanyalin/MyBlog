@@ -22,5 +22,6 @@ namespace MyBlog.EntityLayer.Concrete
         public bool IsApproved { get; set; }
         public Category Category { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<ArticleTag> ArticleTags { get; set; }
     }
 }

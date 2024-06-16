@@ -14,13 +14,15 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
         private readonly IAppUserService _appUserService;
+        private readonly IArticleTagService _articleTagService;
 
 
-        public BlogController(IArticleService articleService, ICategoryService categoryService, IAppUserService appUserService)
+        public BlogController(IArticleService articleService, ICategoryService categoryService, IAppUserService appUserService, IArticleTagService articleTagService)
         {
             _articleService = articleService;
             _categoryService = categoryService;
             _appUserService = appUserService;
+            _articleTagService = articleTagService;
         }
 
         [Route("Index")]
@@ -89,6 +91,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         {
             var values = _articleService.TGetById(id);
             var author = _appUserService.TGetListAll();
+            var articletag = _articleTagService.TGetListAll();
             var categories = _categoryService.TGetListAll();
             //Kategoriler listeleniyor
             List<SelectListItem> cat = (from x in categories.ToList()

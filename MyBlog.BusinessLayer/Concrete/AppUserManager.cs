@@ -18,9 +18,14 @@ namespace MyBlog.BusinessLayer.Concrete
             _appUserDal = appUserDal;
         }
 
+        public AppUser TChangeIsApprovedArticleById(int id)
+        {
+            return _appUserDal.ChangeIsApprovedArticleById(id);
+        }
+
         public void TDelete(int id)
         {
-            _appUserDal.Delete(id); 
+            _appUserDal.Delete(id);
         }
 
         public AppUser TGetById(int id)

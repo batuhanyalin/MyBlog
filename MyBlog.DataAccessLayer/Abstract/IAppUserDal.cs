@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace MyBlog.DataAccessLayer.Abstract
 {
-    public interface IAppUserDal:IGenericDal<AppUser>
+    public interface IAppUserDal : IGenericDal<AppUser>
     {
+        public AppUser ChangeIsApprovedArticleById(int id);
     }
 }

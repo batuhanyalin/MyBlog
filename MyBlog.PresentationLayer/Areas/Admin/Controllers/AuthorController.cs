@@ -13,8 +13,8 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         {
             _userService = userService;
         }
-
-        public IActionResult Index()
+        [Route("AuthorIndex")]
+        public IActionResult AuthorIndex()
         {
             var values = _userService.TGetListAll();
             return View(values);
@@ -26,6 +26,16 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var values = _userService.TGetById(id);
             return View(values);
         }
+
+        [Route("DeleteBlog/{id:int}")]
+        public IActionResult DeleteAuthor(int id)
+        {
+            _userService.TDelete(id);
+            return RedirectToAction("Index");
+        }
+
+
+
         //[Route("UpdateBlog/{id:int}")]
         //[HttpPost]
         //public IActionResult UpdateAuthor(int id)
@@ -33,5 +43,14 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 
         //    return View();
         //}
+
+        public IActionResult ChangeIsApprovedAuthor(int id)
+        {
+            _userService.TChangeIsApprovedArticleById(id);
+            return RedirectToAction("AuthorIndex");
+        }
+
+
+
     }
 }

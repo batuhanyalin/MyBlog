@@ -9,5 +9,6 @@ namespace MyBlog.BusinessLayer.Abstract
 {
     public interface IAppUserService:IGenericService<AppUser>
     {
+        public AppUser TChangeIsApprovedArticleById(int id);
     }
 }

@@ -1,0 +1,98 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "AuthorIndex";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <br />
+    <div class="row">
+        <h2>Bloglar</h2>
+    </div>
+    <div class="row">
+        <a style="height:auto;width:auto" class="btn btn-outline-primary" href="/Admin/Blog/CreateBlog">Yeni Blog Ekle</a>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-4">
+                <table style="text-align:center" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Görsel</th>
+                            <th scope="col">Ad</th>
+                            <th scope="col">Soyad</th>
+                            <th scope="col">Şehir</th>
+                            <th scope="col">E-posta</th>
+                            <th scope="col">Telefon</th>
+                            <th scope="col">Sosyal Medya</th>
+                            <th scope="col">Hakkında</th>
+                            <th scope="col">Toplam Yayın</th>
+                            <th scope="col">Toplam Yorum</th>
+                            <th scope="col">Yayınlarına Git</th>
+                            <th scope="col">Güncelle</th>
+                            <th scope="col">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td><img src="@item.ImageUrl" style="height:75px;width:100px;" class="rounded mx-0 d-block" alt="@item.ImageUrl"></td>
+                                <td>@item.Name</td>
+                                <td>@item.Surname</td>
+                                <td>@item.City</td>
+                                <td>@item.Email</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>
+                                    <a href="@item.FacebookUrl"><i class="fa fa-facebook"></i></a> 
+                                    <a href="@item.TwitterUrl"><i class="fa fa-twitter"></i></a> 
+                                    <a href="@item.InstagramUrl"><i class="fa fa-instagram"></i></a> 
+                                </td>
+                                <td>@item.About</td>
+                                <td>@item.Articles.Count()</td>
+                                <td>@item.Comments.Count()</td>
+                                <td><a class="btn btn-outline-warning" href="/Blog/BlogDetail/@item.Id"><i class="fas fa-paper-plane"></i></a></td>
+                                <td>
+                                    @{
+                                        if (item.About.Length > 50)
+                                        {
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 50);
+                                            @Html.Raw(summary)
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 50);
+                                            @Html.Raw(summary)?.ToString()
+                                            ;
+                                        }
+                                    }...
+                                </td>
+                                <td>@item.Comments.Count()</td>
+                                <td>
+                                    <a href="/Admin/Blog/ChangeIsApprovedAuthor/@item.Id">
+                                        @{
+                                            if (item.IsApproved == true)
+                                            {
+                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-check-circle"></i>
+                                            }
+                                            else
+                                            {
+                                                <i style="color:palevioletred;font-size:20px" class="fas fa-times-circle"></i>
+                                            }
+                                        }
+                                    </a>
+                                </td>
+                                <td><a class="btn btn-outline-success" href="/Admin/Author/UpdateAuthor/@item.Id">Güncelle</a></td>
+                                <td><a class="btn btn-outline-danger" href="/Admin/Blog/DeleteAuthor/@item.Id">Sil</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

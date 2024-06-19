@@ -10,5 +10,8 @@ namespace MyBlog.BusinessLayer.Abstract
     public interface IAppUserService:IGenericService<AppUser>
     {
         public AppUser TChangeIsApprovedArticleById(int id);
+        public int TGetCommentsCountByAuthor(int id);
+        public int TGetArticleCountByAuthor(int id);
+        public List<AppUser> TGetAuthorWithCommentArticle();
     }
 }

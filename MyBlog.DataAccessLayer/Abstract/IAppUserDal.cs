@@ -10,5 +10,8 @@ namespace MyBlog.DataAccessLayer.Abstract
     public interface IAppUserDal : IGenericDal<AppUser>
     {
         public AppUser ChangeIsApprovedArticleById(int id);
+        public int GetCommentsCountByAuthor(int id);
+        public int GetArticleCountByAuthor(int id);
+        public List<AppUser> GetAuthorWithCommentArticle();
     }
 }

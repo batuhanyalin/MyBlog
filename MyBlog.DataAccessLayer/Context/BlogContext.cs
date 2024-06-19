@@ -15,7 +15,14 @@ namespace MyBlog.DataAccessLayer.Context
         {
             optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;initial catalog=DbMyBlog;integrated security=true");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<AppUser>()
+                .Property(u => u.RowVersion)
+                .IsRowVersion();
+        }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tag> Tags { get; set; }

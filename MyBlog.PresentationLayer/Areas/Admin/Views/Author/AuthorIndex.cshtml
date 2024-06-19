@@ -15,7 +15,7 @@
     <br />
     <div class="row">
         <div class="col-sm-12 col-xl-12">
-            <div class="bg-light rounded h-100 p-4">
+            <div class="bg-light rounded h-200 p-10">
                 <table style="text-align:center" class="table table-hover">
                     <thead>
                         <tr>
@@ -31,6 +31,7 @@
                             <th scope="col">Toplam Yayın</th>
                             <th scope="col">Toplam Yorum</th>
                             <th scope="col">Yayınlarına Git</th>
+                            <th scope="col">Durumu Güncelle</th>
                             <th scope="col">Güncelle</th>
                             <th scope="col">Sil</th>
                         </tr>
@@ -40,24 +41,20 @@
                         {
                             <tr>
                                 <td>@item.Id</td>
-                                <td><img src="@item.ImageUrl" style="height:75px;width:100px;" class="rounded mx-0 d-block" alt="@item.ImageUrl"></td>
+                                <td><img src="@item.ImageUrl" style="height:100px;width:75px;" class="rounded mx-0 d-block" alt="@item.ImageUrl"></td>
                                 <td>@item.Name</td>
                                 <td>@item.Surname</td>
                                 <td>@item.City</td>
                                 <td>@item.Email</td>
                                 <td>@item.PhoneNumber</td>
                                 <td>
-                                    <a href="@item.FacebookUrl"><i class="fa fa-facebook"></i></a> 
-                                    <a href="@item.TwitterUrl"><i class="fa fa-twitter"></i></a> 
-                                    <a href="@item.InstagramUrl"><i class="fa fa-instagram"></i></a> 
+                                    <a href="@item.FacebookUrl"><i class="fa fa-facebook"></i></a>
+                                    <a href="@item.TwitterUrl"><i class="fa fa-twitter"></i></a>
+                                    <a href="@item.InstagramUrl"><i class="fa fa-instagram"></i></a>
                                 </td>
-                                <td>@item.About</td>
-                                <td>@item.Articles.Count()</td>
-                                <td>@item.Comments.Count()</td>
-                                <td><a class="btn btn-outline-warning" href="/Blog/BlogDetail/@item.Id"><i class="fas fa-paper-plane"></i></a></td>
                                 <td>
                                     @{
-                                        if (item.About.Length > 50)
+                                        if (item.About?.Length > 50)
                                         {
                                             var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 50);
                                             @Html.Raw(summary)
@@ -71,7 +68,32 @@
                                         }
                                     }...
                                 </td>
-                                <td>@item.Comments.Count()</td>
+                                <td>
+                                    @{
+                                        if (item.Articles?.Count() == 0)
+                                        {
+                                            <span>0</span>
+                                        }
+                                        else
+                                        {
+                                            @item.Articles.Count()
+                                        }
+                                    }
+
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.Comments?.Count() == 0)
+                                        {
+                                            <span>0</span>
+                                        }
+                                        else
+                                        {
+                                            @item.Comments.Count()
+                                        }
+                                    }
+                                </td>
+                                <td><a class="btn btn-outline-warning" href="/Blog/BlogList/@item.Id"><i class="fas fa-paper-plane"></i></a></td>
                                 <td>
                                     <a href="/Admin/Blog/ChangeIsApprovedAuthor/@item.Id">
                                         @{
@@ -87,7 +109,7 @@
                                     </a>
                                 </td>
                                 <td><a class="btn btn-outline-success" href="/Admin/Author/UpdateAuthor/@item.Id">Güncelle</a></td>
-                                <td><a class="btn btn-outline-danger" href="/Admin/Blog/DeleteAuthor/@item.Id">Sil</a></td>
+                                <td><a class="btn btn-outline-danger" href="/Admin/Author/DeleteAuthor/@item.Id">Sil</a></td>
                             </tr>
                         }
                     </tbody>

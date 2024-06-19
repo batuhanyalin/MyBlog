@@ -116,7 +116,6 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult UpdateBlog(Article article, IFormFile CoverImageUrl)
         {
-
             if (CoverImageUrl != null && CoverImageUrl.Length > 0)
             {
                 var resource = Directory.GetCurrentDirectory();

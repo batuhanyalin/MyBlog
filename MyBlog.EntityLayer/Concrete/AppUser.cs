@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace MyBlog.EntityLayer.Concrete
         public string Surname { get; set; }
         public string? City { get; set; }
         public string? ImageUrl { get; set; }
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
         public string? About { get; set; }
         public string? Profession { get; set; }
         public List<Article> Articles { get; set; }

@@ -28,9 +28,24 @@ namespace MyBlog.BusinessLayer.Concrete
             _appUserDal.Delete(id);
         }
 
+        public int TGetArticleCountByAuthor(int id)
+        {
+           return _appUserDal.GetArticleCountByAuthor(id);
+        }
+
+        public List<AppUser> TGetAuthorWithCommentArticle()
+        {
+            return _appUserDal.GetAuthorWithCommentArticle();
+        }
+
         public AppUser TGetById(int id)
         {
             return _appUserDal.GetById(id);
+        }
+
+        public int TGetCommentsCountByAuthor(int id)
+        {
+            return _appUserDal.GetCommentsCountByAuthor(id);
         }
 
         public List<AppUser> TGetListAll()

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Query;
 using MyBlog.DataAccessLayer.Abstract;
@@ -30,6 +31,21 @@ namespace MyBlog.DataAccessLayer.EntityFramework
                 values.IsApproved = false;
             }
             context.SaveChanges();
+            return values;
+        }
+        public int GetCommentsCountByAuthor(int id)
+        {
+            var values = context.Comments.Where(x => x.AppUserId == id).Count();
+            return values;
+        }
+        public int GetArticleCountByAuthor(int id)
+        {
+            var values = context.Articles.Where(x => x.AppUserId == id).Count();
+            return values;
+        }
+        public List<AppUser> GetAuthorWithCommentArticle()
+        {
+            var values= context.Users.Include(x=>x.Articles).Include(x=>x.Comments).ToList();
             return values;
         }
     }

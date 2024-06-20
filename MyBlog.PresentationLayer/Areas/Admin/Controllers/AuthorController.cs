@@ -63,7 +63,6 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             {
                 user.ImageUrl = $"/images/no-image.jpg";
             }
-
             try
             {
                 var dbUser = await _userManager.FindByIdAsync(user.Id.ToString());

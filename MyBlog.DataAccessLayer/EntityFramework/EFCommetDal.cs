@@ -17,7 +17,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 
         public List<Comment> GetCommentsByArticle(int id)
         {
-            return context.Comments.Where(x => x.ArticleId == id).ToList();
+            return context.Comments.Where(x => x.ArticleId == id).Where(x=>x.IsApproved==true).OrderByDescending(x=>x.CreatedDate).ToList();
         }
         public Comment ChangeIsApproved(int id)
         {
@@ -35,7 +35,12 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Comment> GetListAllWithArticleAndAuthor()
         {
-            return context.Comments.Include(x => x.Article).Include(x=>x.AppUser).ToList();
+            return context.Comments.Include(x => x.Article).Include(x=>x.Article.AppUser).Include(x=>x.AppUser).ToList();
+        }
+        public int GetCommentCountByGuestNameSurname(string Name,string Surname)
+        {
+            var value = context.Comments.Where(x => x.Name == Name && x.Surname == Surname).Count();
+            return value;
         }
     }
 }

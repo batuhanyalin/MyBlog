@@ -19,9 +19,11 @@
                             <th scope="col">#</th>
                             <th scope="col">Adı</th>
                             <th scope="col">Soyadı</th>
+                            <th scope="col">E-posta</th>
                             <th scope="col">Blog</th>
                             <th scope="col">Yazar</th>
                             <th scope="col">Yorum Tarihi</th>
+                            <th scope="col">Yorum İçeriği</th>
                             <th scope="col">Onay Durumu</th>
                             <th scope="col">Yayına Git</th>
                             <th scope="col">Güncelle</th>
@@ -35,24 +37,42 @@
                                 <td>@item.CommentId</td>
                                 <td>@item.Name</td>
                                 <td>@item.Surname</td>
+                                <td>@item.Email</td>
                                 <td>@item.Article.Title</td>
-                                <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                                <td>@item.Article.AppUser.Name @item.Article.AppUser.Surname</td>
                                 <td>@item.CreatedDate.ToString("dd.MM.yyy")</td>
                                 <td>
-                                    <a href="/Admin/Comment/ChangeIsApprovedComment/@item.CommentId">
                                     @{
-                                        if (item.IsApproved == true)
+                                        if (item.Description?.Length > 50)
                                         {
-                                            <i style="color:lightskyblue;font-size:20px" class="fas fa-check-circle"></i>
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Description, 50);
+                                            @Html.Raw(summary)
+                                            ;
                                         }
                                         else
                                         {
-                                            <i style="color:palevioletred;font-size:20px" class="fas fa-times-circle"></i>
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Description, 50);
+                                            @Html.Raw(summary)?.ToString()
+                                            ;
                                         }
-                                    }
+                                    }...
+                                </td>
+                                <td>
+                                    <a href="/Admin/Comment/ChangeIsApprovedComment/@item.CommentId">
+                                        @{
+                                            if (item.IsApproved == true)
+                                            {
+                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-check-circle"></i>
+                                            }
+                                            else
+                                            {
+                                                <i style="color:palevioletred;font-size:20px" class="fas fa-times-circle"></i>
+                                            }
+                                        }
                                     </a>
                                 </td>
                                 <td><a class="btn btn-outline-warning" href="/Blog/BlogDetail/@item.ArticleId"><i class="fas fa-paper-plane"></i></a></td>
+                                <td><a class="btn btn-outline-success" href="/Admin/Comment/UpdateComment/@item.CommentId">Güncelle</a></td>
                                 <td><a class="btn btn-outline-danger" href="/Admin/Comment/DeleteComment/@item.CommentId">Sil</a></td>
                             </tr>
                         }

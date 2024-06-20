@@ -46,7 +46,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 
         public int CommentsCountByArticle(int id)
         {
-            var values = context.Comments.Where(x => x.Article.ArticleId == id).Count();
+            var values = context.Comments.Where(x => x.Article.ArticleId == id).Where(x=>x.IsApproved==true).Count();
             return values;
         }
         //Okuma süresi için 

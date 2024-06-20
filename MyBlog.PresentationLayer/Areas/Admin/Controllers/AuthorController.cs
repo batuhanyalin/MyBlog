@@ -28,6 +28,36 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             return View(values);
         }
 
+        [HttpGet]
+        [Route("CreateAuthor")]
+        public async Task<IActionResult> CreateAuthor()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Route("CreateAuthor")]
+        public async Task<IActionResult> CreateAuthor(AppUser user,IFormFile Image)
+        {
+            if (Image != null && Image.Length > 0)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(Image.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = Path.Combine(resource, "wwwroot/images", imageName);
+                using (var stream = new FileStream(saveLocation, FileMode.Create))
+                {
+                    await Image.CopyToAsync(stream);
+                }
+                user.ImageUrl = $"/images/{imageName}";
+            }
+            else if (user.ImageUrl == null)
+            {
+                user.ImageUrl = $"/images/no-image.jpg";
+            }
+            _userService.TInsert(user);
+            return RedirectToAction("AuthorIndex");
+        }
+
         [Route("UpdateAuthor/{id:int}")]
         [HttpGet]
         public async Task<IActionResult> UpdateAuthor(int id)

@@ -1,5 +1,6 @@
 ﻿using MyBlog.BusinessLayer.Abstract;
 using MyBlog.DataAccessLayer.Abstract;
+using MyBlog.DataAccessLayer.EntityFramework;
 using MyBlog.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,15 @@ namespace MyBlog.BusinessLayer.Concrete
         public void TUpdate(Comment entity)
         {
             _commentDal.Update(entity);
+        }
+        public Comment TChangeIsApproved(int id)
+        {
+            return _commentDal.ChangeIsApproved(id);
+        }
+
+        public List<Comment> TGetListAllWithArticleAndAuthor()
+        {
+            return _commentDal.GetListAllWithArticleAndAuthor();
         }
     }
 }

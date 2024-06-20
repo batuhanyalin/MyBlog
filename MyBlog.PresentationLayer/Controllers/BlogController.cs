@@ -37,6 +37,11 @@ namespace MyBlog.PresentationLayer.Controllers
         {
             var values = _articleService.TGetArticlesByWriter(id);
             var y = values.Find(x => x.AppUser.Id == id);
+            if (y==null)
+            {
+                ModelState.AddModelError("", "Bu yazarın henüz bloğu bulunmamaktadır.");
+                return RedirectToAction("Index", "Default");
+            }
             ViewBag.userId = id;
             ViewBag.name = y.AppUser.Name;
             ViewBag.surname = y.AppUser.Surname;

@@ -10,5 +10,7 @@ namespace MyBlog.BusinessLayer.Abstract
     public interface ICommentService:IGenericService<Comment>
     {
         List<Comment> TGetCommentsByArticle(int id);
+        public Comment TChangeIsApproved(int id);
+        public List<Comment> TGetListAllWithArticleAndAuthor();
     }
 }

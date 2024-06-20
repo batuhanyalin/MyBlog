@@ -19,5 +19,23 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         {
             return context.Comments.Where(x => x.ArticleId == id).ToList();
         }
+        public Comment ChangeIsApproved(int id)
+        {
+            var values = context.Comments.Find(id);
+            if (values.IsApproved == false)
+            {
+                values.IsApproved = true;
+            }
+            else
+            {
+                values.IsApproved = false;
+            }
+            context.SaveChanges();
+            return values;
+        }
+        public List<Comment> GetListAllWithArticleAndAuthor()
+        {
+            return context.Comments.Include(x => x.Article).Include(x=>x.AppUser).ToList();
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace MyBlog.DataAccessLayer.Abstract
     public interface ICommentDal:IGenericDal<Comment>
     {
         List<Comment> GetCommentsByArticle(int id);
+        public Comment ChangeIsApproved(int id);
+        public List<Comment> GetListAllWithArticleAndAuthor();
     }
 }

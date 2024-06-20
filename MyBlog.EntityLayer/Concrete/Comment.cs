@@ -19,5 +19,6 @@ namespace MyBlog.EntityLayer.Concrete
         public Article Article { get; set; }
         public int? AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

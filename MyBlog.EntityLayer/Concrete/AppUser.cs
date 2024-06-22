@@ -18,15 +18,17 @@ namespace MyBlog.EntityLayer.Concrete
         public byte[] RowVersion { get; set; }
         public string? About { get; set; }
         public string? Profession { get; set; }
-        public List<Article> Articles { get; set; }
-        //MVCde Virtual kullanılırken burada gerekmiyor. Burada LazyLoad ve EagerLoad kavramları öne çıkıyor. Bütün veriye değil sadece ihtiyaç duyulan verinin yüklenmesi amaçlanıyor. Include kavramı burada devreye girecek. 
-        public List<Comment> Comments { get; set; }
         public string? InstagramUrl { get; set; }
         public string? FacebookUrl { get; set; }
         public string? TwitterUrl { get; set; }
         public bool IsApproved { get; set; }
         public int? AppRoleId { get; set; }
         public AppRole AppRole { get; set; }
+        public List<Message> SenderMail { get; set; }
+        public List<Message> ReceiverMail { get; set; }
+        public List<Article> Articles { get; set; }
+        //MVCde Virtual kullanılırken burada gerekmiyor. Burada LazyLoad ve EagerLoad kavramları öne çıkıyor. Bütün veriye değil sadece ihtiyaç duyulan verinin yüklenmesi amaçlanıyor. Include kavramı burada devreye girecek. 
+        public List<Comment> Comments { get; set; }
 
     }
 }

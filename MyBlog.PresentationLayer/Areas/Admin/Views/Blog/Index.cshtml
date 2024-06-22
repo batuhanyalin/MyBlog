@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 <div class="container">
     <br />
@@ -36,8 +37,9 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
+                            count++;
                             <tr>
-                                <td>@item.ArticleId</td>
+                                <td>@count</td>
                                 <td>@item.Title</td>
                                 <td><img src="@item.CoverImageUrl" style="height:75px;width:100px;" class="rounded mx-0 d-block" alt="@item.CoverImageUrl"></td>
                                 <td>

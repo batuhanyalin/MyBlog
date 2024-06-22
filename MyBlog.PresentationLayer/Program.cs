@@ -38,6 +38,11 @@ builder.Services.AddScoped<IAppUserDal, EFAppUserDal>();
 builder.Services.AddScoped<IArticleTagService, ArticleTagManager>();
 builder.Services.AddScoped<IArticleTagDal,EFArticleTagDal>();
 
+builder.Services.AddScoped<INotificationService, NotificationManager>();
+builder.Services.AddScoped<INotificationDal,EFNotificationDal>();
+
+
+
 //Burada da DbContext olarak BlogContexti bildiriyoruz.
 builder.Services.AddDbContext<BlogContext>();
 //Burada identity projeye tanýtýlýp ilgili sýnýflar gösteriliyor ve AddEntityFrameworkStores la çalýþýlan context sýnýfý yazýlýyor.

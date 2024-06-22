@@ -32,6 +32,7 @@ namespace MyBlog.DataAccessLayer.Context
         public DbSet<About> Abouts { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ArticleTag> ArticleTags { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         public object AppUser { get; internal set; }
     }
 }

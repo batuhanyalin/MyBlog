@@ -1,0 +1,190 @@
+﻿@model Notification
+@{
+    ViewData["Title"] = "CreateNotification";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <form asp-action="CreateNotification" asp-controller="Notification" asp-area="Admin" method="post">
+        <br />
+        <h2 class="mb-4">Yeni Bildirim Sayfası</h2>
+        <div class="row">
+            <div class="col-sm-12 col-xl-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="form-group">
+                        <div class="mb-3">
+                            <label class="form-label">Bildirim Başlığı</label>
+                            <input type="text" class="form-control" asp-for="NotificationName">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Açıklama</label>
+                            <input type="text" class="form-control" asp-for="Description">
+                        </div>
+                        <div style="font-size:large" class="mb-3">
+                            <label class="form-label">Okundu Olarak İşaretle: </label>
+                            <input asp-for="Status" type="checkbox" class="form-check-input" />
+                            <input type="hidden" asp-for="Status" value="false" />
+                        </div>
+                    </div>
+                    <label class="form-label">Icon Seç</label>
+                    <div style="font-size:large" class="form-group">
+                        <div class="col col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-thumbs-up" id="icon1">
+                                <label class="form-check-label" for="icon1">
+                                    <i class="fas fa-thumbs-up"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-thumbs-down" id="icon2">
+                                <label class="form-check-label" for="icon2">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-star" id="icon3">
+                                <label class="form-check-label" for="icon3">
+                                    <i class="fas fa-star"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-wifi" id="icon4">
+                                <label class="form-check-label" for="icon4">
+                                    <i class="fas fa-wifi"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-lightbulb" id="icon5">
+                                <label class="form-check-label" for="icon5">
+                                    <i class="fas fa-lightbulb"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-tags" id="icon6">
+                                <label class="form-check-label" for="icon6">
+                                    <i class="fas fa-tags"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-info-circle" id="icon7">
+                                <label class="form-check-label" for="icon7">
+                                    <i class="fas fa-info-circle"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-cogs" id="icon8">
+                                <label class="form-check-label" for="icon8">
+                                    <i class="fas fa-cogs"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-calendar-alt" id="icon9">
+                                <label class="form-check-label" for="icon9">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-cart-arrow-down" id="icon10">
+                                <label class="form-check-label" for="icon10">
+                                    <i class="fas fa-cart-arrow-down"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col col-md-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-bullhorn" id="icon11">
+                                <label class="form-check-label" for="icon11">
+                                    <i class="fas fa-bullhorn"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" asp-for="Icon" value="fas fa-sync-alt" id="icon12">
+                                <label class="form-check-label" for="icon12">
+                                    <i class="fas fa-sync-alt"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="solid">
+                    <label class="form-label">Renk Seç</label>
+                    <br />
+                    <div style="font-size:large" class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" asp-for="IconColor" value="bg-primary" id="mavi">
+                                    <label class="form-check-label" for="mavi">
+                                        <label class="btn bg-primary text-white m-md-1" for="mavi">Mavi</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="IconColor" value="bg-secondary" id="gri">
+                                    <label class="form-check-label" for="gri">
+                                        <label class="btn bg-secondary text-white m-md-1" for="gri">Gri</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="IconColor" value="bg-success" id="yesil">
+                                    <label class="form-check-label" for="yesil">
+                                        <label class="btn bg-success text-white m-md-1" for="yesil">Yeşil</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="IconColor" value="bg-warning" id="turuncu">
+                                    <label class="form-check-label" for="turuncu">
+                                        <label class="btn bg-warning text-white m-md-1" for="turuncu">Turuncu</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="IconColor" value="bg-info" id="acikmavi">
+                                    <label class="form-check-label" for="acikmavi">
+                                        <label class="btn bg-info text-white m-md-1" for="acikmavi">Açık Mavi</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="IconColor" value="bg-danger" id="kirmizi">
+                                    <label class="form-check-label" for="kirmizi">
+                                        <label class="btn bg-danger text-white m-md-1" for="kirmizi">Kırmızı</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="IconColor" value="bg-dark" id="siyah">
+                                    <label class="form-check-label" for="siyah">
+                                        <label class="btn bg-dark text-white m-md-1" for="siyah">Siyah</label>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="bg-light rounded h-200 p-4">
+                <button class="btn btn-success" type="submit">Oluştur</button>
+            </div>
+        </div>
+        <br />
+    </form>
+</div>

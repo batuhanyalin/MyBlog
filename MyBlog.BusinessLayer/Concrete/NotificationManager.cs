@@ -41,7 +41,7 @@ namespace MyBlog.BusinessLayer.Concrete
 
         public List<Notification> TGetListNotificationOrderByDescendingDate()
         {
-           return _notificationDal.GetListNotificationOrderByDescendingDate();
+            return _notificationDal.GetListNotificationOrderByDescendingDate();
         }
 
         public void TInsert(Notification entity)

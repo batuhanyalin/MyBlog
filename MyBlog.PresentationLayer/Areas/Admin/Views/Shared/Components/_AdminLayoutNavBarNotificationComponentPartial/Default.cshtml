@@ -1,0 +1,20 @@
+﻿@model List<Notification>
+<div class="nav-item dropdown">
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        <i class="fa fa-bell me-lg-2"></i>
+        <span class="d-none d-lg-inline-flex">Bildirimler</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+        @foreach (var item in Model)
+        {
+            <a href="/Admin/Notification/UpdateNotification/@item.Id" class="dropdown-item">
+                <div class="btn @item.IconColor text-white m-md-1"><i class="@item.Icon text-white"></i></div>
+                <h4 class="fw-normal mb-0">@item.NotificationName</h4>
+                <small>@item.Date</small>
+                <p>@item.Description.Substring(0, 50)...</p>
+            </a>
+            <hr class="dropdown-divider">
+        }
+        <a href="/Admin/Notification/Index" class="dropdown-item text-center">Tüm Bildirimleri Göster</a>
+    </div>
+</div>

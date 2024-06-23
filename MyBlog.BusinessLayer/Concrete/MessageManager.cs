@@ -39,9 +39,19 @@ namespace MyBlog.BusinessLayer.Concrete
            return _messageDal.GetById(id);
         }
 
+        public Task<List<Message>> TGetImportantMessage(int id)
+        {
+          return _messageDal.GetImportantMessage(id);
+        }
+
         public Task<List<Message>> TGetInboxMessage(int id)
         {
             return _messageDal.GetInboxMessage(id);
+        }
+
+        public Task<List<Message>> TGetJunkMessage(int id)
+        {
+            return _messageDal.GetJunkMessage(id);
         }
 
         public List<Message> TGetListAll()

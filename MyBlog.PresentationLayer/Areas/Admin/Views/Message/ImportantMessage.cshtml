@@ -1,14 +1,15 @@
 ﻿@model List<Message>
 @{
-    ViewData["Title"] = "InboxMessage";
+    ViewData["Title"] = "ImportantMessage";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
 
+
 <div class="container">
     <br />
     <div class="row">
-        <h2>Gelen Mesajlar</h2>
+        <h2>Önemli Mesajlar</h2>
     </div>
     <br />
     <div class="row">
@@ -22,7 +23,7 @@
                             <th scope="col">Mesaj Başlığı</th>
                             <th scope="col">İçerik</th>
                             <th scope="col">Mesaj Tarihi</th>
-                            <th scope="col">Önemli Mesajlara Al</th>
+                            <th scope="col">Önemli Mesajlardan Kaldır</th>
                             <th scope="col">Çöpe At</th>
                             <th scope="col">Detay</th>
                         </tr>

@@ -24,6 +24,21 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetInboxMessage(user.Id);
             return View(message);
         }
+        [Route("ImportantMessage")]
+        public async Task<IActionResult> ImportantMessage()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var message = await _messageService.TGetImportantMessage(user.Id);
+            return View(message);
+        }
+        [Route("JunkMessage")]
+        public async Task<IActionResult> JunkMessage()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var message = await _messageService.TGetJunkMessage(user.Id);
+            return View(message);
+        }
+
         [Route("ChangeIsImportantMessage/{id:int}")]
         public IActionResult ChangeIsImportantMessage(int id)
         {

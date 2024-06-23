@@ -16,8 +16,8 @@
     <br />
     <div class="row">
         <div class="col col-md-12">
-            <div class="bg-light rounded h-200 p-10">
-                <table style="text-align:center" class="table table-hover">
+            <div class="bg-light rounded h-300 p-10">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -32,7 +32,7 @@
                             <th scope="col">Toplam Yayın</th>
                             <th scope="col">Toplam Yorum</th>
                             <th scope="col">Yayınlarına Git</th>
-                            <th scope="col">Durumu Güncelle</th>
+                            <th scope="col">Durum</th>
                             <th scope="col">Güncelle</th>
                             <th scope="col">Sil</th>
                         </tr>
@@ -47,12 +47,12 @@
                                 <td>@item.Name</td>
                                 <td>@item.Surname</td>
                                 <td>@item.City</td>
-                                <td>@item.Email</td>
-                                <td>@item.PhoneNumber</td>
+                                <td><a href="mailto:@item.Email">@item.Email</a></td>
+                                <td><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></td>
                                 <td>
-                                    <a href="@item.FacebookUrl"><i class="fa fa-facebook"></i></a>
-                                    <a href="@item.TwitterUrl"><i class="fa fa-twitter"></i></a>
-                                    <a href="@item.InstagramUrl"><i class="fa fa-instagram"></i></a>
+                                    <a href="@item.FacebookUrl"><i class="fab fa-facebook"></i></a>
+                                    <a href="@item.TwitterUrl"><i class="fab fa-twitter"></i></a>
+                                    <a href="@item.InstagramUrl"><i class="fab fa-instagram"></i></a>
                                 </td>
                                 <td>
                                     @{
@@ -97,7 +97,7 @@
                                 </td>
                                 <td><a class="btn btn-outline-warning" href="/Blog/BlogList/@item.Id"><i class="fas fa-paper-plane"></i></a></td>
                                 <td>
-                                    <a href="/Admin/Blog/ChangeIsApprovedAuthor/@item.Id">
+                                    <a href="/Admin/Author/ChangeIsApprovedAuthor/@item.Id">
                                         @{
                                             if (item.IsApproved == true)
                                             {

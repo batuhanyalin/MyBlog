@@ -156,7 +156,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _userService.TDelete(id);
             return RedirectToAction("AuthorIndex");
         }
-
+        [Route("ChangeIsApprovedAuthor/{id:int}")]
         public IActionResult ChangeIsApprovedAuthor(int id)
         {
             _userService.TChangeIsApprovedArticleById(id);

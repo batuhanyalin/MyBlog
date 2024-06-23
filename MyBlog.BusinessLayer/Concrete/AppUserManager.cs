@@ -38,6 +38,11 @@ namespace MyBlog.BusinessLayer.Concrete
             return _appUserDal.GetAuthorWithCommentArticle();
         }
 
+        public List<AppUser> TGetAuthorWithCommentArticleByIsApproved()
+        {
+            return _appUserDal.GetAuthorWithCommentArticleByIsApproved();
+        }
+
         public AppUser TGetById(int id)
         {
             return _appUserDal.GetById(id);

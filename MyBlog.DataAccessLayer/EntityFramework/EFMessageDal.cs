@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MyBlog.DataAccessLayer.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace MyBlog.DataAccessLayer.EntityFramework
 {
@@ -26,6 +27,14 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         public async Task<List<Message>> GetInboxMessage(int id)
         {
             return await context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
+        }
+        public async Task<List<Message>> GetImportantMessage(int id)
+        {
+            return await context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == true).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
+        }
+        public async Task<List<Message>> GetJunkMessage(int id)
+        {
+            return await context.Messages.Where(x=>x.ReceiverId==id).Where(x=>x.IsDraft==false && x.IsJunk == true &&x.IsImportant==false).Include(x=>x.Sender).Include(x=>x.Receiver).OrderByDescending(x=>x.SendingTime).ToListAsync();
         }
         public Message ChangeIsImportantMessageById(int id)
         {

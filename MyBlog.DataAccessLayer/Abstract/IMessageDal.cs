@@ -14,5 +14,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         Task<List<Message>> GetInboxMessage(int id);
         public Message ChangeIsImportantMessageById(int id);
         public Message ChangeIsJunkMessageById(int id);
+        Task<List<Message>> GetImportantMessage(int id);
+        Task<List<Message>> GetJunkMessage(int id);
     }
 }

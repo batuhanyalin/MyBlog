@@ -48,5 +48,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values= context.Users.Include(x=>x.Articles).Include(x=>x.Comments).ToList();
             return values;
         }
+        public List<AppUser> GetAuthorWithCommentArticleByIsApproved()
+        {
+            var values=context.Users.Where(x=>x.IsApproved==true).Include(x => x.Articles).Include(x => x.Comments).OrderByDescending(x=>x.Name).ToList();
+            return values;
+        }
     }
 }

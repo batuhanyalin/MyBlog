@@ -13,5 +13,6 @@ namespace MyBlog.DataAccessLayer.Abstract
         public int GetCommentsCountByAuthor(int id);
         public int GetArticleCountByAuthor(int id);
         public List<AppUser> GetAuthorWithCommentArticle();
+        public List<AppUser> GetAuthorWithCommentArticleByIsApproved();
     }
 }

@@ -14,5 +14,7 @@ namespace MyBlog.BusinessLayer.Abstract
         Task<List<Message>> TGetInboxMessage(int id);
         public Message TChangeIsImportantMessageById(int id);
         public Message TChangeIsJunkMessageById(int id);
+        Task<List<Message>> TGetImportantMessage(int id);
+        Task<List<Message>> TGetJunkMessage(int id);
     }
 }

@@ -128,5 +128,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _messageDal.ChangeIsReadMessageForAdminListMessagePanel(id);
         }
+
+        public Task<List<Message>> TGetSentMessage(int id)
+        {
+           return _messageDal.GetSentMessage(id);
+        }
     }
 }

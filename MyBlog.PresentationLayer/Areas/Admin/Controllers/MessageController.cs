@@ -33,6 +33,13 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetImportantMessage(user.Id);
             return View(message);
         }
+        [Route("ImportantMessage")]
+        public async Task<IActionResult> SentMessage()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var message = await _messageService.TGetImportantMessage(user.Id);
+            return View(message);
+        }
         [Route("JunkMessage")]
         public async Task<IActionResult> JunkMessage()
         {
@@ -94,7 +101,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             List<SelectListItem> senderlistitem = (from x in senderlist.ToList()
                                                    select new SelectListItem
                                                    {
-                                                       Text = x.Name,
+                                                       Text = $"{x.Name} {x.Surname}",
                                                        Value = x.Id.ToString(),
                                                    }).ToList();
             ViewBag.userList = senderlistitem;
@@ -108,5 +115,6 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TUpdate(message);
             return RedirectToAction("AdminListMessage");
         }
+
     }
 }

@@ -1,8 +1,80 @@
-﻿
+﻿@model Message
 @{
     ViewData["Title"] = "UpdateMessage";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
-<h1>UpdateMessage</h1>
 
+<div class="container">
+    <form asp-action="UpdateMessage" asp-controller="Message" asp-area="Admin" method="post" enctype="multipart/form-data">
+        <br />
+        <h6 class="mb-4">Blog Güncelleme Sayfası</h6>
+        <div class="row">
+            <div class="col-sm-6 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <input type="hidden" />
+                    <input type="hidden" asp-for="MessageId" />
+                    <input type="hidden" asp-for="IsDraft" />
+                    <div class="mb-3">
+                        <label class="form-label">Mesaj Başlığı</label>
+                        <input type="text" class="form-control" asp-for="Subject">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gönderici: </label>
+                        @Html.DropDownListFor(x => x.SenderId, (List<SelectListItem>)ViewBag.userList, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Alıcı: </label>
+                        @Html.DropDownListFor(x => x.ReceiverId, (List<SelectListItem>)ViewBag.userList, new { @class = "form-control" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gönderilme Tarihi:</label>
+                        <label class="form-label">@Model.SendingTime.ToString("dd.MM.yyy HH:mm:ss")</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="col">
+                            <label class="form-label">Okunma Durumu: </label>
+                            <input asp-for="IsRead" type="checkbox" class="form-check-input" />
+                            <input type="hidden" asp-for="IsRead" value="false" />
+                    </div>
+                    <br />
+                    <div class="col">
+                        <label class="form-label">Çöpe At: </label>
+                        <input asp-for="IsJunk" type="checkbox" class="form-check-input" />
+                        <input type="hidden" asp-for="IsJunk" value="false" />
+                    </div>
+                    <br />
+                    <div class="col">
+                        <label class="form-label">Önemli: </label>
+                        <input asp-for="IsImportant" type="checkbox" class="form-check-input" />
+                        <input type="hidden" asp-for="IsImportant" value="false" />
+                    </div>
+                    <div class="row">
+                        <div class="bg-light rounded h-200 p-4">
+                            <h7 class="mb-4">Mesaj</h7>
+                            <div>
+                                <textarea class="form-control" asp-for="Text" id="summernote"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="bg-light rounded h-200 p-4">
+                            <button class="btn btn-success" type="submit">Güncelle</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $('#summernote').summernote({
+        height: 200,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                  // set focus to editable area after initializing summernote
+    });
+</script>

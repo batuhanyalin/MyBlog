@@ -15,6 +15,7 @@ namespace MyBlog.BusinessLayer.Abstract
         public Message TChangeIsImportantMessageById(int id);
         public Message TChangeIsJunkMessageById(int id);
         Task<List<Message>> TGetImportantMessage(int id);
+        Task<List<Message>> TGetSentMessage(int id);
         Task<List<Message>> TGetJunkMessage(int id);
         public int TGetSideBarInboxMessageCountByUserId(int id);
         public int TGetSideBarJunkMessageCountByUserId(int id);

@@ -29,6 +29,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         {
             return await context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
         }
+        public async Task<List<Message>> GetSentMessage(int id)
+        {
+            return await context.Messages.Where(x=>x.SenderId==id).Include(x=>x.Sender).Include(x=>x.Receiver).OrderByDescending(x=>x.SendingTime).ToListAsync();
+        }
         public async Task<List<Message>> GetImportantMessage(int id)
         {
             return await context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == true).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();

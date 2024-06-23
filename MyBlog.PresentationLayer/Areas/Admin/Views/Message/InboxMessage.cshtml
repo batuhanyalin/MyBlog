@@ -56,14 +56,15 @@
                                 <td>
                                     <a href="/Admin/Message/ChangeIsReadMessage2/@item.MessageId">
                                         @{
-                                            if (item.IsImportant == false)
+                                            if (item.IsRead == false)
                                             {
 
-                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-star"></i>
+                                                <i style="color:dimgray;font-size:20px" class="fas fa-envelope"></i>
                                             }
+                                          
                                             else
                                             {
-                                                <i style="color:palevioletred;font-size:20px" class="fas fa-star"></i>
+                                                <i style="color:forestgreen;font-size:20px" class="fas fa-envelope-open-text"></i>
                                             }
                                         }
                                     </a>

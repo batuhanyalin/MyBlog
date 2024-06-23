@@ -57,17 +57,18 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var values = _messageService.TGetListAllMessageWithSenderReceiver();
             return View(values);
         }
-        [Route("ChangeIsReadMessage/{id:int}")]
-        public IActionResult ChangeIsReadMessage(int id)
+
+        [Route("ChangeIsReadMessage2/{id:int}")]
+        public IActionResult ChangeIsReadMessage2(int id)
         {
-            var values = _messageService.TChangeIsReadMessageByMessageId(id);
+            var values = _messageService.TChangeIsReadMessage2(id);
             return RedirectToAction("InboxMessage");
         }
         [Route("DetailMessage/{id:int}")]
         public IActionResult DetailMessage(int id)
         {
             var values = _messageService.TGetMessageDetailByMessageId(id);
-            values.IsRead = true;
+            _messageService.TChangeIsReadMessageByMessageId(id);
             return View(values);
         }
     }

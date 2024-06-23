@@ -112,7 +112,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             }
             else
             {
-                values.IsRead = false;
+                values.IsRead = true;
             }
             context.SaveChanges();
             return values;

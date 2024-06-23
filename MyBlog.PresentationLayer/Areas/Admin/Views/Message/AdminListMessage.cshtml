@@ -1,6 +1,6 @@
 ﻿@model List<Message>
 @{
-    ViewData["Title"] = "InboxMessage";
+    ViewData["Title"] = "AdminListMessage";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
     int count = 0;
 }
@@ -22,9 +22,9 @@
                             <th scope="col">Mesaj Başlığı</th>
                             <th scope="col">İçerik</th>
                             <th scope="col">Mesaj Tarihi</th>
-                            <th scope="col">Önemli Mesajlara Al</th>
-                            <th scope="col">Çöpe At</th>
-                            <th scope="col">Detay</th>
+                            <th scope="col">Okuma</th>
+                            <th scope="col">Güncelle</th>
+                            <th scope="col">Sil</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +82,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/Admin/Message/ChangeIsReadMessage/@item.MessageId"></a><a href="/Admin/Message/DetailMessage/@item.MessageId"><i class="fas fa-envelope-open"></i> Mesajı Oku</a>
+                                    <a href="/Admin/Message/DetailMessage/@item.MessageId"><i class="fas fa-envelope-open"></i> Mesajı Oku</a>
                                 </td>
                             </tr>
                         }

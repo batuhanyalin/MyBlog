@@ -21,7 +21,7 @@ namespace MyBlog.BusinessLayer.Concrete
 
         public Message TChangeIsImportantMessageById(int id)
         {
-           return _messageDal.ChangeIsImportantMessageById(id);
+            return _messageDal.ChangeIsImportantMessageById(id);
         }
 
         public Message TChangeIsJunkMessageById(int id)
@@ -36,12 +36,12 @@ namespace MyBlog.BusinessLayer.Concrete
 
         public Message TGetById(int id)
         {
-           return _messageDal.GetById(id);
+            return _messageDal.GetById(id);
         }
 
         public Task<List<Message>> TGetImportantMessage(int id)
         {
-          return _messageDal.GetImportantMessage(id);
+            return _messageDal.GetImportantMessage(id);
         }
 
         public Task<List<Message>> TGetInboxMessage(int id)
@@ -103,6 +103,15 @@ namespace MyBlog.BusinessLayer.Concrete
         public void TUpdate(Message entity)
         {
             _messageDal.Update(entity);
+        }
+        public Message TChangeIsReadMessageByMessageId(int id)
+        {
+            return _messageDal.ChangeIsReadMessageByMessageId(id);
+        }
+
+        public Message TGetMessageDetailByMessageId(int id)
+        {
+            return _messageDal.GetMessageDetailByMessageId(id);
         }
     }
 }

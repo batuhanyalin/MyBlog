@@ -21,6 +21,8 @@ namespace MyBlog.DataAccessLayer.Abstract
         public int GetSideBarImportantMessageCountByUserId(int id);
         public int GetSideBarSentMessageCountByUserId(int id);
         public int GetSideBarDraftMessageCountByUserId(int id);
+        public Message ChangeIsReadMessageByMessageId(int id);
+        public Message GetMessageDetailByMessageId(int id);
 
 
     }

@@ -51,5 +51,22 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TChangeIsJunkMessageById(id);
             return RedirectToAction("InboxMessage");
         }
+        public IActionResult AdminListMessage()
+        {
+            var values = _messageService.TGetListMessageOrderByDescendingDate();
+            return View(values);
+        }
+        [Route("ChangeIsReadMessage/{id:int}")]
+        public IActionResult ChangeIsReadMessage(int id)
+        {
+            var values = _messageService.TChangeIsReadMessageByMessageId(id);
+            return RedirectToAction("InboxMessage");
+        }
+        [Route("DetailMessage/{id:int}")]
+        public IActionResult DetailMessage(int id)
+        {
+            var values=_messageService.TGetMessageDetailByMessageId(id);
+                return View(values);
+        }
     }
 }

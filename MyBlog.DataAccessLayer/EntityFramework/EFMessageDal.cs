@@ -40,7 +40,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         public Message ChangeIsImportantMessageById(int id)
         {
             var values = context.Messages.Find(id);
-            if (values.IsJunk==false)
+            if (values.IsJunk == false)
             {
                 if (values.IsImportant == false)
                 {
@@ -58,7 +58,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         public Message ChangeIsJunkMessageById(int id)
         {
             var values = context.Messages.Find(id);
-            if (values.IsImportant==false)
+            if (values.IsImportant == false)
             {
                 if (values.IsJunk == false)
                 {
@@ -73,7 +73,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             {
                 return values;
             }
-           
+
             context.SaveChanges();
             return values;
         }
@@ -97,10 +97,29 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         {
             var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
-        }     
+        }
         public int GetSideBarDraftMessageCountByUserId(int id)
         {
             var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == true && x.IsJunk == false && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            return values;
+        }
+        public Message ChangeIsReadMessageByMessageId(int id)
+        {
+            var values = context.Messages.Find(id);
+            if (values.IsRead == false)
+            {
+                values.IsRead = true;
+            }
+            else
+            {
+                values.IsRead = false;
+            }
+            context.SaveChanges();
+            return values;
+        }
+        public Message GetMessageDetailByMessageId(int id)
+        {
+            var values=context.Messages.Find(id);
             return values;
         }
     }

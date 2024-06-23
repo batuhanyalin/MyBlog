@@ -50,7 +50,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<AppUser> GetAuthorWithCommentArticleByIsApproved()
         {
-            var values=context.Users.Where(x=>x.IsApproved==true).Include(x => x.Articles).Include(x => x.Comments).OrderByDescending(x=>x.Name).ToList();
+            var values=context.Users.Where(x=>x.IsApproved==true).Include(x => x.Articles).Include(x => x.Comments).OrderBy(x=>x.Name+x.Surname).ToList();
             return values;
         }
     }

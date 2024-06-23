@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using MyBlog.DataAccessLayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace MyBlog.DataAccessLayer.EntityFramework
 {
@@ -34,31 +35,72 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public async Task<List<Message>> GetJunkMessage(int id)
         {
-            return await context.Messages.Where(x=>x.ReceiverId==id).Where(x=>x.IsDraft==false && x.IsJunk == true &&x.IsImportant==false).Include(x=>x.Sender).Include(x=>x.Receiver).OrderByDescending(x=>x.SendingTime).ToListAsync();
+            return await context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == true && x.IsImportant == false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
         }
         public Message ChangeIsImportantMessageById(int id)
         {
             var values = context.Messages.Find(id);
-            if (values.IsImportant == false)
+            if (values.IsJunk==false)
             {
-                values.IsImportant = true;
+                if (values.IsImportant == false)
+                {
+                    values.IsImportant = true;
+                }
+                else { values.IsImportant = false; }
             }
-            else { values.IsImportant = false; }
+            else
+            {
+                return values;
+            }
             context.SaveChanges();
             return values;
         }
         public Message ChangeIsJunkMessageById(int id)
         {
             var values = context.Messages.Find(id);
-            if (values.IsJunk == false)
+            if (values.IsImportant==false)
             {
-                values.IsJunk = true;
+                if (values.IsJunk == false)
+                {
+                    values.IsJunk = true;
+                }
+                else
+                {
+                    values.IsJunk = false;
+                }
             }
             else
             {
-                values.IsJunk = false;
+                return values;
             }
+           
             context.SaveChanges();
+            return values;
+        }
+
+        public int GetSideBarInboxMessageCountByUserId(int id)
+        {
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            return values;
+        }
+        public int GetSideBarJunkMessageCountByUserId(int id)
+        {
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == true && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            return values;
+        }
+        public int GetSideBarImportantMessageCountByUserId(int id)
+        {
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == true).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            return values;
+        }
+        public int GetSideBarSentMessageCountByUserId(int id)
+        {
+            var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            return values;
+        }     
+        public int GetSideBarDraftMessageCountByUserId(int id)
+        {
+            var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == true && x.IsJunk == false && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
         }
     }

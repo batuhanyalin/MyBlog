@@ -10,7 +10,7 @@
                 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div class="ms-3">
-                <h6 class="mb-0">@Model.Name @Model.Surname</h6> 
+                <h6 class="mb-0">@Model.Name @Model.Surname</h6>
                 <span>Admin</span>
             </div>
         </div>
@@ -21,15 +21,7 @@
             <a href="/Admin/Dashboard/Index" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Mesajlar</a>
-                <div class="dropdown-menu bg-transparent border-0">
-                    <a href="/Admin/Message/CreateMessage" class="dropdown-item"><i class="fas fa-envelope"></i> Yeni Mesaj</a>
-                    <a href="/Admin/Message/InboxMessage" class="dropdown-item"><i class="fas fa-inbox"></i> Gelen Mesajlar</a>
-                    <a href="/Admin/Message/SentMessage" class="dropdown-item"><i class="fas fa-paper-plane"></i> Gönderilen Mesajlar</a>
-                    <a href="/Admin/Message/DraftMessage" class="dropdown-item"><i class="fas fa-save"></i> Taslaklar</a>
-                    <a href="/Admin/Message/ImportantMessage" class="dropdown-item"><i class="fas fa-star"></i> Önemliler</a>
-                    <a href="/Admin/Message/JunkMessage" class="dropdown-item"><i class="fas fa-trash-alt"></i> Silinenler</a>
-                    <a href="/Admin/Message/AdminListMessage" class="dropdown-item"><i class="fas fa-user-secret"></i> Bütün Mesajlaşmalar</a>
-                </div>
+                @await Component.InvokeAsync("_AdminLayoutSideBarMessageComponentPartial")
             </div>
             <a href="/Admin/Blog/Index" class="nav-item nav-link"><i class="fab fa-blogger"></i> Bloglar</a>
             <a href="/Admin/Author/AuthorIndex" class="nav-item nav-link"><i class="fas fa-pen-nib"></i> Yazarlar</a>

@@ -1,0 +1,10 @@
+﻿
+<div class="dropdown-menu bg-transparent border-0">
+        <a href="/Admin/Message/CreateMessage" class="dropdown-item"><i class="fas fa-envelope"></i> Yeni Mesaj</a>
+    <a href="/Admin/Message/InboxMessage" class="dropdown-item">(@ViewBag.InboxCount) <i class="fas fa-inbox"></i> Gelen Mesajlar</a>
+    <a href="/Admin/Message/SentMessage" class="dropdown-item">(@ViewBag.SentMessageCount) <i class="fas fa-paper-plane"></i> Gönderilen Mesajlar</a>
+    <a href="/Admin/Message/DraftMessage" class="dropdown-item">(@ViewBag.DraftMessageCount) <i class="fas fa-save"></i> Taslaklar</a>
+    <a href="/Admin/Message/ImportantMessage" class="dropdown-item">(@ViewBag.ImportantMessageCount) <i class="fas fa-star"></i> Önemliler</a>
+    <a href="/Admin/Message/JunkMessage" class="dropdown-item">(@ViewBag.JunkMessageCount) <i class="fas fa-trash-alt"></i> Silinenler</a>
+    <a href="/Admin/Message/AdminListMessage" class="dropdown-item">(@ViewBag.AllMessageCount) <i class="fas fa-user-secret"></i> Bütün Mesajlaşmalar</a>
+</div>

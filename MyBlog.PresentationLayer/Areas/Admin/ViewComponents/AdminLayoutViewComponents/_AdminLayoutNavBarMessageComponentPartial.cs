@@ -5,9 +5,9 @@ using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.ViewComponents.AdminLayoutViewComponents
 {
-    public class _AdminLayoutNavBarMessageComponentPartial:ViewComponent
+    public class _AdminLayoutNavBarMessageComponentPartial : ViewComponent
     {
-    private readonly IMessageService _messageService;
+        private readonly IMessageService _messageService;
         private readonly UserManager<AppUser> _userManager;
 
         public _AdminLayoutNavBarMessageComponentPartial(IMessageService messageService, UserManager<AppUser> userManager)

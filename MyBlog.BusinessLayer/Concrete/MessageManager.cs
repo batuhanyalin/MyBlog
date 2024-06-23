@@ -70,6 +70,31 @@ namespace MyBlog.BusinessLayer.Concrete
             return _messageDal.GetMessageByReceiverIdAsync(id);
         }
 
+        public int TGetSideBarDraftMessageCountByUserId(int id)
+        {
+            return _messageDal.GetSideBarDraftMessageCountByUserId(id);
+        }
+
+        public int TGetSideBarImportantMessageCountByUserId(int id)
+        {
+            return _messageDal.GetSideBarImportantMessageCountByUserId(id);
+        }
+
+        public int TGetSideBarInboxMessageCountByUserId(int id)
+        {
+            return _messageDal.GetSideBarInboxMessageCountByUserId(id);
+        }
+
+        public int TGetSideBarJunkMessageCountByUserId(int id)
+        {
+            return _messageDal.GetSideBarJunkMessageCountByUserId(id);
+        }
+
+        public int TGetSideBarSentMessageCountByUserId(int id)
+        {
+            return _messageDal.GetSideBarSentMessageCountByUserId(id);
+        }
+
         public void TInsert(Message entity)
         {
             _messageDal.Insert(entity);

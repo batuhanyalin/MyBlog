@@ -16,5 +16,12 @@ namespace MyBlog.DataAccessLayer.Abstract
         public Message ChangeIsJunkMessageById(int id);
         Task<List<Message>> GetImportantMessage(int id);
         Task<List<Message>> GetJunkMessage(int id);
+        public int GetSideBarInboxMessageCountByUserId(int id);
+        public int GetSideBarJunkMessageCountByUserId(int id);
+        public int GetSideBarImportantMessageCountByUserId(int id);
+        public int GetSideBarSentMessageCountByUserId(int id);
+        public int GetSideBarDraftMessageCountByUserId(int id);
+
+
     }
 }

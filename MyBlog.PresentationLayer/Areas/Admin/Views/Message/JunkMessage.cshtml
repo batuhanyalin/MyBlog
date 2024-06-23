@@ -1,0 +1,95 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "JunkMessage";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<div class="container">
+    <br />
+    <div class="row">
+        <h2>Silinen Mesajlar</h2>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-sm-12 col-xl-12">
+            <div class="bg-light rounded h-100 p-4">
+                <table style="text-align:center" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Gönderen</th>
+                            <th scope="col">Mesaj Başlığı</th>
+                            <th scope="col">İçerik</th>
+                            <th scope="col">Mesaj Tarihi</th>
+                            <th scope="col">Önemli Mesajlara Taşı</th>
+                            <th scope="col">Çöpten Al</th>
+                            <th scope="col">Detay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Sender.Name @item.Sender.Surname</td>
+                                <td>@item.Subject</td>
+                                <td>
+                                    @{
+                                        if (item.Text.Length > 50)
+                                        {
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Text, 50);
+                                            @Html.Raw(summary)
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.Text, 50);
+                                            @Html.Raw(summary)?.ToString()
+                                            ;
+                                        }
+                                    }...
+                                </td>
+                                <td>@item.SendingTime</td>
+                                <td>
+                                    <a href="/Admin/Message/ChangeIsImportantMessage/@item.MessageId">
+                                        @{
+                                            if (item.IsImportant == false)
+                                            {
+
+                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-star"></i> 
+                                            }
+                                            else
+                                            {
+                                                <i style="color:palevioletred;font-size:20px" class="fas fa-star"></i>
+                                            }
+                                        }
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Admin/Message/ChangeIsJunkMessage/@item.MessageId">
+                                        @{
+                                            if (item.IsJunk == false)
+                                            {
+                                                <i style="color:palevioletred;font-size:20px" class="fas fa-trash-restore"></i>
+                                            }
+                                            else
+                                            {
+                                                <i style="color:darkorange;font-size:20px" class="fas fa-trash-restore"></i>
+                                            }
+                                        }
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/Admin/Message/DetailMessage/@item.MessageId"><i class="fas fa-envelope-open"></i> Mesajı Oku</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

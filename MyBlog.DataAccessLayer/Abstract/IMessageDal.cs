@@ -10,5 +10,6 @@ namespace MyBlog.DataAccessLayer.Abstract
     public interface IMessageDal:IGenericDal<Message>
     {
         public List<Message> GetListMessageOrderByDescendingDate();
+        Task<List<Message>> GetMessageByReceiverIdAsync(int id); //async yalnızca gövdeli metotlarda kullanılır, o yüzden o ibare kullanılamıyor.
     }
 }

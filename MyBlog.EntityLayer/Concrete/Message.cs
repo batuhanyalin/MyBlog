@@ -21,6 +21,5 @@ namespace MyBlog.EntityLayer.Concrete
         public bool IsRead { get; set; }
         public bool IsImportant { get; set; }
 
-
     }
 }

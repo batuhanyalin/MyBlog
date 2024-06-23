@@ -10,5 +10,6 @@ namespace MyBlog.BusinessLayer.Abstract
     public interface IMessageService:IGenericService<Message>
     {
         public List<Message> TGetListMessageOrderByDescendingDate();
+        Task<List<Message>> TGetMessageByReceiverIdAsync(int id);
     }
 }

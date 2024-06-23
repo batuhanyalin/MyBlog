@@ -112,5 +112,9 @@ namespace MyBlog.BusinessLayer.Concrete
            return _articleDal.GetArticlesWithCategoryForIsApproved();
         }
 
+        public int TGetArticleCountByAuthorId(int id)
+        {
+           return _articleDal.GetArticleCountByAuthorId(id);
+        }
     }
 }

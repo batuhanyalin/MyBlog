@@ -19,10 +19,26 @@ namespace MyBlog.DataAccessLayer.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            // AppUser RowVersion özelliği
+
             modelBuilder.Entity<AppUser>()
                 .Property(u => u.RowVersion)
                 .IsRowVersion();
+
+            // AppUser - Message ilişkileri
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany(u => u.SenderMail)
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Receiver)
+                .WithMany(u => u.ReceiverMail)
+                .HasForeignKey(m => m.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
+
         public DbSet<Category> Categories { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Tag> Tags { get; set; }

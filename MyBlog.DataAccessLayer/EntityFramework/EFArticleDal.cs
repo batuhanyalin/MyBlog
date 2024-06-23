@@ -46,7 +46,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
 
         public int CommentsCountByArticle(int id)
         {
-            var values = context.Comments.Where(x => x.Article.ArticleId == id).Where(x=>x.IsApproved==true).Count();
+            var values = context.Comments.Where(x => x.Article.ArticleId == id).Where(x => x.IsApproved == true).Count();
             return values;
         }
         //Okuma süresi için 
@@ -124,7 +124,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Article> GetFeaturePost()
         {
-            var valeus = context.Articles.Where(x => x.IsFeaturePost == true).Include(x => x.Category).Include(x => x.AppUser).OrderByDescending(x=>x.CreatedDate).ToList();
+            var valeus = context.Articles.Where(x => x.IsFeaturePost == true).Include(x => x.Category).Include(x => x.AppUser).OrderByDescending(x => x.CreatedDate).ToList();
             return valeus;
         }
         public Article ChangeIsApprovedArticleById(int id)
@@ -157,7 +157,12 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Article> GetArticlesWithCategoryForIsApproved()
         {
-            var values = context.Articles.Where(x => x.IsApproved == true).Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).OrderByDescending(x=>x.CreatedDate).ToList();
+            var values = context.Articles.Where(x => x.IsApproved == true).Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).OrderByDescending(x => x.CreatedDate).ToList();
+            return values;
+        }
+        public int GetArticleCountByAuthorId(int id)
+        {
+            var values = context.Articles.Where(x => x.AppUserId == id).Include(x => x.AppUser).Count();
             return values;
         }
     }

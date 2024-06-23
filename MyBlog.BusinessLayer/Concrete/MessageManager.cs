@@ -40,6 +40,11 @@ namespace MyBlog.BusinessLayer.Concrete
 
         }
 
+        public Task<List<Message>> TGetMessageByReceiverIdAsync(int id)
+        {
+            return _messageDal.GetMessageByReceiverIdAsync(id);
+        }
+
         public void TInsert(Message entity)
         {
             _messageDal.Insert(entity);

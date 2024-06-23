@@ -41,6 +41,8 @@ builder.Services.AddScoped<IArticleTagDal,EFArticleTagDal>();
 builder.Services.AddScoped<INotificationService, NotificationManager>();
 builder.Services.AddScoped<INotificationDal,EFNotificationDal>();
 
+builder.Services.AddScoped<IMessageService, MessageManager>();
+builder.Services.AddScoped<IMessageDal,EFMessageDal>();
 
 
 //Burada da DbContext olarak BlogContexti bildiriyoruz.

@@ -5,22 +5,22 @@ using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.ViewComponents.AdminLayoutViewComponents
 {
-    public class _AdminLayoutSideBarComponentPartial : ViewComponent
+    public class _AdminLayoutNavBarMessageComponentPartial:ViewComponent
     {
+    private readonly IMessageService _messageService;
         private readonly UserManager<AppUser> _userManager;
-        private readonly IArticleService _articleService;
 
-        public _AdminLayoutSideBarComponentPartial(IArticleService articleService, UserManager<AppUser> userManager)
+        public _AdminLayoutNavBarMessageComponentPartial(IMessageService messageService, UserManager<AppUser> userManager)
         {
-            _articleService = articleService;
+            _messageService = messageService;
             _userManager = userManager;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.articlecount = _articleService.TGetArticleCountByAuthorId(user.Id);
-            return View(user);
+            var messages = await _messageService.TGetMessageByReceiverIdAsync(user.Id);
+            return View(messages);
         }
     }
 }

@@ -21,7 +21,36 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public async Task<List<Message>> GetMessageByReceiverIdAsync(int id)
         {
-            return await context.Messages.Where(x => x.ReceiverId == id).Include(x => x.Sender).Include(x => x.Receiver).ToListAsync();
+            return await context.Messages.Where(x => x.ReceiverId == id).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
+        }
+        public async Task<List<Message>> GetInboxMessage(int id)
+        {
+            return await context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
+        }
+        public Message ChangeIsImportantMessageById(int id)
+        {
+            var values = context.Messages.Find(id);
+            if (values.IsImportant == false)
+            {
+                values.IsImportant = true;
+            }
+            else { values.IsImportant = false; }
+            context.SaveChanges();
+            return values;
+        }
+        public Message ChangeIsJunkMessageById(int id)
+        {
+            var values = context.Messages.Find(id);
+            if (values.IsJunk == false)
+            {
+                values.IsJunk = true;
+            }
+            else
+            {
+                values.IsJunk = false;
+            }
+            context.SaveChanges();
+            return values;
         }
     }
 }

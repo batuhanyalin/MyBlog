@@ -19,6 +19,16 @@ namespace MyBlog.BusinessLayer.Concrete
             _messageDal = messageDal;
         }
 
+        public Message TChangeIsImportantMessageById(int id)
+        {
+           return _messageDal.ChangeIsImportantMessageById(id);
+        }
+
+        public Message TChangeIsJunkMessageById(int id)
+        {
+            return _messageDal.ChangeIsJunkMessageById(id);
+        }
+
         public void TDelete(int id)
         {
             _messageDal.Delete(id);
@@ -27,6 +37,11 @@ namespace MyBlog.BusinessLayer.Concrete
         public Message TGetById(int id)
         {
            return _messageDal.GetById(id);
+        }
+
+        public Task<List<Message>> TGetInboxMessage(int id)
+        {
+            return _messageDal.GetInboxMessage(id);
         }
 
         public List<Message> TGetListAll()

@@ -11,5 +11,8 @@ namespace MyBlog.DataAccessLayer.Abstract
     {
         public List<Message> GetListMessageOrderByDescendingDate();
         Task<List<Message>> GetMessageByReceiverIdAsync(int id); //async yalnızca gövdeli metotlarda kullanılır, o yüzden o ibare kullanılamıyor.
+        Task<List<Message>> GetInboxMessage(int id);
+        public Message ChangeIsImportantMessageById(int id);
+        public Message ChangeIsJunkMessageById(int id);
     }
 }

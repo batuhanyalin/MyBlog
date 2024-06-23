@@ -8,7 +8,7 @@
     <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
         @foreach (var item in Model)
         {
-            <a href="#" class="dropdown-item">
+            <a href="/Admin/Message/DetailMessage/@item.MessageId" class="dropdown-item">
                 <div class="d-flex align-items-center">
                     <img class="rounded-circle" src="@item.Sender.ImageUrl" alt="" style="width: 40px; height: 40px;">
                     <div class="ms-2">
@@ -19,6 +19,6 @@
             </a>
             <hr class="dropdown-divider">
         }  
-        <a href="#" class="dropdown-item text-center">Tüm Mesajları Göster</a>
+        <a href="/Admin/Message/InboxMessage" class="dropdown-item text-center">Tüm Mesajları Göster</a>
     </div>
 </div>

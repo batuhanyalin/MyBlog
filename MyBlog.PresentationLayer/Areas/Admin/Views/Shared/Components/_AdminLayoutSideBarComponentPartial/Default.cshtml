@@ -1,8 +1,8 @@
 ﻿@model AppUser
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-light navbar-light">
-        <a href="index.html" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Admin Paneli</h3>
+        <a href="/Admin/Dashboard/Index" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"><i class="fas fa-user-shield"></i> Admin Paneli</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
             <div class="position-relative">
@@ -22,22 +22,23 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Mesajlar</a>
                 <div class="dropdown-menu bg-transparent border-0">
-                    <a href="/Admin/Message/CreateMessage" class="dropdown-item">Yeni Mesaj</a>
-                    <a href="/Admin/Message/InboxMessage" class="dropdown-item">Gelen Mesajlar</a>
-                    <a href="/Admin/Message/SentMessage" class="dropdown-item">Gönderilen Mesajlar</a>
-                    <a href="/Admin/Message/DraftMessage" class="dropdown-item">Taslaklar</a>
-                    <a href="/Admin/Message/JunkMessage" class="dropdown-item">Önemsizler</a>
-                    <a href="/Admin/Message/DeletedMessage" class="dropdown-item">Silinenler</a>
+                    <a href="/Admin/Message/CreateMessage" class="dropdown-item"><i class="fas fa-envelope"></i> Yeni Mesaj</a>
+                    <a href="/Admin/Message/InboxMessage" class="dropdown-item"><i class="fas fa-inbox"></i> Gelen Mesajlar</a>
+                    <a href="/Admin/Message/SentMessage" class="dropdown-item"><i class="fas fa-paper-plane"></i> Gönderilen Mesajlar</a>
+                    <a href="/Admin/Message/DraftMessage" class="dropdown-item"><i class="fas fa-save"></i> Taslaklar</a>
+                    <a href="/Admin/Message/JunkMessage" class="dropdown-item"><i class="far fa-minus-square"></i> Önemsizler</a>
+                    <a href="/Admin/Message/DeletedMessage" class="dropdown-item"><i class="fas fa-trash-alt"></i> Silinenler</a>
+                    <a href="/Admin/Message/AdminListMessage" class="dropdown-item"><i class="fas fa-user-secret"></i> Bütün Mesajlaşmalar</a>
                 </div>
             </div>
-            <a href="/Admin/Blog/Index" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Bloglar</a>
-            <a href="/Admin/Author/AuthorIndex" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Yazarlar</a>
-            <a href="/Admin/Comment/Index" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Yorumlar</a>
-            <a href="/Admin/Notification/Index" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Bildirimler</a>
+            <a href="/Admin/Blog/Index" class="nav-item nav-link"><i class="fab fa-blogger"></i> Bloglar</a>
+            <a href="/Admin/Author/AuthorIndex" class="nav-item nav-link"><i class="fas fa-pen-nib"></i> Yazarlar</a>
+            <a href="/Admin/Comment/Index" class="nav-item nav-link"><i class="fas fa-comments"></i> Yorumlar</a>
+            <a href="/Admin/Notification/Index" class="nav-item nav-link"><i class="fas fa-exclamation-circle"></i> Bildirimler</a>
             <a href="/Admin/Statistic/Index" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>İstatistikler</a>
-            <a href="/Admin/Settings/Index" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Ayarlar</a>
-            <a href="/Admin/Profile/EditProfile" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Profilim</a>
-            <a href="/Login/Logout" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Çıkış</a>
+            <a href="/Admin/Settings/Index" class="nav-item nav-link"><i class="fas fa-cogs"></i> Ayarlar</a>
+            <a href="/Admin/Profile/EditProfile" class="nav-item nav-link"><i class="fas fa-user-edit"></i> Profilim</a>
+            <a href="/Login/Logout" class="nav-item nav-link"><i class="fas fa-sign-out-alt"></i> Çıkış</a>
         </div>
     </nav>
 </div>

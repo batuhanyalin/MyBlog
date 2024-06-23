@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.EntityLayer.Concrete;
 
@@ -11,6 +12,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
     {
         private readonly IMessageService _messageService;
         private readonly UserManager<AppUser> _userManager;
+
 
         public MessageController(IMessageService messageService, UserManager<AppUser> userManager)
         {
@@ -57,7 +59,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var values = _messageService.TGetListAllMessageWithSenderReceiver();
             return View(values);
         }
-        [Route("ChangeIsReadMessage/{id:int}")]
+        [Route("ChangeIsReadMessageForAdminListMessage/{id:int}")]
         public IActionResult ChangeIsReadMessageForAdminListMessage(int id)
         {
             var values = _messageService.TChangeIsReadMessageForAdminListMessagePanel(id);
@@ -75,6 +77,36 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var values = _messageService.TGetMessageDetailByMessageId(id);
             _messageService.TChangeIsReadMessageByMessageId(id);
             return View(values);
+        }
+        [Route("DeleteMessage/{id:int}")]
+        public IActionResult DeleteMessage(int id)
+        {
+            _messageService.TDelete(id);
+            return RedirectToAction("AdminListMessage");
+        }
+        [HttpGet]
+        [Route("UpdateMessage/{id:int}")]
+        public IActionResult UpdateMessage(int id)
+        {
+
+            var senderlist = _userManager.Users.ToList();
+
+            List<SelectListItem> senderlistitem = (from x in senderlist.ToList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.Id.ToString(),
+                                                   }).ToList();
+            ViewBag.userList = senderlistitem;
+            var values = _messageService.TGetById(id);
+            return View(values);
+        }
+        [HttpPost]
+        [Route("UpdateMessage/{id}")]
+        public IActionResult UpdateMessage(Message message)
+        {
+            _messageService.TUpdate(message);
+            return RedirectToAction("AdminListMessage");
         }
     }
 }

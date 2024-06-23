@@ -18,11 +18,12 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Gönderen</th>
+                            <th scope="col">Gönderici</th>
+                            <th scope="col">Alıcı</th>
                             <th scope="col">Mesaj Başlığı</th>
                             <th scope="col">İçerik</th>
                             <th scope="col">Mesaj Tarihi</th>
-                            <th scope="col">Okuma</th>
+                            <th scope="col">Okunma Durumu</th>
                             <th scope="col">Güncelle</th>
                             <th scope="col">Sil</th>
                         </tr>
@@ -34,6 +35,7 @@
                             <tr>
                                 <td>@count</td>
                                 <td>@item.Sender.Name @item.Sender.Surname</td>
+                                <td>@item.Receiver.Name @item.Receiver.Surname</td>
                                 <td>@item.Subject</td>
                                 <td>
                                     @{
@@ -53,36 +55,28 @@
                                 </td>
                                 <td>@item.SendingTime</td>
                                 <td>
-                                    <a href="/Admin/Message/ChangeIsImportantMessage/@item.MessageId">
+                                    <a href="/Admin/Message/ChangeIsReadMessageForAdminListMessage/@item.MessageId">
                                         @{
-                                            if (item.IsImportant == false)
+                                            if (item.IsRead == false)
                                             {
 
-                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-star"></i>
+                                                <i style="color:dimgray;font-size:20px" class="fas fa-envelope"></i>
                                             }
+
                                             else
                                             {
-                                                <i style="color:palevioletred;font-size:20px" class="fas fa-star"></i>
+                                                <i style="color:forestgreen;font-size:20px" class="fas fa-envelope-open-text"></i>
                                             }
                                         }
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/Admin/Message/ChangeIsJunkMessage/@item.MessageId">
-                                        @{
-                                            if (item.IsJunk == false)
-                                            {
-                                                <i style="color:palevioletred;font-size:20px" class="fas fa-trash-alt"></i>
-                                            }
-                                            else
-                                            {
-                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-trash-alt"></i>
-                                            }
-                                        }
-                                    </a>
+                                    <a href="/Admin/Message/UpdateMessage/@item.MessageId"><i style="color:cadetblue;font-size:large" class="fas fa-check-circle"></i></a>
+
                                 </td>
                                 <td>
-                                    <a href="/Admin/Message/DetailMessage/@item.MessageId"><i class="fas fa-envelope-open"></i> Mesajı Oku</a>
+                                    <a href="/Admin/Message/DeleteMessage/@item.MessageId"><i style="color:red;font-size:large" class="fas fa-times-circle"></i></a>
+
                                 </td>
                             </tr>
                         }

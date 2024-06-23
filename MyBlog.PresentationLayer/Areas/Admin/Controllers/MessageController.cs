@@ -57,7 +57,12 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var values = _messageService.TGetListAllMessageWithSenderReceiver();
             return View(values);
         }
-
+        [Route("ChangeIsReadMessage/{id:int}")]
+        public IActionResult ChangeIsReadMessageForAdminListMessage(int id)
+        {
+            var values = _messageService.TChangeIsReadMessageForAdminListMessagePanel(id);
+            return RedirectToAction("AdminListMessage");
+        }
         [Route("ChangeIsReadMessage2/{id:int}")]
         public IActionResult ChangeIsReadMessage2(int id)
         {

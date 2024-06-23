@@ -141,5 +141,19 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             context.SaveChanges();
             return values;
         }
+        public Message ChangeIsReadMessageForAdminListMessagePanel(int id)
+        {
+            var values = context.Messages.Find(id);
+            if (values.IsRead == false)
+            {
+                values.IsRead = true;
+            }
+            else
+            {
+                values.IsRead = false;
+            }
+            context.SaveChanges();
+            return values;
+        }
     }
 }

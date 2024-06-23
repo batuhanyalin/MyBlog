@@ -123,5 +123,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _messageDal.ChangeIsReadMessage2(id);
         }
+
+        public Message TChangeIsReadMessageForAdminListMessagePanel(int id)
+        {
+            return _messageDal.ChangeIsReadMessageForAdminListMessagePanel(id);
+        }
     }
 }

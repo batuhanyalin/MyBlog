@@ -23,6 +23,8 @@ namespace MyBlog.DataAccessLayer.Abstract
         public int GetSideBarDraftMessageCountByUserId(int id);
         public Message ChangeIsReadMessageByMessageId(int id);
         public Message GetMessageDetailByMessageId(int id);
+        public List<Message> GetListAllMessageWithSenderReceiver();
+        public Message ChangeIsReadMessage2(int id);
 
 
     }

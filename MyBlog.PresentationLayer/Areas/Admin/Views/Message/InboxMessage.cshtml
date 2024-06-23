@@ -22,6 +22,7 @@
                             <th scope="col">Mesaj Başlığı</th>
                             <th scope="col">İçerik</th>
                             <th scope="col">Mesaj Tarihi</th>
+                            <th scope="col">Durum</th>
                             <th scope="col">Önemli Mesajlara Al</th>
                             <th scope="col">Çöpe At</th>
                             <th scope="col">Detay</th>
@@ -53,6 +54,21 @@
                                 </td>
                                 <td>@item.SendingTime</td>
                                 <td>
+                                    <a href="/Admin/Message/ChangeIsReadMessage2/@item.MessageId">
+                                        @{
+                                            if (item.IsImportant == false)
+                                            {
+
+                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i style="color:palevioletred;font-size:20px" class="fas fa-star"></i>
+                                            }
+                                        }
+                                    </a>
+                                </td>
+                                <td>
                                     <a href="/Admin/Message/ChangeIsImportantMessage/@item.MessageId">
                                         @{
                                             if (item.IsImportant == false)
@@ -82,7 +98,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="/Admin/Message/ChangeIsReadMessage/@item.MessageId"></a><a href="/Admin/Message/DetailMessage/@item.MessageId"><i class="fas fa-envelope-open"></i> Mesajı Oku</a>
+                                    <a href="/Admin/Message/DetailMessage/@item.MessageId"><i class="fas fa-envelope-open"></i> Mesajı Oku</a>
                                 </td>
                             </tr>
                         }

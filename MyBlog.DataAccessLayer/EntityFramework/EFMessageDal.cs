@@ -119,7 +119,26 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public Message GetMessageDetailByMessageId(int id)
         {
-            var values=context.Messages.Find(id);
+            var values = context.Messages.Where(x => x.MessageId == id).Include(x => x.Sender).Include(x => x.Receiver).FirstOrDefault();
+            return values;
+        }
+        public List<Message> GetListAllMessageWithSenderReceiver()
+        {
+            var values = context.Messages.Include(x => x.Sender).Include(x => x.Receiver).ToList();
+            return values;
+        }
+        public Message ChangeIsReadMessage2(int id)
+        {
+            var values = context.Messages.Find(id);
+            if (values.IsRead == false)
+            {
+                values.IsRead = true;
+            }
+            else
+            {
+                values.IsRead = false;
+            }
+            context.SaveChanges();
             return values;
         }
     }

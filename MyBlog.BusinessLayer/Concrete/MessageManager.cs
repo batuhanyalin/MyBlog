@@ -113,5 +113,15 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _messageDal.GetMessageDetailByMessageId(id);
         }
+
+        public List<Message> TGetListAllMessageWithSenderReceiver()
+        {
+            return _messageDal.GetListAllMessageWithSenderReceiver();
+        }
+
+        public Message TChangeIsReadMessage2(int id)
+        {
+            return _messageDal.ChangeIsReadMessage2(id);
+        }
     }
 }

@@ -23,5 +23,7 @@ namespace MyBlog.BusinessLayer.Abstract
         public int TGetSideBarDraftMessageCountByUserId(int id);
         public Message TChangeIsReadMessageByMessageId(int id);
         public Message TGetMessageDetailByMessageId(int id);
+        public List<Message> TGetListAllMessageWithSenderReceiver();
+        public Message TChangeIsReadMessage2(int id);
     }
 }

@@ -51,9 +51,10 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TChangeIsJunkMessageById(id);
             return RedirectToAction("InboxMessage");
         }
+        [Route("AdminListMessage")]
         public IActionResult AdminListMessage()
         {
-            var values = _messageService.TGetListMessageOrderByDescendingDate();
+            var values = _messageService.TGetListAllMessageWithSenderReceiver();
             return View(values);
         }
         [Route("ChangeIsReadMessage/{id:int}")]
@@ -65,8 +66,9 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [Route("DetailMessage/{id:int}")]
         public IActionResult DetailMessage(int id)
         {
-            var values=_messageService.TGetMessageDetailByMessageId(id);
-                return View(values);
+            var values = _messageService.TGetMessageDetailByMessageId(id);
+            values.IsRead = true;
+            return View(values);
         }
     }
 }

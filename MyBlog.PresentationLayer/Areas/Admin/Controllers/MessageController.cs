@@ -86,7 +86,6 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> EditDraftMessage(Message message)
         {
-            message.IsDraft = false;
             _messageService.TUpdate(message);
             return RedirectToAction("InboxMessage");
         }
@@ -156,6 +155,12 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         {
             _messageService.TDelete(id);
             return RedirectToAction("AdminListMessage");
+        }       
+        [Route("DeleteDraftMessage/{id:int}")]
+        public IActionResult DeleteDraftMessage(int id)
+        {
+            _messageService.TDelete(id);
+            return RedirectToAction("DraftMessage");
         }
         [HttpGet]
         [Route("UpdateMessage/{id:int}")]

@@ -22,6 +22,7 @@
                             <th scope="col">İçerik</th>
                             <th scope="col">Taslağa Alınma Tarihi</th>
                             <th scope="col">Detay</th>
+                            <th scope="col">Sil</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,6 +51,8 @@
                                 <td>@item.SendingTime</td>
                                 <td>
                                     <a href="/Admin/Message/EditDraftMessage/@item.MessageId"><i class="fas fa-envelope-open"></i> Mesajı Düzenle</a>
+                                </td><td>
+                                    <a href="/Admin/Message/DeleteDraftMessage/@item.MessageId"><i style="font-size:large;color:red" class="fas fa-times-circle"></i></a>
                                 </td>
                             </tr>
                         }

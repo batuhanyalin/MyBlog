@@ -153,5 +153,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _messageDal.GetDraftMessage(id);
         }
+
+        public Message TEditDraftMessage(int id)
+        {
+            return _messageDal.EditDraftMessage(id);
+        }
     }
 }

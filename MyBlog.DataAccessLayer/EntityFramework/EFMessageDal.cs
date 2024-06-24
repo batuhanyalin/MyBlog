@@ -171,12 +171,17 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public Task<List<Message>> GetMessageByReceiverIdByIsReadForNavBarMessage(int id)
         {
-            var values = context.Messages.Where(x => x.MessageId == id).Where(x => x.IsRead == false).Include(x => x.Sender).Include(x => x.Receiver).ToListAsync();
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false).Include(x => x.Sender).Include(x => x.Receiver).ToListAsync();
             return values;
         }
         public int GetSideBarInboxIsReadFalseMessageCountByUserId(int id)
         {
             var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            return values;
+        }
+        public Message EditDraftMessage(int id)
+        {
+            var values = context.Messages.Where(x => x.MessageId == id).Include(x => x.Receiver).Include(x => x.Sender).FirstOrDefault();
             return values;
         }
     }

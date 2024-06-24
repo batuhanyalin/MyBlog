@@ -72,27 +72,24 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         public async Task<IActionResult> EditDraftMessage(int id)
         {
             var users = _userManager.Users.ToList();
-            List<SelectListItem> author=(from x in users.ToList()
-                                         select new SelectListItem
-                                         {
-                                             Text = $"{x.Name} {x.Surname}",
-                                             Value=x.Id.ToString()
-                                         }).ToList();
+            List<SelectListItem> author = (from x in users.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = $"{x.Name} {x.Surname}",
+                                               Value = x.Id.ToString()
+                                           }).ToList();
             ViewBag.author = author;
             var message = _messageService.TEditDraftMessage(id);
             return View(message);
-        }        
+        }
         [Route("EditDraftMessage/{id}")]
         [HttpPost]
         public async Task<IActionResult> EditDraftMessage(Message message)
         {
-
+            message.IsDraft = false;
             _messageService.TUpdate(message);
             return RedirectToAction("InboxMessage");
         }
-
-
-
         [Route("ImportantMessage")]
         public async Task<IActionResult> ImportantMessage()
         {

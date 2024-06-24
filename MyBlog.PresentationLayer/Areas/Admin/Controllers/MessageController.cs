@@ -33,7 +33,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetImportantMessage(user.Id);
             return View(message);
         }
-        [Route("ImportantMessage")]
+        [Route("SentMessage")]
         public async Task<IActionResult> SentMessage()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -115,7 +115,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TUpdate(message);
             return RedirectToAction("AdminListMessage");
         }
-        [Route("ShowSentMessage/{id:int}")]
+        [Route("ShowSentMessageDetail/{id:int}")]
         public IActionResult ShowSentMessageDetail(int id)
         {
             var values = _messageService.TGetShowSentMessageDetail(id);

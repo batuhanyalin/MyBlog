@@ -176,7 +176,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public int GetSideBarInboxIsReadFalseMessageCountByUserId(int id)
         {
-            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false&&x.IsImportant==false&&x.IsJunk==false).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
         }
         public Message EditDraftMessage(int id)

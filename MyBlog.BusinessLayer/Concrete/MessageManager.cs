@@ -133,5 +133,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
            return _messageDal.GetSentMessage(id);
         }
+
+        public Message TGetShowSentMessageDetail(int id)
+        {
+            return _messageDal.GetShowSentMessageDetail(id);
+        }
     }
 }

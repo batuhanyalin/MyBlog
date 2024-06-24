@@ -27,6 +27,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<Message> GetListAllMessageWithSenderReceiver();
         public Message ChangeIsReadMessage2(int id);
         public Message ChangeIsReadMessageForAdminListMessagePanel(int id);
+        public Message GetShowSentMessageDetail(int id);
 
 
     }

@@ -27,5 +27,6 @@ namespace MyBlog.BusinessLayer.Abstract
         public List<Message> TGetListAllMessageWithSenderReceiver();
         public Message TChangeIsReadMessage2(int id);
         public Message TChangeIsReadMessageForAdminListMessagePanel(int id);
+        public Message TGetShowSentMessageDetail(int id);
     }
 }

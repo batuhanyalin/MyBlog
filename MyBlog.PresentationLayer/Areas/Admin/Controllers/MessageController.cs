@@ -115,6 +115,11 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TUpdate(message);
             return RedirectToAction("AdminListMessage");
         }
-
+        [Route("ShowSentMessage/{id:int}")]
+        public IActionResult ShowSentMessageDetail(int id)
+        {
+            var values = _messageService.TGetShowSentMessageDetail(id);
+            return View(values);
+        }
     }
 }

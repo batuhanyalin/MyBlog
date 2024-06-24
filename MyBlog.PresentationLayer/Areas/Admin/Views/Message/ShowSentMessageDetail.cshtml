@@ -1,0 +1,50 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "ShowSentMessageDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3 class="mb-4">Mesaj Detay Sayfası</h3>
+<div class="container">
+    <div>
+        <a class="btn btn-info" href="/Admin/Message/SentMessage/">Gönderilen Dön</a>
+    </div>
+    <br />
+    <div class="row">
+        <div class="bg-light rounded h-100 p-4">
+            <div class="col-sm-6 col-xl-6">
+                <input type="hidden" asp-for="MessageId" />
+                <input type="hidden" asp-for="SenderId" />
+                <input type="hidden" asp-for="ReceiverId" />
+                <input type="hidden" asp-for="IsRead" />
+                <input type="hidden" asp-for="IsDraft" />
+                <input type="hidden" asp-for="IsImportant" />
+                <input type="hidden" asp-for="IsJunk" />
+                <div class="mb-3">
+                    <label class="form-label">Mesaj Başlığı: </label><label class="form-label">@Model.Subject</label>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Alıcı: </label><label class="form-label">@Model.Receiver.Name @Model.Receiver.Surname</label>
+                </div>
+                <div class="mb-3">
+                    <h5>Mesaj Tarihi:</h5>
+                    <label class="form-label">@Model.SendingTime.ToString("dd.MM.yyy HH:mm:ss")</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-6">
+                <h4 class="mb-4">İçerik</h4>
+                <div>
+                    <textarea class="form-label" id="summernote">@Model.Text</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#summernote').summernote({
+        height: 200,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                  // set focus to editable area after initializing summernote
+    });
+</script>

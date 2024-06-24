@@ -159,5 +159,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             context.SaveChanges();
             return values;
         }
+        public Message GetShowSentMessageDetail(int id)
+        {
+            var values = context.Messages.Where(x=>x.MessageId == id).Include(x=>x.Sender).Include(x=>x.Receiver).FirstOrDefault();
+            return values;
+        }
     }
 }

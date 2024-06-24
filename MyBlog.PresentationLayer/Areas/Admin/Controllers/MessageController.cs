@@ -37,7 +37,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         public async Task<IActionResult> SentMessage()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var message = await _messageService.TGetImportantMessage(user.Id);
+            var message = await _messageService.TGetSentMessage(user.Id);
             return View(message);
         }
         [Route("JunkMessage")]

@@ -28,21 +28,28 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
                                                  select new SelectListItem
                                                  {
                                                      Text = $"{x.Name} {x.Surname}",
-                                                     Value=x.Id.ToString()
+                                                     Value = x.Id.ToString()
                                                  }).ToList();
             ViewBag.receiver = receiverList;
             return View();
         }
         [Route("CreateMessage")]
         [HttpPost]
-        public ActionResult CreateMessage(Message message)
+        public async Task<ActionResult> CreateMessage(Message message)
         {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            message.SenderId = (user.Id);
+            message.SendingTime = DateTime.Now;
             _messageService.TInsert(message);
-            return RedirectToAction("SentMessage");
-        }
-        public ActionResult CreateDraftMessage()
-        {
-            return View();
+            if (message.IsDraft == false)
+            {
+                return RedirectToAction("SentMessage");
+            }
+            else
+            {
+                return RedirectToAction("DraftMessage");
+            }
+
         }
 
         [Route("InboxMessage")]
@@ -52,6 +59,15 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetInboxMessage(user.Id);
             return View(message);
         }
+
+        [Route("DraftMessage")]
+        public async Task<IActionResult> DraftMessage()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var message = await _messageService.TGetDraftMessage(user.Id);
+            return View(message);
+        }
+
         [Route("ImportantMessage")]
         public async Task<IActionResult> ImportantMessage()
         {
@@ -59,6 +75,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetImportantMessage(user.Id);
             return View(message);
         }
+
         [Route("SentMessage")]
         public async Task<IActionResult> SentMessage()
         {
@@ -66,6 +83,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetSentMessage(user.Id);
             return View(message);
         }
+
         [Route("JunkMessage")]
         public async Task<IActionResult> JunkMessage()
         {

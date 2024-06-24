@@ -30,5 +30,6 @@ namespace MyBlog.BusinessLayer.Abstract
         public Message TGetShowSentMessageDetail(int id);
         Task<List<Message>> TGetMessageByReceiverIdByIsReadForNavBarMessage(int id);
         public int TGetSideBarInboxIsReadFalseMessageCountByUserId(int id);
+        Task<List<Message>> TGetDraftMessage(int id);
     }
 }

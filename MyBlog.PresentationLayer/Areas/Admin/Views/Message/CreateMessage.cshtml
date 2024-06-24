@@ -5,9 +5,9 @@
 }
 
 <div class="container">
-    <form asp-action="CreateMessage" asp-controller="Message" asp-area="Admin" method="post">
+    <form id="messageForm" asp-action="CreateMessage" asp-controller="Message" asp-area="Admin" method="post">
         <br />
-        <h6 class="mb-4">Blog Güncelleme Sayfası</h6>
+        <h4 class="mb-4">Yeni Mesaj Sayfası</h4>
         <div class="row">
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
@@ -15,6 +15,7 @@
                         <input type="hidden" asp-for="IsRead" value="false" />
                         <input type="hidden" asp-for="IsJunk" value="false" />
                         <input type="hidden" asp-for="IsImportant" value="false" />
+                        <input type="hidden" id="isDraftInput" asp-for="IsDraft" />
                         <label class="form-label">Alıcı: </label>
                         @Html.DropDownListFor(x => x.ReceiverId, (List<SelectListItem>)ViewBag.receiver, new { @class = "form-control" })
                     </div>
@@ -27,8 +28,9 @@
                         <div>
                             <textarea class="form-control" asp-for="Text" id="summernote"></textarea>
                         </div>
-                    </div>                
-                        <button itemid="CreateNewMessage" class="btn btn-success" type="submit">Mesajı Gönder</button> <button itemid="CreateDraftMessage" type="submit" class="btn btn-outline-info">Taslak Olarak Kaydet</button>              
+                    </div>
+                    <button class="btn btn-success" type="submit" onclick="setDraftStatus(false)">Mesajı Gönder</button>
+                    <button type="submit" class="btn btn-outline-info" onclick="setDraftStatus(true)">Taslak Olarak Kaydet</button>
                 </div>
             </div>
         </div>
@@ -41,4 +43,8 @@
         maxHeight: null,             // set maximum height of editor
         focus: true                  // set focus to editable area after initializing summernote
     });
+
+    function setDraftStatus(isDraft) {
+        document.getElementById('isDraftInput').value = isDraft;
+    }
 </script>

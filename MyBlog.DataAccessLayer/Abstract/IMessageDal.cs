@@ -30,6 +30,6 @@ namespace MyBlog.DataAccessLayer.Abstract
         public Message GetShowSentMessageDetail(int id);
         Task<List<Message>> GetMessageByReceiverIdByIsReadForNavBarMessage(int id);
         public int GetSideBarInboxIsReadFalseMessageCountByUserId(int id);
-
+        Task<List<Message>> GetDraftMessage(int id);
     }
 }

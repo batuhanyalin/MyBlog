@@ -29,9 +29,14 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         {
             return await context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
         }
+        public async Task<List<Message>> GetDraftMessage(int id)
+        {
+            return await context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == true).Include(x => x.Receiver).Include(x => x.Sender).ToListAsync();
+        }
+
         public async Task<List<Message>> GetSentMessage(int id)
         {
-            return await context.Messages.Where(x=>x.SenderId==id).Include(x=>x.Sender).Include(x=>x.Receiver).OrderByDescending(x=>x.SendingTime).ToListAsync();
+            return await context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToListAsync();
         }
         public async Task<List<Message>> GetImportantMessage(int id)
         {
@@ -89,22 +94,22 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public int GetSideBarJunkMessageCountByUserId(int id)
         {
-            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == true && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsJunk == true).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
         }
         public int GetSideBarImportantMessageCountByUserId(int id)
         {
-            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == true).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsImportant == true).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
         }
         public int GetSideBarSentMessageCountByUserId(int id)
         {
-            var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
         }
         public int GetSideBarDraftMessageCountByUserId(int id)
         {
-            var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == true && x.IsJunk == false && x.IsImportant == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            var values = context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == true).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
         }
         public Message ChangeIsReadMessageByMessageId(int id)
@@ -161,17 +166,17 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public Message GetShowSentMessageDetail(int id)
         {
-            var values = context.Messages.Where(x=>x.MessageId == id).Include(x=>x.Sender).Include(x=>x.Receiver).FirstOrDefault();
+            var values = context.Messages.Where(x => x.MessageId == id).Include(x => x.Sender).Include(x => x.Receiver).FirstOrDefault();
             return values;
         }
         public Task<List<Message>> GetMessageByReceiverIdByIsReadForNavBarMessage(int id)
         {
-            var values=context.Messages.Where(x=>x.MessageId==id).Where(x=>x.IsRead==false).Include(x=>x.Sender).Include(x=>x.Receiver).ToListAsync();
+            var values = context.Messages.Where(x => x.MessageId == id).Where(x => x.IsRead == false).Include(x => x.Sender).Include(x => x.Receiver).ToListAsync();
             return values;
         }
         public int GetSideBarInboxIsReadFalseMessageCountByUserId(int id)
         {
-            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x=>x.IsRead==false).Include(x => x.Receiver).Include(x => x.Sender).Count();
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false).Include(x => x.Receiver).Include(x => x.Sender).Count();
             return values;
         }
     }

@@ -148,5 +148,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _messageDal.GetSideBarInboxIsReadFalseMessageCountByUserId(id);
         }
+
+        public Task<List<Message>> TGetDraftMessage(int id)
+        {
+            return _messageDal.GetDraftMessage(id);
+        }
     }
 }

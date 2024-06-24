@@ -143,5 +143,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _messageDal.GetMessageByReceiverIdByIsReadForNavBarMessage(id);
         }
+
+        public int TGetSideBarInboxIsReadFalseMessageCountByUserId(int id)
+        {
+            return _messageDal.GetSideBarInboxIsReadFalseMessageCountByUserId(id);
+        }
     }
 }

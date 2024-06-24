@@ -29,6 +29,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public Message ChangeIsReadMessageForAdminListMessagePanel(int id);
         public Message GetShowSentMessageDetail(int id);
         Task<List<Message>> GetMessageByReceiverIdByIsReadForNavBarMessage(int id);
+        public int GetSideBarInboxIsReadFalseMessageCountByUserId(int id);
 
     }
 }

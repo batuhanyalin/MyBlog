@@ -164,5 +164,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Messages.Where(x=>x.MessageId == id).Include(x=>x.Sender).Include(x=>x.Receiver).FirstOrDefault();
             return values;
         }
+        public Task<List<Message>> GetMessageByReceiverIdByIsReadForNavBarMessage(int id)
+        {
+            var values=context.Messages.Where(x=>x.MessageId==id).Where(x=>x.IsRead==false).Include(x=>x.Sender).Include(x=>x.Receiver).ToListAsync();
+            return values;
+        }
     }
 }

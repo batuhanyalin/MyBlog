@@ -138,5 +138,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _messageDal.GetShowSentMessageDetail(id);
         }
+
+        public Task<List<Message>> TGetMessageByReceiverIdByIsReadForNavBarMessage(int id)
+        {
+            return _messageDal.GetMessageByReceiverIdByIsReadForNavBarMessage(id);
+        }
     }
 }

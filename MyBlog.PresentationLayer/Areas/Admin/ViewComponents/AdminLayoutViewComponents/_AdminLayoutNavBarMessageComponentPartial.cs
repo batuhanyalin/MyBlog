@@ -19,7 +19,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.ViewComponents.AdminLayoutViewCom
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var messages = await _messageService.TGetMessageByReceiverIdAsync(user.Id);
+            var messages = await _messageService.TGetMessageByReceiverIdByIsReadForNavBarMessage(user.Id);
             return View(messages);
         }
     }

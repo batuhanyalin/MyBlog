@@ -19,6 +19,32 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService = messageService;
             _userManager = userManager;
         }
+        [Route("CreateMessage")]
+        [HttpGet]
+        public ActionResult CreateMessage()
+        {
+            var values = _userManager.Users.ToList();
+            List<SelectListItem> receiverList = (from x in values.ToList()
+                                                 select new SelectListItem
+                                                 {
+                                                     Text = $"{x.Name} {x.Surname}",
+                                                     Value=x.Id.ToString()
+                                                 }).ToList();
+            ViewBag.receiver = receiverList;
+            return View();
+        }
+        [Route("CreateMessage")]
+        [HttpPost]
+        public ActionResult CreateMessage(Message message)
+        {
+            _messageService.TInsert(message);
+            return RedirectToAction("SentMessage");
+        }
+        public ActionResult CreateDraftMessage()
+        {
+            return View();
+        }
+
         [Route("InboxMessage")]
         public async Task<IActionResult> InboxMessage()
         {

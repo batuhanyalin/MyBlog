@@ -21,7 +21,7 @@
 							<i class="fas fa-pen-nib fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">@ViewBag.totalAuthor</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalAuthor</p>
 							<p class="announcement-text">Toplam Yazar</p>
 						</div>
 					</div>
@@ -41,14 +41,14 @@
 			</div>
 		</div>
 		<div class="col-lg-3">
-			<div style="background-color:#f8c291;color:white">
+			<div style="background-color:#95a5a6;color:white">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
 							<i class="fa fa-users fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">@ViewBag.totalAdmin</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalAdmin</p>
 							<p class="announcement-text">Toplam Yönetici</p>
 						</div>
 					</div>
@@ -68,14 +68,14 @@
 			</div>
 		</div>
 		<div class="col-lg-3">
-			<div style="background-color:#6a89cc;color:white">
+			<div style="background-color:#8e44ad;color:white">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
 							<i class="fa fa-tasks fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">@ViewBag.totalBlog</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalBlog</p>
 							<p class="announcement-text">Toplam Blog</p>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
 							<i class="fa fa-comments fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">@ViewBag.totalComment</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalComment</p>
 							<p class="announcement-text">Toplam Yorum</p>
 						</div>
 					</div>
@@ -125,19 +125,19 @@
 	<br />
 	<div class="row">
 		<div class="col-lg-3">
-			<div style="background-color:#b8e994;color:white">
+			<div style="background-color:#16a085;color:white">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<i class="fa fa-users fa-5x"></i>
+							<i class="fas fa-stream fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">@ViewBag.totalCategory</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalCategory</p>
 							<p class="announcement-text">Toplam Kategori</p>
 						</div>
 					</div>
 				</div>
-				<a href="#">
+				<a href="/Admin/Category/Index">
 					<div class="panel-footer announcement-bottom">
 						<div class="row">
 							<div class="col-xs-6">
@@ -152,23 +152,23 @@
 			</div>
 		</div>
 		<div class="col-lg-3">
-			<div style="background-color:#78e08f;color:white">
+			<div style="background-color:#f1c40f;color:white">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<i class="fa fa-check fa-5x"></i>
+							<i class="fas fa-inbox fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">12</p>
-							<p class="announcement-text">To-Do Items</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalMessage</p>
+							<p class="announcement-text">Toplam Mesaj</p>
 						</div>
 					</div>
 				</div>
-				<a href="#">
+				<a href="/Admin/Message/AdminListMessage">
 					<div class="panel-footer announcement-bottom">
 						<div class="row">
 							<div class="col-xs-6">
-								View
+								Görüntüle
 							</div>
 							<div class="col-xs-6 text-right">
 								<i class="fa fa-arrow-circle-right"></i>
@@ -179,23 +179,23 @@
 			</div>
 		</div>
 		<div class="col-lg-3">
-			<div style="background-color:#38ada9;color:white">
+			<div style="background-color:#2c3e50;color:white">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<i class="fa fa-tasks fa-5x"></i>
+							<i class="fas fa-star fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">18</p>
-							<p class="announcement-text">Crawl Errors</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalImportantMessage</p>
+							<p class="announcement-text">Önemli Mesaj</p>
 						</div>
 					</div>
 				</div>
-				<a href="#">
+				<a href="/Admin/Message/ImportantMessage">
 					<div class="panel-footer announcement-bottom">
 						<div class="row">
 							<div class="col-xs-6">
-								View
+								Görüntüle
 							</div>
 							<div class="col-xs-6 text-right">
 								<i class="fa fa-arrow-circle-right"></i>
@@ -206,23 +206,23 @@
 			</div>
 		</div>
 		<div class="col-lg-3">
-			<div style="background-color:#079992;color:white">
+			<div style="background-color:#ffb8b8;color:white">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<i class="fa fa-comments fa-5x"></i>
+							<i class="fas fa-trash-alt fa-5x"></i>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">56</p>
-							<p class="announcement-text">New Orders!</p>
+							<p style="font-size:20px" class="announcement-heading">@ViewBag.totalJunkMessage</p>
+							<p class="announcement-text">Silinen Mesaj</p>
 						</div>
 					</div>
 				</div>
-				<a href="#">
+				<a href="/Admin/Message/JunkMessage">
 					<div class="panel-footer announcement-bottom">
 						<div class="row">
 							<div class="col-xs-6">
-								View
+								Görüntüle
 							</div>
 							<div class="col-xs-6 text-right">
 								<i class="fa fa-arrow-circle-right"></i>
@@ -235,43 +235,20 @@
 	</div><!-- /.row -->
 	<br />
 	<div class="row">
-		<div class="col-lg-3">
-			<div style="background-color:#fa983a;color:white">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-xs-6">
-							<i class="fa fa-users fa-5x"></i>
-						</div>
-						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">1</p>
-							<p class="announcement-text">Users</p>
-						</div>
-					</div>
-				</div>
-				<a href="#">
-					<div class="panel-footer announcement-bottom">
-						<div class="row">
-							<div class="col-xs-6">
-								View
-							</div>
-							<div class="col-xs-6 text-right">
-								<i class="fa fa-arrow-circle-right"></i>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
+		<div class="col-lg-12">
+			<ol class="breadcrumb">
+				<li class="active"><i class="fa fa-dashboard"></i>Kategori İstatistikleri</li>
+			</ol>
 		</div>
+	</div><!-- /.row -->
+	<div class="row">
 		<div class="col-lg-3">
-			<div style="background-color:#eb2f06;color:white">
+			<div style="background-color:gray;color:white">
 				<div class="panel-heading">
 					<div class="row">
-						<div class="col-xs-6">
-							<i class="fa fa-check fa-5x"></i>
-						</div>
-						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">12</p>
-							<p class="announcement-text">To-Do Items</p>
+						<div class="col-xs-6 text-left">
+							<h4 class="announcement-text">Teknoloji Blog Sayısı</h4>
+							<h5>5</h5>
 						</div>
 					</div>
 				</div>
@@ -279,61 +256,7 @@
 					<div class="panel-footer announcement-bottom">
 						<div class="row">
 							<div class="col-xs-6">
-								View
-							</div>
-							<div class="col-xs-6 text-right">
-								<i class="fa fa-arrow-circle-right"></i>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div style="background-color:#1e3799;color:white">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-xs-6">
-							<i class="fa fa-tasks fa-5x"></i>
-						</div>
-						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">18</p>
-							<p class="announcement-text">Crawl Errors</p>
-						</div>
-					</div>
-				</div>
-				<a href="#">
-					<div class="panel-footer announcement-bottom">
-						<div class="row">
-							<div class="col-xs-6">
-								View
-							</div>
-							<div class="col-xs-6 text-right">
-								<i class="fa fa-arrow-circle-right"></i>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div style="background-color:#3c6382;color:white">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-xs-6">
-							<i class="fa fa-comments fa-5x"></i>
-						</div>
-						<div class="col-xs-6 text-right">
-							<p class="announcement-heading">56</p>
-							<p class="announcement-text">New Orders!</p>
-						</div>
-					</div>
-				</div>
-				<a href="#">
-					<div class="panel-footer announcement-bottom">
-						<div class="row">
-							<div class="col-xs-6">
-								View
+								Görüntüle
 							</div>
 							<div class="col-xs-6 text-right">
 								<i class="fa fa-arrow-circle-right"></i>

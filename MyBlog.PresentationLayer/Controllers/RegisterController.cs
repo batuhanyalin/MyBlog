@@ -31,7 +31,8 @@ namespace MyBlog.PresentationLayer.Controllers
                 Email = model.Email,
                 Surname = model.Surname,
                 UserName = model.Username,
-                PhoneNumber=model.Phone
+                PhoneNumber=model.Phone,
+                Profession=model.Profession,
             };
             appUser.AppRoleId = 1;
             //Parola direkt olarak verilmediği için ayrı veriliyor.

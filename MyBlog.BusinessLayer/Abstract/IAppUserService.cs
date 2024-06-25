@@ -14,5 +14,7 @@ namespace MyBlog.BusinessLayer.Abstract
         public int TGetArticleCountByAuthor(int id);
         public List<AppUser> TGetAuthorWithCommentArticle();
         public List<AppUser> TGetAuthorWithCommentArticleByIsApproved();
-    }
+        public List<AppUser> TGetAdminWithCommentArticle();
+
+	}
 }

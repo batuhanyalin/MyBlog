@@ -45,7 +45,12 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<AppUser> GetAuthorWithCommentArticle()
         {
-            var values= context.Users.Include(x=>x.Articles).Include(x=>x.Comments).ToList();
+            var values= context.Users.Where(x=>x.AppRoleId==1).Include(x=>x.Articles).Include(x=>x.Comments).ToList();
+            return values;
+        }   
+        public List<AppUser> GetAdminWithCommentArticle()
+        {
+            var values= context.Users.Where(x=>x.AppRoleId==3 ||x.AppRoleId==2).Include(x=>x.Articles).Include(x=>x.Comments).ToList();
             return values;
         }
         public List<AppUser> GetAuthorWithCommentArticleByIsApproved()

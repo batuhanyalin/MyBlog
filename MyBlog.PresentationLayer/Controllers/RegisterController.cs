@@ -30,8 +30,10 @@ namespace MyBlog.PresentationLayer.Controllers
                 Name = model.Name,
                 Email = model.Email,
                 Surname = model.Surname,
-                UserName = model.Username
+                UserName = model.Username,
+                PhoneNumber=model.Phone
             };
+            appUser.AppRoleId = 1;
             //Parola direkt olarak verilmediği için ayrı veriliyor.
             //await keywordü, asenkron bir metodu işin içine yani mevcuttaki bir göreve dahil edebilmek için kullanılır.
             //Bu şekilde gönderim yapıldığında parola hashlenerek gönderilecek.

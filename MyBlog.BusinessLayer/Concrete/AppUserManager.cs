@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyBlog.BusinessLayer.Concrete
 {
-    public class AppUserManager : IAppUserService
+	public class AppUserManager : IAppUserService
     {
         private readonly IAppUserDal _appUserDal;
 
@@ -28,7 +28,12 @@ namespace MyBlog.BusinessLayer.Concrete
             _appUserDal.Delete(id);
         }
 
-        public int TGetArticleCountByAuthor(int id)
+		public List<AppUser> TGetAdminWithCommentArticle()
+		{
+			return _appUserDal.GetAdminWithCommentArticle();
+		}
+
+		public int TGetArticleCountByAuthor(int id)
         {
            return _appUserDal.GetArticleCountByAuthor(id);
         }

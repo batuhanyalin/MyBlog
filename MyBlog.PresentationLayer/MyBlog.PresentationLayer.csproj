@@ -140,4 +140,11 @@
     <None Include="wwwroot\login-form-11\scss\bootstrap\.DS_Store" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\css\register.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

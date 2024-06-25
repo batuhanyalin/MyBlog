@@ -24,6 +24,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values=context.Categories.Include(x=>x.Articles).ToList();
             return values;
         }
-
+        public List<Category> GetListCategoryWithArticle()
+        {
+            var values=context.Categories.Include(x=>x.Articles).ToList();
+            return values;
+        }
     }
 }

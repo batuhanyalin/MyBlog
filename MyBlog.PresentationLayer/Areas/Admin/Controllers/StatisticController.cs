@@ -26,6 +26,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 		[Route("Index")]
 		public IActionResult Index()
 		{
+			var values=_categoryService.TGetListCategoryWithArticle();
 			ViewBag.totalAuthor = _appUserService.TGetListAll().Where(x => x.AppRoleId == 1).Count();
 			ViewBag.totalAdmin = _appUserService.TGetListAll().Where(x => x.AppRoleId == 2 || x.AppRoleId == 3).Count();
 			ViewBag.totalBlog = _articleService.TGetListAll().Count();
@@ -34,7 +35,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 			ViewBag.totalMessage = _messageService.TGetListAll().Count();
 			ViewBag.totalImportantMessage = _messageService.TGetListAll().Where(x => x.IsImportant == true).Count();			
 			ViewBag.totalJunkMessage = _messageService.TGetListAll().Where(x => x.IsJunk == true).Count();
-			return View();
+			return View(values);
 		}
 	}
 }

@@ -45,6 +45,11 @@ namespace MyBlog.BusinessLayer.Concrete
             return _categoryDal.GetListAll();
         }
 
+        public List<Category> TGetListCategoryWithArticle()
+        {
+            return _categoryDal.GetListCategoryWithArticle();
+        }
+
         public void TInsert(Category entity)
         {
             if (entity.CategoryName != "" && entity.CategoryName.Length > 3 && entity.CategoryName.Length < 30)

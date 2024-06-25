@@ -12,6 +12,7 @@ namespace MyBlog.BusinessLayer.Abstract
     {
         public List<Category> TGetCategory();
         public List<Category> TGetCategoryWithArticles();
+        public List<Category> TGetListCategoryWithArticle();
     }
 
 }

@@ -72,6 +72,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> UpdateAuthor(int id)
         {
+
             var user = await _userManager.FindByIdAsync(id.ToString());
             if (user == null)
             {

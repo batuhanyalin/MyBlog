@@ -26,6 +26,12 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         {
             var values = _userService.TGetAuthorWithCommentArticle();
             return View(values);
+        }      
+        [Route("AdminIndex")]
+        public IActionResult AdminIndex()
+        {
+            var values = _userService.TGetAdminWithCommentArticle();
+            return View(values);
         }
 
         [HttpGet]
@@ -53,6 +59,10 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             else if (user.ImageUrl == null)
             {
                 user.ImageUrl = $"/images/no-image.jpg";
+            }
+            if (user.AppRoleId==null)
+            {
+                user.AppRoleId = 1;
             }
             _userService.TInsert(user);
             return RedirectToAction("AuthorIndex");

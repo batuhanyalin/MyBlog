@@ -7,7 +7,7 @@
 <div class="container">
     <form asp-action="CreateAuthor" asp-controller="Author" asp-area="Admin" method="post" enctype="multipart/form-data">
         <br />
-        <h2>Blog Güncelleme</h2>
+        <h2>Yeni Kullanıcı Ekle</h2>
         <div class="row">
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
@@ -30,10 +30,11 @@
                         <input type="text" class="form-control" asp-for="City">
                     </div>
                     <div>
-                        <label class="form-label">Yazarı Aktif Et: </label>
+                        <label class="form-label">Kullanıcıyı Aktif Et: </label>
                         <input asp-for="IsApproved" type="checkbox" class="form-check-input" />
                         <input type="hidden" asp-for="IsApproved" value="false" />
                     </div>
+                
                 </div>
             </div>
             <div class="col-sm-6 col-xl-6">
@@ -44,13 +45,34 @@
                         <input type="file" class="form-control" name="Image">
                     </div>
                     <br />
+                    <label class="form-label">Kullanıcı Rolü</label>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="AppRoleId" value="1" id="Role1">
+                            <label class="form-check-label" for="Role1">
+                                <i class="fas fa-pen-nib"></i> Yazar
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="AppRoleId" value="2" id="Role2">
+                            <label class="form-check-label" for="Role2">
+                                <i class="fas fa-horse-head"></i> Editör
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="AppRoleId" value="3" id="Role3">
+                            <label class="form-check-label" for="Role3">
+                                <i class="fas fa-user-shield"></i> Admin
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <br />
         <div class="row">
             <div class="bg-light rounded h-200 p-4">
-                <h7 class="mb-4">İçerik</h7>
+                <h7 class="mb-4">Hakkında</h7>
                 <div>
                     <textarea class="form-control" asp-for="About" id="summernote"></textarea>
                 </div>

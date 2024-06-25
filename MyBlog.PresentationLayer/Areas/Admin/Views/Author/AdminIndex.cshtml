@@ -1,0 +1,122 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "AdminIndex";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="container">
+    <br />
+    <div class="row">
+        <h2>Yöneticiler</h2>
+    </div>
+    <div class="row">
+        <a style="height:auto;width:auto" class="btn btn-outline-primary" href="/Admin/Author/CreateAuthor">Yeni Yönetici Ekle</a>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col col-md-12">
+            <div class="bg-light rounded h-300 p-10">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Görsel</th>
+                            <th scope="col">Ad</th>
+                            <th scope="col">Soyad</th>
+                            <th scope="col">Şehir</th>
+                            <th scope="col">E-posta</th>
+                            <th scope="col">Telefon</th>
+                            <th scope="col">Sosyal Medya</th>
+                            <th scope="col">Hakkında</th>
+                            <th scope="col">Toplam Yayın</th>
+                            <th scope="col">Toplam Yorum</th>
+                            <th scope="col">Yayınlarına Git</th>
+                            <th scope="col">Durum</th>
+                            <th scope="col">Güncelle</th>
+                            <th scope="col">Sil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td><img src="@item.ImageUrl" style="height:100px;width:75px;" class="rounded mx-0 d-block" alt="@item.ImageUrl"></td>
+                                <td>@item.Name</td>
+                                <td>@item.Surname</td>
+                                <td>@item.City</td>
+                                <td><a href="mailto:@item.Email">@item.Email</a></td>
+                                <td><a href="tel:@item.PhoneNumber">@item.PhoneNumber</a></td>
+                                <td>
+                                    <a href="@item.FacebookUrl"><i class="fab fa-facebook"></i></a>
+                                    <a href="@item.TwitterUrl"><i class="fab fa-twitter"></i></a>
+                                    <a href="@item.InstagramUrl"><i class="fab fa-instagram"></i></a>
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.About?.Length > 50)
+                                        {
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 50);
+                                            @Html.Raw(summary)
+                                            ;
+                                        }
+                                        else
+                                        {
+                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 50);
+                                            @Html.Raw(summary)?.ToString()
+                                            ;
+                                        }
+                                    }...
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.Articles?.Count() == 0)
+                                        {
+                                            <span>0</span>
+                                        }
+                                        else
+                                        {
+                                            @item.Articles.Count()
+                                        }
+                                    }
+
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.Comments?.Count() == 0)
+                                        {
+                                            <span>0</span>
+                                        }
+                                        else
+                                        {
+                                            @item.Comments.Count()
+                                        }
+                                    }
+                                </td>
+                                <td><a class="btn btn-outline-warning" href="/Blog/BlogList/@item.Id"><i class="fas fa-paper-plane"></i></a></td>
+                                <td>
+                                    <a href="/Admin/Author/ChangeIsApprovedAuthor/@item.Id">
+                                        @{
+                                            if (item.IsApproved == true)
+                                            {
+                                                <i style="color:lightskyblue;font-size:20px" class="fas fa-check-circle"></i>
+                                            }
+                                            else
+                                            {
+                                                <i style="color:palevioletred;font-size:20px" class="fas fa-times-circle"></i>
+                                            }
+                                        }
+                                    </a>
+                                </td>
+                                <td><a class="btn btn-outline-success" href="/Admin/Author/UpdateAuthor/@item.Id">Güncelle</a></td>
+                                <td><a class="btn btn-outline-danger" href="/Admin/Author/DeleteAuthor/@item.Id">Sil</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

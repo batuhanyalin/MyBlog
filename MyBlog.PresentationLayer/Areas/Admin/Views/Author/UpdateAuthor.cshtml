@@ -32,6 +32,27 @@
                         <input asp-for="IsApproved" type="checkbox" class="form-check-input" />
                         <input type="hidden" asp-for="IsApproved" value="false" />
                     </div>
+                    <label class="form-label">Kullanıcı Rolü</label>
+                    <div style="font-size:medium" class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="AppRoleId" value="1" id="Role1">
+                            <label class="form-check-label" for="Role1">
+                                <i class="fas fa-pen-nib"></i> Yazar
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="AppRoleId" value="2" id="Role2">
+                            <label class="form-check-label" for="Role2">
+                                <i class="fas fa-horse-head"></i> Editör
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="AppRoleId" value="3" id="Role3">
+                            <label class="form-check-label" for="Role3">
+                                <i class="fas fa-user-shield"></i> Admin
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6 col-xl-6">

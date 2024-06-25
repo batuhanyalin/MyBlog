@@ -32,7 +32,7 @@
                                 {
                                     <div class="col-lg-4 col-md-4 col-sm-4">
                                         <div class="categories__post__item">
-                                            <div class="categories__post__item__pic small__item set-bg"
+                                            <div class="categories__post__item__pic medium__item set-bg"
                                                  data-setbg="@item.ImageUrl">
                                             </div>
                                             <div class="categories__post__item__text">
@@ -44,14 +44,16 @@
                                                 </ul>
                                                 <p>
                                                     @{
-                                                        if (item.About?.Length > 200)
+                                                        if (item.About?.Length > 50)
                                                         {
-                                                            @item.About.Substring(0, 200)
+                                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 50);
+                                                            @Html.Raw(summary)
                                                             ;
                                                         }
                                                         else
                                                         {
-                                                            @item.About?.ToString()
+                                                            var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 50);
+                                                            @Html.Raw(summary)?.ToString()
                                                             ;
                                                         }
                                                     }...

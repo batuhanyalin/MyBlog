@@ -26,7 +26,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         {
             var values = _userService.TGetAuthorWithCommentArticle();
             return View(values);
-        }      
+        }
         [Route("AdminIndex")]
         public IActionResult AdminIndex()
         {
@@ -42,7 +42,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
         }
         [HttpPost]
         [Route("CreateAuthor")]
-        public async Task<IActionResult> CreateAuthor(AppUser user,IFormFile Image)
+        public async Task<IActionResult> CreateAuthor(AppUser user, IFormFile Image)
         {
             if (Image != null && Image.Length > 0)
             {
@@ -60,14 +60,25 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             {
                 user.ImageUrl = $"/images/no-image.jpg";
             }
-            if (user.AppRoleId==null)
+            if (user.AppRoleId == null)
             {
                 user.AppRoleId = 1;
             }
             _userService.TInsert(user);
             return RedirectToAction("AuthorIndex");
         }
-
+        [Route("DeleteAuthor/{id:int}")]
+        public IActionResult DeleteAuthor(int id)
+        {
+            _userService.TDelete(id);
+            return RedirectToAction("AuthorIndex");
+        }
+        [Route("ChangeIsApprovedAuthor/{id:int}")]
+        public IActionResult ChangeIsApprovedAuthor(int id)
+        {
+            _userService.TChangeIsApprovedArticleById(id);
+            return RedirectToAction("AuthorIndex");
+        }
         [Route("UpdateAuthor/{id:int}")]
         [HttpGet]
         public async Task<IActionResult> UpdateAuthor(int id)
@@ -104,6 +115,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             {
                 user.ImageUrl = $"/images/no-image.jpg";
             }
+
             try
             {
                 var dbUser = await _userManager.FindByIdAsync(user.Id.ToString());
@@ -112,39 +124,54 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
                     return NotFound();
                 }
 
-                // Kullanıcıyı güncellemeden önce orijinal RowVersion değerini ayarla
-                dbUser.RowVersion = user.RowVersion;
-
-                // Kullanıcıyı güncelle
                 dbUser.Name = user.Name;
                 dbUser.Surname = user.Surname;
                 dbUser.City = user.City;
                 dbUser.IsApproved = user.IsApproved;
+                dbUser.Profession = user.Profession;
+                dbUser.Email = user.Email;
+                dbUser.AppRoleId = user.AppRoleId;
                 dbUser.About = user.About;
 
-                // Kullanıcı adı doğrulamasını yaparak güncelle
+                // Eğer gönderilen UserName boşsa, mevcut dbUser.UserName değerini kullan
+                if (string.IsNullOrWhiteSpace(user.UserName))
+                {
+                    user.UserName = dbUser.UserName;
+                }
+
+                // Kullanıcı adı kontrolü ve güncellemesi
                 if (!string.IsNullOrWhiteSpace(user.UserName) && user.UserName != dbUser.UserName)
                 {
-                    var validUserName = user.UserName.Trim().Replace(" ", "_"); // Kullanıcı adı formatını düzenle
-                    dbUser.UserName = validUserName;
+                    if (System.Text.RegularExpressions.Regex.IsMatch(user.UserName, @"^[a-zA-Z0-9]+$"))
+                    {
+                        dbUser.UserName = user.UserName.Trim().Replace(" ", "_");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Kullanıcı adı sadece harfler veya rakamlar içerebilir.");
+                        ViewBag.commentscount = _userService.TGetCommentsCountByAuthor(user.Id);
+                        ViewBag.articlecount = _userService.TGetArticleCountByAuthor(user.Id);
+                        return View(user);
+                    }
                 }
 
                 dbUser.ImageUrl = user.ImageUrl;
+                dbUser.SecurityStamp = Guid.NewGuid().ToString();
 
                 var result = await _userManager.UpdateAsync(dbUser);
                 if (!result.Succeeded)
                 {
-                    // Hataları ele al
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError(string.Empty, error.Description);
                     }
+
                     ViewBag.commentscount = _userService.TGetCommentsCountByAuthor(user.Id);
                     ViewBag.articlecount = _userService.TGetArticleCountByAuthor(user.Id);
                     return View(user);
                 }
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
                 var dbUser = await _userManager.FindByIdAsync(user.Id.ToString());
                 if (dbUser == null)
@@ -152,7 +179,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
                     return NotFound();
                 }
 
-                ModelState.AddModelError(string.Empty, "The record you attempted to edit was modified by another user after you got the original value. The edit operation was canceled and the current values in the database have been displayed. If you still want to edit this record, click the Save button again. Otherwise click the Back to List hyperlink.");
+                ModelState.AddModelError(string.Empty, "Error");
                 ViewBag.commentscount = _userService.TGetCommentsCountByAuthor(user.Id);
                 ViewBag.articlecount = _userService.TGetArticleCountByAuthor(user.Id);
                 return View(user);
@@ -161,17 +188,6 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             return RedirectToAction("AuthorIndex");
         }
 
-        [Route("DeleteAuthor/{id:int}")]
-        public IActionResult DeleteAuthor(int id)
-        {
-            _userService.TDelete(id);
-            return RedirectToAction("AuthorIndex");
-        }
-        [Route("ChangeIsApprovedAuthor/{id:int}")]
-        public IActionResult ChangeIsApprovedAuthor(int id)
-        {
-            _userService.TChangeIsApprovedArticleById(id);
-            return RedirectToAction("AuthorIndex");
-        }
+
     }
 }

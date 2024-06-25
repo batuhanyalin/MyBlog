@@ -33,12 +33,12 @@ namespace MyBlog.PresentationLayer.Controllers
             {
                 var p = await _userManager.FindByNameAsync(model.Username);
 
-                if (p.AppRoleId == 1 || p.AppRoleId == 2)
+                if (p.AppRoleId == 1)
                 {
                     return RedirectToAction("EditProfile", "Profile", new { area = "Writer" });
                 }
 
-                else if (p.AppRoleId == 3)
+                else if (p.AppRoleId == 3 || p.AppRoleId == 2)
                 {
                     return RedirectToAction("EditProfile", "Profile", new { area = "Admin" });
                 }

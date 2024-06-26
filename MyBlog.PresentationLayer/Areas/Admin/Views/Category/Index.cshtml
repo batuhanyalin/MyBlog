@@ -5,8 +5,10 @@
 }
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+<h1>Kategoriler</h1>
 <div class="container">
+    <a href="/Admin/Category/CreateCategory" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
+    <br />
     <br />
     <table class="table table-bordered table-hover">
         <tr>
@@ -21,12 +23,33 @@
             <tr>
                 <td>@item.CategoryId</td>
                 <td>@item.CategoryName</td>
-                <td>@item.Articles.Count()</td>
-                <td><a class="btn btn-outline-danger" href="/Category/CategoryDelete/@item.CategoryId">Sil</a></td>
-                <td><a class="btn btn-outline-success" href="/Category/CategoryUpdate/@item.CategoryId">Güncelle</a></td>
-
+                <td>
+                    @{
+                        // item.Articles null olup olmadığını kontrol ediyorum
+                        if (item.Articles == null || !item.Articles.Any())
+                        {
+                            <span>0</span>
+                        }
+                        else
+                        {
+                            <span>@item.Articles.Count()</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @{
+                        if (item.Articles?.Count > 0)
+                        {
+                            <span>Kategoriye bağlı bloglar varken kategori silinemez.</span>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-danger" href="/Admin/Category/DeleteCategory/@item.CategoryId">Sil</a>
+                        }
+                    }
+                </td>
+                <td><a class="btn btn-outline-success" href="/Admin/Category/UpdateCategory/@item.CategoryId">Güncelle</a></td>
             </tr>
         }
     </table>
-    <a href="/Category/CategoryCreate" class="btn btn-outline-primary">Yeni Kategori Girişi</a>
 </div>

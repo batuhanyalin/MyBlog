@@ -18,7 +18,8 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 		[Route("Index")]
 		public IActionResult Index()
 		{
-			return View();
+			var values=_categoryService.TGetListAll();
+			return View(values);
 		}
 		[Route("CreateCategory")]
 		[HttpGet]

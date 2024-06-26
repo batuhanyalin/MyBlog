@@ -1,6 +1,7 @@
-﻿@model List<MyBlog.EntityLayer.Concrete.Category>
+﻿@model List<Category>
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
 <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -11,6 +12,7 @@
         <tr>
             <th>#</th>
             <th>Kategori Adı</th>
+            <th>Kategoriye Ait Blog Sayısı</th>
             <th>Sil</th>
             <th>Güncelle</th>
         </tr>
@@ -19,6 +21,7 @@
             <tr>
                 <td>@item.CategoryId</td>
                 <td>@item.CategoryName</td>
+                <td>@item.Articles.Count()</td>
                 <td><a class="btn btn-outline-danger" href="/Category/CategoryDelete/@item.CategoryId">Sil</a></td>
                 <td><a class="btn btn-outline-success" href="/Category/CategoryUpdate/@item.CategoryId">Güncelle</a></td>
 

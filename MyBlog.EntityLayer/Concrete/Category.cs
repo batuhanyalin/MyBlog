@@ -10,7 +10,6 @@ namespace MyBlog.EntityLayer.Concrete
     {
         public int CategoryId { get; set; }
         public string? CategoryName { get; set; }
-        public string? ImageUrl { get; set; }
         public List<Article> Articles { get; set; }
     }
 }

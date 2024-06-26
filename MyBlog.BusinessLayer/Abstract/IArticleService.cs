@@ -25,6 +25,7 @@ namespace MyBlog.BusinessLayer.Abstract
         public Article TChangeIsFeaturePostArticleById(int id);
         public List<Article> TGetArticlesWithCategoryForIsApproved();
         public int TGetArticleCountByAuthorId(int id);
+        public List<object> TGetChartData();
 
     }
 }

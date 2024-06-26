@@ -165,5 +165,18 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Articles.Where(x => x.AppUserId == id).Include(x => x.AppUser).Count();
             return values;
         }
+        public List<object> GetChartData()
+        {
+            var values = from artc in context.Articles
+                          join cat in context.Categories on artc.CategoryId equals cat.CategoryId
+                          group cat by cat.CategoryName into C
+                          select new
+                          {
+                              CategoryName = C.Key,
+                              BlogCount = C.Count(),
+                          };
+            return values.ToList<object>();
+
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public Article ChangeIsFeaturePostArticleById(int id);
         public List<Article> GetArticlesWithCategoryForIsApproved();
         public int GetArticleCountByAuthorId(int id);
+        public List<object> GetChartData();
 
     }
 }

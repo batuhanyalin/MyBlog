@@ -116,5 +116,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
            return _articleDal.GetArticleCountByAuthorId(id);
         }
+
+        public List<object> TGetChartData()
+        {
+           return _articleDal.GetChartData();
+        }
     }
 }

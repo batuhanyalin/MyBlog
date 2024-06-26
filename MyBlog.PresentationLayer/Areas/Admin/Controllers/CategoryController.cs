@@ -31,15 +31,25 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 		[HttpPost]
 		public IActionResult CreateCategory(Category category)
 		{
-			return View();
+			_categoryService.TInsert(category);
+			return RedirectToAction("Index");
 		}
 		[Route("UpdateCategory/{id:int}")]
 		[HttpGet]
 		public IActionResult UpdateCategory(int id)
 		{
-			var values = _categoryService.TGetById(id);
+			var values = _categoryService.TGetCategoryByCategoryId(id);
+			if (values.Articles==null)
+			{
+				ViewBag.articleCount = 0;
+			}
+			else
+			{
+				ViewBag.articleCount = values.Articles.Count();
+			}
 			return View(values);
 		}
+		
 		[Route("UpdateCategory/{id:int}")]
 		[HttpPost]
 		public IActionResult UpdateCategory(Category category)

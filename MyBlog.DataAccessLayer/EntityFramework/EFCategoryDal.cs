@@ -21,13 +21,19 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Category> GetCategoryWithArticles()
         {
-            var values=context.Categories.Include(x=>x.Articles).ToList();
+            var values = context.Categories.Include(x => x.Articles).ToList();
             return values;
         }
         public List<Category> GetListCategoryWithArticle()
         {
-            var values=context.Categories.Include(x=>x.Articles).ToList();
+            var values = context.Categories.Include(x => x.Articles).ToList();
             return values;
         }
+        public Category GetCategoryByCategoryId(int id)
+        {
+            var values = context.Categories.Where(x => x.CategoryId == id).Include(x=>x.Articles).FirstOrDefault();
+            return values;
+        }
+
     }
 }

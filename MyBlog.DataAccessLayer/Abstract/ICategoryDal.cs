@@ -12,5 +12,6 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<Category> GetCategory();
         public List<Category> GetCategoryWithArticles();
         public List<Category> GetListCategoryWithArticle();
+        public Category GetCategoryByCategoryId(int id);
     }
 }

@@ -35,12 +35,12 @@ namespace MyBlog.PresentationLayer.Controllers
 
                 if (p.AppRoleId == 1)
                 {
-                    return RedirectToAction("EditProfile", "Profile", new { area = "Writer" });
+                    return RedirectToAction("Index", "Dashboard", new { area = "Writer" });
                 }
 
                 else if (p.AppRoleId == 3 || p.AppRoleId == 2)
                 {
-                    return RedirectToAction("EditProfile", "Profile", new { area = "Admin" });
+                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
                 }
             }
             else

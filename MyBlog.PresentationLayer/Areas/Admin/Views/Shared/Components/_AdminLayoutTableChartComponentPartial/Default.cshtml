@@ -1,40 +1,32 @@
-﻿@model List<MyBlog.PresentationLayer.Areas.Admin.Models.CategoryBlogCount>
+﻿@model List<MyBlog.PresentationLayer.Areas.Admin.Models.CategoryBlogCountChart>
 
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-light text-center rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Kategoriye Göre Blog Sayıları</h6>
-                    <a href="">Listeyi Göster</a>
-                </div>
-                <canvas id="worldwide-sales"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
+<div id="bar_chart" style="height: 500px; display: block; width: 514px;" width="642" height="321"></div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var ctx1 = document.getElementById('worldwide-sales').getContext('2d');
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
 
-        // Verileri Razor Model'den al
-        var categories = @Html.Raw(Json.Serialize(Model.Select(m => m.Category)));
-        var counts = @Html.Raw(Json.Serialize(Model.Select(m => m.Count)));
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Category');
+        data.addColumn('number', 'Blog Count');
 
-        var myChart1 = new Chart(ctx1, {
-            type: 'bar',
-            data: {
-                labels: categories,
-                datasets: [{
-                    label: 'Blog Sayısı',
-                    data: counts,
-                    backgroundColor: 'rgba(0, 156, 255, .7)'
-                }]
-            },
-            options: {
-                responsive: true
-            }
-        });
-    });
+        // Verileri doldur
+        var rows = [
+    @foreach (var item in Model)
+    {
+        <text>['@Html.Raw(item.CategoryName)', @item.BlogCount], </text>
+    }
+            ];
+        data.addRows(rows);
+
+        var options = {
+            title: 'Kategorilere Göre Blog Sayıları',
+            legend: { position: 'none' }
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('bar_chart'));
+        chart.draw(data, options);
+    }
 </script>

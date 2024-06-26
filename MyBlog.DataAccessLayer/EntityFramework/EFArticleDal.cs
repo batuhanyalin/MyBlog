@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyBlog.DataAccessLayer.Abstract;
 using MyBlog.DataAccessLayer.Context;
+using MyBlog.DataAccessLayer.Dto;
 using MyBlog.DataAccessLayer.Repositories;
 using MyBlog.EntityLayer.Concrete;
 using System;
@@ -165,18 +166,18 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Articles.Where(x => x.AppUserId == id).Include(x => x.AppUser).Count();
             return values;
         }
-        public List<object> GetChartData()
+        public List<CategoryBlogCountChartDto> GetChartData()
         {
             var values = from artc in context.Articles
-                          join cat in context.Categories on artc.CategoryId equals cat.CategoryId
-                          group cat by cat.CategoryName into C
-                          select new
-                          {
-                              CategoryName = C.Key,
-                              BlogCount = C.Count(),
-                          };
-            return values.ToList<object>();
-
+                         join cat in context.Categories on artc.CategoryId equals cat.CategoryId
+                         group cat by cat.CategoryName into C
+                         select new CategoryBlogCountChartDto
+                         {
+                             CategoryName = C.Key,
+                             BlogCount = C.Count(),
+                         };
+            return values.ToList();
         }
+
     }
 }

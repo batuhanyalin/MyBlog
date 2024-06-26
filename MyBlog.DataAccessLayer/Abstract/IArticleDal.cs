@@ -1,4 +1,5 @@
-﻿using MyBlog.EntityLayer.Concrete;
+﻿using MyBlog.DataAccessLayer.Dto;
+using MyBlog.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public Article ChangeIsFeaturePostArticleById(int id);
         public List<Article> GetArticlesWithCategoryForIsApproved();
         public int GetArticleCountByAuthorId(int id);
-        public List<object> GetChartData();
+        public List<CategoryBlogCountChartDto> GetChartData();
 
     }
 }

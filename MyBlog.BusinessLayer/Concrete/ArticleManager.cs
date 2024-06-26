@@ -1,5 +1,6 @@
 ﻿using MyBlog.BusinessLayer.Abstract;
 using MyBlog.DataAccessLayer.Abstract;
+using MyBlog.DataAccessLayer.Dto;
 using MyBlog.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -117,9 +118,9 @@ namespace MyBlog.BusinessLayer.Concrete
            return _articleDal.GetArticleCountByAuthorId(id);
         }
 
-        public List<object> TGetChartData()
+        public List<CategoryBlogCountChartDto> TGetChartData()
         {
-           return _articleDal.GetChartData();
+            return _articleDal.GetChartData();
         }
     }
 }

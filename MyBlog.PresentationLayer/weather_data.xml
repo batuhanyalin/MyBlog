@@ -1,0 +1,538 @@
+<weatherdata>
+  <location>
+    <name>Bursa</name>
+    <type></type>
+    <country>TR</country>
+    <timezone>10800</timezone>
+    <location altitude="0" latitude="40.1667" longitude="29.0833" geobase="geonames" geobaseid="750268"></location>
+  </location>
+  <credit></credit>
+  <meta>
+    <lastupdate></lastupdate>
+    <calctime>0</calctime>
+    <nextupdate></nextupdate>
+  </meta>
+  <sun rise="2024-06-27T02:36:16" set="2024-06-27T17:37:04"></sun>
+  <forecast>
+    <time from="2024-06-26T21:00:00" to="2024-06-27T00:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="86" code="E" name="East"></windDirection>
+      <windSpeed mps="1.88" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.38" unit="m/s"></windGust>
+      <temperature unit="celsius" value="15.02" min="15.02" max="16.99"></temperature>
+      <feels_like value="14.48" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1014"></pressure>
+      <humidity value="73" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T00:00:00" to="2024-06-27T03:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="91" code="E" name="East"></windDirection>
+      <windSpeed mps="2.2" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.71" unit="m/s"></windGust>
+      <temperature unit="celsius" value="15.47" min="15.47" max="16.38"></temperature>
+      <feels_like value="15" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1014"></pressure>
+      <humidity value="74" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T03:00:00" to="2024-06-27T06:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="49" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="1.71" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.08" unit="m/s"></windGust>
+      <temperature unit="celsius" value="21.21" min="21.21" max="24.3"></temperature>
+      <feels_like value="20.82" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="55" unit="%"></humidity>
+      <clouds value="açık" all="1" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T06:00:00" to="2024-06-27T09:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="353" code="N" name="North"></windDirection>
+      <windSpeed mps="2.65" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.61" unit="m/s"></windGust>
+      <temperature unit="celsius" value="30.64" min="30.64" max="30.64"></temperature>
+      <feels_like value="29.37" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1010"></pressure>
+      <humidity value="30" unit="%"></humidity>
+      <clouds value="açık" all="1" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T09:00:00" to="2024-06-27T12:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="356" code="N" name="North"></windDirection>
+      <windSpeed mps="4.79" unit="m/s" name="Gentle Breeze"></windSpeed>
+      <windGust gust="3.87" unit="m/s"></windGust>
+      <temperature unit="celsius" value="32.98" min="32.98" max="32.98"></temperature>
+      <feels_like value="31.58" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1009"></pressure>
+      <humidity value="27" unit="%"></humidity>
+      <clouds value="açık" all="1" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T12:00:00" to="2024-06-27T15:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="14" code="NNE" name="North-northeast"></windDirection>
+      <windSpeed mps="3.51" unit="m/s" name="Gentle Breeze"></windSpeed>
+      <windGust gust="2.98" unit="m/s"></windGust>
+      <temperature unit="celsius" value="30.7" min="30.7" max="30.7"></temperature>
+      <feels_like value="29.35" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1008"></pressure>
+      <humidity value="29" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T15:00:00" to="2024-06-27T18:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="70" code="ENE" name="East-northeast"></windDirection>
+      <windSpeed mps="1.39" unit="m/s" name="Calm"></windSpeed>
+      <windGust gust="1.26" unit="m/s"></windGust>
+      <temperature unit="celsius" value="21.94" min="21.94" max="21.94"></temperature>
+      <feels_like value="21.5" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1010"></pressure>
+      <humidity value="50" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T18:00:00" to="2024-06-27T21:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="123" code="ESE" name="East-southeast"></windDirection>
+      <windSpeed mps="0.9" unit="m/s" name="Calm"></windSpeed>
+      <windGust gust="0.85" unit="m/s"></windGust>
+      <temperature unit="celsius" value="19.74" min="19.74" max="19.74"></temperature>
+      <feels_like value="19.21" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1010"></pressure>
+      <humidity value="55" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-27T21:00:00" to="2024-06-28T00:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="75" code="ENE" name="East-northeast"></windDirection>
+      <windSpeed mps="0.61" unit="m/s" name="Calm"></windSpeed>
+      <windGust gust="0.82" unit="m/s"></windGust>
+      <temperature unit="celsius" value="18.25" min="18.25" max="18.25"></temperature>
+      <feels_like value="17.7" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1010"></pressure>
+      <humidity value="60" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T00:00:00" to="2024-06-28T03:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="89" code="E" name="East"></windDirection>
+      <windSpeed mps="1.03" unit="m/s" name="Calm"></windSpeed>
+      <windGust gust="0.88" unit="m/s"></windGust>
+      <temperature unit="celsius" value="17.2" min="17.2" max="17.2"></temperature>
+      <feels_like value="16.65" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1009"></pressure>
+      <humidity value="64" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T03:00:00" to="2024-06-28T06:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="327" code="NNW" name="North-northwest"></windDirection>
+      <windSpeed mps="1.55" unit="m/s" name="Calm"></windSpeed>
+      <windGust gust="1.37" unit="m/s"></windGust>
+      <temperature unit="celsius" value="24.18" min="24.18" max="24.18"></temperature>
+      <feels_like value="23.83" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1009"></pressure>
+      <humidity value="45" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T06:00:00" to="2024-06-28T09:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="348" code="NNW" name="North-northwest"></windDirection>
+      <windSpeed mps="2.7" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.95" unit="m/s"></windGust>
+      <temperature unit="celsius" value="29.88" min="29.88" max="29.88"></temperature>
+      <feels_like value="28.87" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1008"></pressure>
+      <humidity value="33" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T09:00:00" to="2024-06-28T12:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="18" code="NNE" name="North-northeast"></windDirection>
+      <windSpeed mps="6.06" unit="m/s" name="Moderate breeze"></windSpeed>
+      <windGust gust="4.61" unit="m/s"></windGust>
+      <temperature unit="celsius" value="32.98" min="32.98" max="32.98"></temperature>
+      <feels_like value="31.71" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1006"></pressure>
+      <humidity value="28" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T12:00:00" to="2024-06-28T15:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="48" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="6.52" unit="m/s" name="Moderate breeze"></windSpeed>
+      <windGust gust="7.5" unit="m/s"></windGust>
+      <temperature unit="celsius" value="28.48" min="28.48" max="28.48"></temperature>
+      <feels_like value="27.62" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1007"></pressure>
+      <humidity value="33" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T15:00:00" to="2024-06-28T18:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="69" code="ENE" name="East-northeast"></windDirection>
+      <windSpeed mps="3.06" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="4.02" unit="m/s"></windGust>
+      <temperature unit="celsius" value="20.95" min="20.95" max="20.95"></temperature>
+      <feels_like value="20.46" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1010"></pressure>
+      <humidity value="52" unit="%"></humidity>
+      <clouds value="açık" all="7" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T18:00:00" to="2024-06-28T21:00:00">
+      <symbol number="802" name="parçalı az bulutlu" var="03n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="91" code="E" name="East"></windDirection>
+      <windSpeed mps="3.38" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.37" unit="m/s"></windGust>
+      <temperature unit="celsius" value="17.81" min="17.81" max="17.81"></temperature>
+      <feels_like value="17.34" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="65" unit="%"></humidity>
+      <clouds value="parçalı az bulutlu" all="32" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-28T21:00:00" to="2024-06-29T00:00:00">
+      <symbol number="801" name="az bulutlu" var="02n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="88" code="E" name="East"></windDirection>
+      <windSpeed mps="2.82" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.74" unit="m/s"></windGust>
+      <temperature unit="celsius" value="16.38" min="16.38" max="16.38"></temperature>
+      <feels_like value="15.82" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="67" unit="%"></humidity>
+      <clouds value="az bulutlu" all="16" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T00:00:00" to="2024-06-29T03:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="80" code="E" name="East"></windDirection>
+      <windSpeed mps="2.85" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.19" unit="m/s"></windGust>
+      <temperature unit="celsius" value="16.1" min="16.1" max="16.1"></temperature>
+      <feels_like value="15.67" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="73" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T03:00:00" to="2024-06-29T06:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="63" code="ENE" name="East-northeast"></windDirection>
+      <windSpeed mps="3.98" unit="m/s" name="Gentle Breeze"></windSpeed>
+      <windGust gust="6.68" unit="m/s"></windGust>
+      <temperature unit="celsius" value="24.17" min="24.17" max="24.17"></temperature>
+      <feels_like value="23.79" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1012"></pressure>
+      <humidity value="44" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T06:00:00" to="2024-06-29T09:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="53" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="6.51" unit="m/s" name="Moderate breeze"></windSpeed>
+      <windGust gust="7.24" unit="m/s"></windGust>
+      <temperature unit="celsius" value="28.57" min="28.57" max="28.57"></temperature>
+      <feels_like value="27.64" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="32" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T09:00:00" to="2024-06-29T12:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="36" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="8.3" unit="m/s" name="Fresh Breeze"></windSpeed>
+      <windGust gust="7.93" unit="m/s"></windGust>
+      <temperature unit="celsius" value="29.52" min="29.52" max="29.52"></temperature>
+      <feels_like value="28.25" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1010"></pressure>
+      <humidity value="29" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T12:00:00" to="2024-06-29T15:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="43" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="7.24" unit="m/s" name="Moderate breeze"></windSpeed>
+      <windGust gust="8.16" unit="m/s"></windGust>
+      <temperature unit="celsius" value="26.49" min="26.49" max="26.49"></temperature>
+      <feels_like value="26.49" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="38" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T15:00:00" to="2024-06-29T18:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="59" code="ENE" name="East-northeast"></windDirection>
+      <windSpeed mps="3.41" unit="m/s" name="Gentle Breeze"></windSpeed>
+      <windGust gust="5.51" unit="m/s"></windGust>
+      <temperature unit="celsius" value="20.06" min="20.06" max="20.06"></temperature>
+      <feels_like value="19.71" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1012"></pressure>
+      <humidity value="61" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T18:00:00" to="2024-06-29T21:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="93" code="E" name="East"></windDirection>
+      <windSpeed mps="3.13" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.83" unit="m/s"></windGust>
+      <temperature unit="celsius" value="17.61" min="17.61" max="17.61"></temperature>
+      <feels_like value="17.2" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="68" unit="%"></humidity>
+      <clouds value="açık" all="1" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-29T21:00:00" to="2024-06-30T00:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="90" code="E" name="East"></windDirection>
+      <windSpeed mps="2.58" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.71" unit="m/s"></windGust>
+      <temperature unit="celsius" value="16.69" min="16.69" max="16.69"></temperature>
+      <feels_like value="16.09" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="64" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T00:00:00" to="2024-06-30T03:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="83" code="E" name="East"></windDirection>
+      <windSpeed mps="2.57" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.03" unit="m/s"></windGust>
+      <temperature unit="celsius" value="15.92" min="15.92" max="15.92"></temperature>
+      <feels_like value="15.4" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="70" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T03:00:00" to="2024-06-30T06:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="51" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="2.05" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.68" unit="m/s"></windGust>
+      <temperature unit="celsius" value="23.41" min="23.41" max="23.41"></temperature>
+      <feels_like value="22.98" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="45" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T06:00:00" to="2024-06-30T09:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="41" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="4.08" unit="m/s" name="Gentle Breeze"></windSpeed>
+      <windGust gust="4.47" unit="m/s"></windGust>
+      <temperature unit="celsius" value="28.91" min="28.91" max="28.91"></temperature>
+      <feels_like value="27.69" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1012"></pressure>
+      <humidity value="28" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T09:00:00" to="2024-06-30T12:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="38" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="6.64" unit="m/s" name="Moderate breeze"></windSpeed>
+      <windGust gust="5.63" unit="m/s"></windGust>
+      <temperature unit="celsius" value="31.28" min="31.28" max="31.28"></temperature>
+      <feels_like value="29.54" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="24" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T12:00:00" to="2024-06-30T15:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="35" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="5.69" unit="m/s" name="Moderate breeze"></windSpeed>
+      <windGust gust="6.03" unit="m/s"></windGust>
+      <temperature unit="celsius" value="28.33" min="28.33" max="28.33"></temperature>
+      <feels_like value="27.56" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="34" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T15:00:00" to="2024-06-30T18:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="78" code="ENE" name="East-northeast"></windDirection>
+      <windSpeed mps="3.03" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="4.1" unit="m/s"></windGust>
+      <temperature unit="celsius" value="20.97" min="20.97" max="20.97"></temperature>
+      <feels_like value="20.53" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="54" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T18:00:00" to="2024-06-30T21:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="95" code="E" name="East"></windDirection>
+      <windSpeed mps="2.97" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.24" unit="m/s"></windGust>
+      <temperature unit="celsius" value="18.65" min="18.65" max="18.65"></temperature>
+      <feels_like value="18.09" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="58" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-06-30T21:00:00" to="2024-07-01T00:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="95" code="E" name="East"></windDirection>
+      <windSpeed mps="2.31" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="2.22" unit="m/s"></windGust>
+      <temperature unit="celsius" value="17.95" min="17.95" max="17.95"></temperature>
+      <feels_like value="17.18" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="53" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-07-01T00:00:00" to="2024-07-01T03:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="97" code="E" name="East"></windDirection>
+      <windSpeed mps="1.95" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="1.73" unit="m/s"></windGust>
+      <temperature unit="celsius" value="17.52" min="17.52" max="17.52"></temperature>
+      <feels_like value="16.74" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="54" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-07-01T03:00:00" to="2024-07-01T06:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="19" code="NNE" name="North-northeast"></windDirection>
+      <windSpeed mps="1.92" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.38" unit="m/s"></windGust>
+      <temperature unit="celsius" value="25.32" min="25.32" max="25.32"></temperature>
+      <feels_like value="24.8" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1013"></pressure>
+      <humidity value="34" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-07-01T06:00:00" to="2024-07-01T09:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="41" code="NE" name="NorthEast"></windDirection>
+      <windSpeed mps="4.08" unit="m/s" name="Gentle Breeze"></windSpeed>
+      <windGust gust="4.01" unit="m/s"></windGust>
+      <temperature unit="celsius" value="30.49" min="30.49" max="30.49"></temperature>
+      <feels_like value="28.77" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="23" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-07-01T09:00:00" to="2024-07-01T12:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="29" code="NNE" name="North-northeast"></windDirection>
+      <windSpeed mps="5.43" unit="m/s" name="Gentle Breeze"></windSpeed>
+      <windGust gust="4.49" unit="m/s"></windGust>
+      <temperature unit="celsius" value="32.71" min="32.71" max="32.71"></temperature>
+      <feels_like value="30.8" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1009"></pressure>
+      <humidity value="22" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-07-01T12:00:00" to="2024-07-01T15:00:00">
+      <symbol number="800" name="açık" var="01d"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="24" code="NNE" name="North-northeast"></windDirection>
+      <windSpeed mps="5.99" unit="m/s" name="Moderate breeze"></windSpeed>
+      <windGust gust="4.89" unit="m/s"></windGust>
+      <temperature unit="celsius" value="29.99" min="29.99" max="29.99"></temperature>
+      <feels_like value="28.82" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1009"></pressure>
+      <humidity value="31" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-07-01T15:00:00" to="2024-07-01T18:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="68" code="ENE" name="East-northeast"></windDirection>
+      <windSpeed mps="2.55" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="3.01" unit="m/s"></windGust>
+      <temperature unit="celsius" value="22.19" min="22.19" max="22.19"></temperature>
+      <feels_like value="21.87" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="54" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+    <time from="2024-07-01T18:00:00" to="2024-07-01T21:00:00">
+      <symbol number="800" name="açık" var="01n"></symbol>
+      <precipitation probability="0"></precipitation>
+      <windDirection deg="120" code="ESE" name="East-southeast"></windDirection>
+      <windSpeed mps="1.99" unit="m/s" name="Light breeze"></windSpeed>
+      <windGust gust="1.65" unit="m/s"></windGust>
+      <temperature unit="celsius" value="20.05" min="20.05" max="20.05"></temperature>
+      <feels_like value="19.65" unit="celsius"></feels_like>
+      <pressure unit="hPa" value="1011"></pressure>
+      <humidity value="59" unit="%"></humidity>
+      <clouds value="açık" all="0" unit="%"></clouds>
+      <visibility value="10000"></visibility>
+    </time>
+  </forecast>
+</weatherdata>

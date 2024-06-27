@@ -1,6 +1,16 @@
 ﻿@model List<MyBlog.PresentationLayer.Areas.Admin.Models.CategoryBlogCountChart>
-
-<div id="bar_chart" style="height: 500px; display: block; width: 514px;" width="642" height="321"></div>
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div id="bar_chart" style="height: 500px; display: block; width: stretch;" width="642" height="321"></div>
+        </div>
+       <div class="col">
+           <br />
+            <div id="weatherapi-weather-widget-4"></div><script type='text/javascript' src='https://www.weatherapi.com/weather/widget.ashx?loc=2418446&wid=4&tu=2&div=weatherapi-weather-widget-4' async></script><noscript><a href="https://www.weatherapi.com/weather/q/bursa-2418446" alt="Hour by hour Bursa weather">10 günlük Bursa Hava Durumu</a></noscript>
+       </div>
+    </div>   
+</div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -18,7 +28,7 @@
     {
         <text>['@Html.Raw(item.CategoryName)', @item.BlogCount], </text>
     }
-            ];
+                    ];
         data.addRows(rows);
 
         var options = {

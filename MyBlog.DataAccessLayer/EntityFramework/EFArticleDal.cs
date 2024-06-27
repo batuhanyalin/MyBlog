@@ -29,7 +29,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<Article> GetArticlesWithCategory()
         {
-            var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).ToList();
+            var values = context.Articles.Include(x => x.Category).Include(x => x.Comments).Include(x => x.AppUser).OrderByDescending(x=>x.CreatedDate).ToList();
             return values;
         }
 

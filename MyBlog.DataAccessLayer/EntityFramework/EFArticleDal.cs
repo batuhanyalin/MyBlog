@@ -178,6 +178,13 @@ namespace MyBlog.DataAccessLayer.EntityFramework
                          };
             return values.ToList();
         }
+        public int GetArticleCountByToday()
+        {
+            var startOfDay = DateTime.Today;
+            var endOfDay = startOfDay.AddDays(1).AddTicks(-1);
 
+            var values = context.Articles.Where(x => x.CreatedDate >= startOfDay && x.CreatedDate <= endOfDay).Count();
+            return values;
+        }
     }
 }

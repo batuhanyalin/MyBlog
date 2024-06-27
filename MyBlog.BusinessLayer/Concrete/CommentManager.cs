@@ -62,5 +62,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _commentDal.GetCommentCountByGuestNameSurname(Name, Surname);
         }
+
+        public int TGetCommentCountByToday()
+        {
+            return _commentDal.GetCommentCountByToday();
+        }
     }
 }

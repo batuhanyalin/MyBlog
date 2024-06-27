@@ -42,5 +42,12 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var value = context.Comments.Where(x => x.Name == Name && x.Surname == Surname).Count();
             return value;
         }
+        public int GetCommentCountByToday()
+        {
+            var startOfDay=DateTime.Today;
+            var endOfDay = startOfDay.AddDays(1).AddTicks(-1);
+            var values = context.Comments.Where(x => x.CreatedDate >= startOfDay && x.CreatedDate <= endOfDay).Count();
+            return values;
+        }
     }
 }

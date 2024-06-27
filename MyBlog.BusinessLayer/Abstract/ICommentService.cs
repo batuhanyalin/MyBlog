@@ -13,5 +13,6 @@ namespace MyBlog.BusinessLayer.Abstract
         public Comment TChangeIsApproved(int id);
         public List<Comment> TGetListAllWithArticleAndAuthor();
         public int TGetCommentCountByGuestNameSurname(string Name, string Surname);
+        public int TGetCommentCountByToday();
     }
 }

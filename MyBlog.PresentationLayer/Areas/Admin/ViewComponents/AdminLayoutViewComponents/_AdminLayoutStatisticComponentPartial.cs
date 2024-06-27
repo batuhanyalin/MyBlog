@@ -16,7 +16,8 @@ namespace MyBlog.PresentationLayer.Areas.Admin.ViewComponents.AdminLayoutViewCom
 
         public IViewComponentResult Invoke()
         {
-            var values=_articleService.TGetListAll();
+            ViewBag.todayBlogCount = _articleService.TGetArticleCountByToday();
+            ViewBag.todayCommentCount = _commentService.TGetCommentCountByToday();
             return View();
         }
     }

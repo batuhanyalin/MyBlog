@@ -122,5 +122,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _articleDal.GetChartData();
         }
+
+        public int TGetArticleCountByToday()
+        {
+            return _articleDal.GetArticleCountByToday();
+        }
     }
 }

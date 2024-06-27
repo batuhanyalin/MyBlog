@@ -30,6 +30,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<Article> GetArticlesWithCategoryForIsApproved();
         public int GetArticleCountByAuthorId(int id);
         public List<CategoryBlogCountChartDto> GetChartData();
+        public int GetArticleCountByToday();
 
     }
 }

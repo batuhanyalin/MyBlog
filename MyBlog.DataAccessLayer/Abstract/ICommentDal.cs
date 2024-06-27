@@ -13,5 +13,6 @@ namespace MyBlog.DataAccessLayer.Abstract
         public Comment ChangeIsApproved(int id);
         public List<Comment> GetListAllWithArticleAndAuthor();
         public int GetCommentCountByGuestNameSurname(string Name, string Surname);
+        public int GetCommentCountByToday();
     }
 }

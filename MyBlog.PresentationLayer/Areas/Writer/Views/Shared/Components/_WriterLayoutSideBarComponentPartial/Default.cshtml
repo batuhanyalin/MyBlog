@@ -1,9 +1,13 @@
 ﻿@model AppUser
+<br />
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+        <br />
+        <a class="sidebar-brand brand-logo" href="/Write/Dashboard/Index"><img src="~/images/logo.png" /><br /><span style="font-size:large" class="badge badge-info text white">YAZAR PANELİ</span></a>
+        <br />
+        <a class="sidebar-brand brand-logo-mini pl-3 pt-3" href="/Write/Dashboard/Index"><img style="height:30px;width:30px" src="~/images/batuhan-yalin-logo.png" /></a>
     </div>
+    <br />
     <ul class="nav">
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
@@ -20,13 +24,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/Writer/Dashboard/Index">
                 <i class="mdi mdi-home menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="/Writer/Blog/CreateBlog">
                 <i class="mdi mdi-blogger menu-icon">+</i>
                 <span class="menu-title">Yeni Blog</span>
             </a>
@@ -60,11 +64,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Writer/Message/DraftMessage">
                             <i class="mdi mdi-content-save menu-icon"></i>
-                            <span class="menu-title"><span class="badge badge-secondary text-white ml-1 rounded">@ViewBag.JunkMessageCount</span> Taslaklar</span>
+                            <span class="menu-title"><span class="badge badge-secondary text-white ml-1 rounded">@ViewBag.DraftMessageCount</span> Taslaklar</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Writer/Message/ImportMessage">
+                        <a class="nav-link" href="/Writer/Message/ImportantMessage">
                             <i class="mdi mdi-star menu-icon"></i>
                             <span class="menu-title"><span class="badge badge-danger text-white ml-1 rounded">@ViewBag.ImportantMessageCount</span> Önemliler</span>
                         </a>
@@ -72,20 +76,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Writer/Message/JunkMessage">
                             <i class="mdi mdi-delete menu-icon"></i>
-                            <span class="menu-title"><span class="badge badge-dark text-white ml-1 rounded">@ViewBag.DraftMessageCount</span> Silinenler</span>
+                            <span class="menu-title"><span class="badge badge-dark text-white ml-1 rounded">@ViewBag.JunkMessageCount</span> Silinenler</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="/Writer/Blog/Index">
                 <i class="mdi mdi mdi-blogger menu-icon"></i>
                 <span class="menu-title">Bloglarım</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="/Writer/Content/Index">
                 <i class="mdi mdi-comment menu-icon"></i>
                 <span class="menu-title">Yorumlar</span>
             </a>

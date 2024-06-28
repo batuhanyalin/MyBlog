@@ -31,7 +31,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public async Task<List<Message>> GetDraftMessage(int id)
         {
-            return await context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == true).Include(x => x.Receiver).Include(x => x.Sender).ToListAsync();
+            return await context.Messages.Where(x => x.SenderId == id).Where(x => x.IsDraft == true).Include(x => x.Receiver).Include(x => x.Sender).OrderByDescending(x=>x.SendingTime).ToListAsync();
         }
 
         public async Task<List<Message>> GetSentMessage(int id)

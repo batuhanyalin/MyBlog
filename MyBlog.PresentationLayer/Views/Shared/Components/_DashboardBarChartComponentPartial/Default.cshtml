@@ -1,14 +1,10 @@
 ﻿@model List<MyBlog.PresentationLayer.Areas.Admin.Models.CategoryBlogCountChart>
-<br />
-<div class="row">
-    <div class="col col-md-4">
-        @await Component.InvokeAsync("_DashboardBarChartComponentPartial")
-    </div>
-    <div class="col col-md-8">
-        @await Component.InvokeAsync("_AdminLayoutDashboardWeatherChartComponentPartial")
+
+<div class="card">
+    <div class="card-body">
+        <div id="bar_chart" style="height: 320px; display: block; width: stretch;" width="642" height="321"></div>
     </div>
 </div>
-
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -26,7 +22,7 @@
     {
         <text>['@Html.Raw(item.CategoryName)', @item.BlogCount], </text>
     }
-                                    ];
+                                            ];
         data.addRows(rows);
 
         var options = {

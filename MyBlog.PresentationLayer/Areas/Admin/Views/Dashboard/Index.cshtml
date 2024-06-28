@@ -3,13 +3,15 @@
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 <div class="alert alert-success alert-dismissable">
-	<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
     Sistemsel herhangi bir sorun veya eksiklikte sistem yöneticisine <a href="/Admin/Message/CreateMessage">mesaj</a> veya <a href="mailto:info@batuhanyalin.com">mail</a> atın.
 </div>
 <!-- İstatistikler 4'lü -->
 @await Component.InvokeAsync("_AdminLayoutStatisticComponentPartial")
 <!-- Tablolar Chart -->
-@await Component.InvokeAsync("_AdminLayoutTableChartComponentPartial")
+<div class="container">
+    @await Component.InvokeAsync("_AdminLayoutTableChartComponentPartial")
+</div>
 <!-- Tablo listesi -->
 @await Component.InvokeAsync("_AdminLayoutTableListComponentPartial")
 <!-- Widgetlar -->

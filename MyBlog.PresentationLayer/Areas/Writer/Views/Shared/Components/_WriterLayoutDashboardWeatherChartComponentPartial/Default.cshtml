@@ -22,7 +22,8 @@
                         @foreach (var forecast in Model.DailyForecasts)
                         {
                             <li class="weakly-weather-item text-white font-weight-medium text-center">
-                                <p class="mb-0">@forecast.Date</p>
+                                <p class="mb-0">@DateTime.ParseExact(forecast.Date, "yyyy-MM-dd HH:mm:ss", null).ToString("dd MMM, yyy")</p>
+
                                 <img src="http://openweathermap.org/img/wn/@(forecast.WeatherIcon).png" alt="weather-icon">
                                 <p class="mb-0">@forecast.Temperature<span class="symbol">°c</span></p>
                             </li>

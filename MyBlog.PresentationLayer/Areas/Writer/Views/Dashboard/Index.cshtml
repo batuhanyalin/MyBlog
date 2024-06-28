@@ -78,15 +78,11 @@
         </div>
         <div class="row">
             <div class="col col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title text-black">Business Survey</h4>
-                        <p class="text-muted pb-2">Jan 01 2019 - Dec 31 2019</p>
-                        <canvas id="surveyBar"></canvas>
-                    </div>
-                </div>
+                @await Component.InvokeAsync("_DashboardBarChartComponentPartial")
             </div>
+            <div class="col-xl-8 grid-margin stretch-card">
                 @await Component.InvokeAsync("_WriterLayoutDashboardWeatherChartComponentPartial")
-        </div>       
+            </div>
+        </div>
     </div>
 </div>

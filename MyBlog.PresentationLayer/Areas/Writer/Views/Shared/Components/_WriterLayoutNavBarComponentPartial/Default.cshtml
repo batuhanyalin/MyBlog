@@ -9,24 +9,6 @@
             @await Component.InvokeAsync("_WriterLayoutNavBarNotificationComponentPartial")
             <!--Message-->
             @await Component.InvokeAsync("_WriterLayoutNavBarMessageComponentPartial")
-            <!--Search-->
-            @await Component.InvokeAsync("_WriterLayoutNavBarSearchComponentPartial")
-        </ul>
-        <ul class="navbar-nav navbar-nav-right ml-lg-auto">
-            <!--Dil seçeneği-->
-            <li class="nav-item dropdown d-none d-xl-flex border-0">
-                <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown">
-                    <i class="mdi mdi-earth"></i> English
-                </a>
-                <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-                    <a class="dropdown-item" href="#"> French </a>
-                    <a class="dropdown-item" href="#"> Spain </a>
-                    <a class="dropdown-item" href="#"> Latin </a>
-                    <a class="dropdown-item" href="#"> Japanese </a>
-                </div>
-            </li>
-            <!--Profil butonu-->
-            @await Component.InvokeAsync("_WriterLayoutNavBarProfileComponentPartial")
         </ul>
         <!--Mobil menü butonu-->
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

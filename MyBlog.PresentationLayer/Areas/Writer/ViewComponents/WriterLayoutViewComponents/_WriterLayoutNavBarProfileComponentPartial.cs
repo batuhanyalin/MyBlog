@@ -1,12 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.ViewComponents.WriterLayoutViewComponents
 {
     public class _WriterLayoutNavBarProfileComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly UserManager<AppUser> _userManager;
+
+        public _WriterLayoutNavBarProfileComponentPartial(UserManager<AppUser> userManager)
         {
-            return View();
+            _userManager = userManager;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            return View(user);
         }
     }
 }

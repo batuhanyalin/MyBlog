@@ -1,41 +1,72 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
-using System.Linq;
-using MyBlog.PresentationLayer.Areas.Writer.Models;
+using MyBlog.PresentationLayer.Models;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.ViewComponents.WriterLayoutViewComponents
 {
     public class _WriterLayoutDashboardWeatherChartComponentPartial : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        private readonly string apiKey = "005c3d4023416e627507d8edf707781e";
+        private readonly string apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=Bursa,tr&units=metric&lang=tr&appid={0}";
+        private static readonly Dictionary<string, string> weatherDescriptions = new Dictionary<string, string>
         {
-            string api = "005c3d4023416e627507d8edf707781e";
-            string connection = "https://api.openweathermap.org/data/2.5/forecast?q=Bursa&mode=xml&units=metric&appid=" + api + "&lang=tr";
-            XDocument document = XDocument.Load(connection);
+            { "clear sky", "Açık Hava" },
+            { "few clouds", "Az Bulutlu" },
+            { "scattered clouds", "Parçalı Bulutlu" },
+            { "broken clouds", "Çok Bulutlu" },
+            { "shower rain", "Sağanak Yağmurlu" },
+            { "rain", "Yağmurlu" },
+            { "thunderstorm", "Gök Gürültülü Fırtına" },
+            { "snow", "Karlı" },
+            { "mist", "Sisli" },
+            { "light rain", "Hafif Yağmurlu" },
+        };
 
-            var cityElement = document.Descendants("location").ElementAtOrDefault(0);
-            var countryElement = document.Descendants("country").ElementAtOrDefault(0);
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var weatherForecast = await GetWeatherForecastAsync();
+            return View(weatherForecast);
+        }
 
-            var forecasts = document.Descendants("time")
-                .Select(forecast => new WeatherForecast
-                {
-                    Date = DateTime.Parse(forecast.Attribute("from").Value),
-                    Weather = forecast.Descendants("symbol").ElementAtOrDefault(0)?.Attribute("name")?.Value ?? "N/A",
-                    WeatherIcon = forecast.Descendants("symbol").ElementAtOrDefault(0)?.Attribute("var")?.Value ?? "01d",
-                    Temperature = float.TryParse(forecast.Descendants("temperature").ElementAtOrDefault(0)?.Attribute("value")?.Value, out var temp) ? temp : 0,
-                    WindSpeed = float.TryParse(forecast.Descendants("windSpeed").ElementAtOrDefault(0)?.Attribute("mps")?.Value, out var wind) ? wind : 0,
-                    Humidity = int.TryParse(forecast.Descendants("humidity").ElementAtOrDefault(0)?.Attribute("value")?.Value, out var humidity) ? humidity : 0
-                }).ToList();
-
-            var weatherForecastViewModel = new WeatherForecastViewModel
+        private async Task<WeatherForecastViewModel> GetWeatherForecastAsync()
+        {
+            using (var client = new HttpClient())
             {
-                City = cityElement?.Element("name")?.Value ?? "Bursa",
-                Country = countryElement?.Value ?? "Turkey",
-                Forecasts = forecasts
-            };
+                var response = await client.GetStringAsync(string.Format(apiUrl, apiKey));
+                var json = JObject.Parse(response);
 
-            return View(weatherForecastViewModel);
+                var weatherDescription = json["list"][0]["weather"][0]["description"].ToString();
+                var translatedDescription = weatherDescriptions.ContainsKey(weatherDescription) ? weatherDescriptions[weatherDescription] : weatherDescription;
+                var formattedDescription = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(translatedDescription.ToLower());
+
+                var weatherForecast = new WeatherForecastViewModel
+                {
+                    City = json["city"]["name"].ToString(),
+                    Country = json["city"]["country"].ToString(),
+                    CurrentTemperature = (double)json["list"][0]["main"]["temp"],
+                    CurrentWeatherDescription = formattedDescription,
+                    CurrentHumidity = (int)json["list"][0]["main"]["humidity"],
+                    CurrentWindSpeed = (double)json["list"][0]["wind"]["speed"],
+                    DailyForecasts = new List<DailyForecast>()
+                };
+
+                for (int i = 0; i < json["list"].Count(); i += 8)
+                {
+                    var dailyForecast = new DailyForecast
+                    {
+                        Date = json["list"][i]["dt_txt"].ToString(),
+                        Temperature = (double)json["list"][i]["main"]["temp"],
+                        WeatherIcon = json["list"][i]["weather"][0]["icon"].ToString()
+                    };
+                    weatherForecast.DailyForecasts.Add(dailyForecast);
+                }
+
+                return weatherForecast;
+            }
         }
     }
 }

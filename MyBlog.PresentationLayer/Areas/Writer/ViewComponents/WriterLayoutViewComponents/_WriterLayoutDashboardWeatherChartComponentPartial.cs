@@ -23,8 +23,8 @@ namespace MyBlog.PresentationLayer.Areas.Writer.ViewComponents.WriterLayoutViewC
                     Date = DateTime.Parse(forecast.Attribute("from").Value),
                     Weather = forecast.Descendants("symbol").ElementAtOrDefault(0)?.Attribute("name")?.Value ?? "N/A",
                     WeatherIcon = forecast.Descendants("symbol").ElementAtOrDefault(0)?.Attribute("var")?.Value ?? "01d",
-                    Temperature = double.TryParse(forecast.Descendants("temperature").ElementAtOrDefault(0)?.Attribute("value")?.Value, out var temp) ? temp : 0,
-                    WindSpeed = double.TryParse(forecast.Descendants("windSpeed").ElementAtOrDefault(0)?.Attribute("mps")?.Value, out var wind) ? wind : 0,
+                    Temperature = float.TryParse(forecast.Descendants("temperature").ElementAtOrDefault(0)?.Attribute("value")?.Value, out var temp) ? temp : 0,
+                    WindSpeed = float.TryParse(forecast.Descendants("windSpeed").ElementAtOrDefault(0)?.Attribute("mps")?.Value, out var wind) ? wind : 0,
                     Humidity = int.TryParse(forecast.Descendants("humidity").ElementAtOrDefault(0)?.Attribute("value")?.Value, out var humidity) ? humidity : 0
                 }).ToList();
 

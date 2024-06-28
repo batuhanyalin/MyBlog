@@ -12,8 +12,8 @@
         public DateTime Date { get; set; }
         public string Weather { get; set; }
         public string WeatherIcon { get; set; }
-        public double Temperature { get; set; }
-        public double WindSpeed { get; set; }
+        public float Temperature { get; set; }
+        public float WindSpeed { get; set; }
         public int Humidity { get; set; }
     }
 

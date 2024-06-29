@@ -14,5 +14,6 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<Comment> GetListAllWithArticleAndAuthor();
         public int GetCommentCountByGuestNameSurname(string Name, string Surname);
         public int GetCommentCountByToday();
+        public List<Comment> GetListAllWithArticleByAuthorId(int id);
     }
 }

@@ -1,51 +1,98 @@
-﻿@model MyBlog.EntityLayer.Concrete.Article
+﻿@model Article
 @{
     ViewData["Title"] = "UpdateBlog";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
 }
 
-     <div class="main-panel">
-          <div class="content-wrapper">
+<div class="main-panel">
+    <form class="forms-sample" asp-action="UpdateBlog" asp-controller="Blog" asp-area="Writer" method="post" enctype="multipart/form-data">
+        <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Blog Güncelleme Sayfası</h3>
-              <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Blog Listem</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Blog</li>
-                </ol>
-              </nav>
+                <h3 class="page-title">Blog Güncelleme Sayfası</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Blog Güncelleme</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Bloglarım</li>
+                    </ol>
+                </nav>
             </div>
             <div class="row">
-              <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Blog Güncelleme Paneli</h4>
-                    <p class="card-description">Aşağıdaki alanları eksiksiz olarak doldurunuz.</p>
-                    <form class="forms-sample" method="post">
-                      <div class="form-group">
-                          <input type="hidden" asp-for="ArticleId" />
-                          <input type="hidden" asp-for="AppUserId" />
-                          <input type="hidden" asp-for="CreatedDate" />
-                        <label>Blog Başlığı</label>
-                        <input type="text" asp-for=Title class="form-control" />
-                      </div>
-                      <div class="form-group">
-                        <label>Blog Kapak Url</label>
-                        <input type="text" asp-for="CoverImageUrl" class="form-control" />
-                      </div>
-                       <div class="form-group">
-                        <label>Kategori</label>
-                        @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.category,new{@class="form-control"})
-                      </div>
-                       <div class="form-group">
-                        <label>Blog İçeriği</label>
-                        <textarea class="form-control" asp-for="Detail" rows="10"></textarea>
-                      </div>
-                      <button type="submit" class="btn btn-success mr-2"> Bloğu Güncelle </button>
-                    </form>
-                  </div>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="hidden" asp-for="ArticleId" />
+                                <input type="hidden" asp-for="AppUserId" />
+                                <input type="hidden" asp-for="CoverImageUrl" />
+                                <input type="hidden" asp-for="IsFeaturePost" value="false" />
+                                <input type="hidden" asp-for="IsApproved" value="false" />
+                                <div class="mb-3">
+                                    <label class="form-label">Blog Başlığı</label>
+                                    <input type="text" class="form-control" asp-for="Title">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Kategori</label>
+                                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.categories, new { @class = "form-control" })
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Oluşturulma Tarihi:</label>
+                                    <label class="form-label">@Model.CreatedDate.ToString("dd.MM.yyy HH:mm:ss")</label>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Son Güncellenme Tarihi:</label>
+                                    @{
+                                        if (Model.UpdateDate == null)
+                                        {
+                                            <label class="form-label">Henüz güncellenmemiş</label>
+                                        }
+                                    }
+                                    <label class="form-label">@Model.UpdateDate?.ToString("dd.MM.yyy HH:mm:ss")</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="col">
+                                <h5>Güncel Blog Görseli</h5>
+                                <img height="100" width="150" src="@Model.CoverImageUrl" />
+                            </div>
+                            <br />
+                            <div class="col">
+                                <label class="form-label">Görseli Değiştir</label>
+                                <input type="file" class="form-control" asp-for="CoverImageUrl">
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div
+            <div class="row">
+                <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mb-4">İçerik</h4>
+                            <div>
+                                <textarea class="form-control" asp-for="Detail" id="summernote"></textarea>
+                            </div>
+                            <br />
+                            <div class="mb-3">
+                                <button class="btn btn-success" type="submit">Güncelle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </form>
+</div>
+<script>
+    $('#summernote').summernote({
+        height: 1000,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                  // set focus to editable area after initializing summernote
+    });
+</script>

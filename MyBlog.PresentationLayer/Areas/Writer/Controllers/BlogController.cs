@@ -10,70 +10,118 @@ using NuGet.Protocol.Core.Types;
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
     [Area("Writer")] //Area tanıtılıyor.
+    [Route("Writer/[controller]")]
     public class BlogController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
+        private readonly IArticleTagService _articleTagService;
 
-        public BlogController(UserManager<AppUser> userManager, IArticleService articleService, ICategoryService categoryService)
+        public BlogController(UserManager<AppUser> userManager, IArticleService articleService, ICategoryService categoryService, IArticleTagService articleTagService)
         {
             _userManager = userManager;
             _articleService = articleService;
             _categoryService = categoryService;
+            _articleTagService = articleTagService;
         }
-        public async Task<IActionResult> MyBlogList() //Giriş yapan yazara ait blogları tutacak olan
+        [Route("Index")]
+        public async Task<IActionResult> Index() //Giriş yapan yazara ait blogları tutacak olan
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var values = _articleService.TGetArticlesByWriter(user.Id);
             return View(values);
 
         }
+        [Route("DeleteBlog/{id:int}")]
         public IActionResult DeleteBlog(int id)
         {
             _articleService.TDelete(id);
-            return RedirectToAction("MyBlogList");
+            return RedirectToAction("Index");
         }
+        [Route("UpdateBlog/{id:int}")]
         [HttpGet]
         public IActionResult UpdateBlog(int id)
         {
-            List<SelectListItem> category = (from x in _categoryService.TGetListAll()
-                                             select new SelectListItem
-                                             {
-                                                 Text = x.CategoryName,
-                                                 Value = x.CategoryId.ToString()
-                                             }).ToList();
-            ViewBag.category = category;
             var values = _articleService.TGetById(id);
+            var articletag = _articleTagService.TGetListAll();
+            var categories = _categoryService.TGetListAll();
+            //Kategoriler listeleniyor
+            List<SelectListItem> cat = (from x in categories.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.CategoryName,
+                                            Value = x.CategoryId.ToString()
+                                        }).ToList();
+            ViewBag.categories = cat;
             return View(values);
         }
+        [Route("UpdateBlog/{id}")]
         [HttpPost]
-        public IActionResult UpdateBlog(Article model)
+        public IActionResult UpdateBlog(Article article, IFormFile CoverImageUrl)
         {
-            _articleService.TUpdate(model);
-            return RedirectToAction("MyBlogList");
+            if (CoverImageUrl != null && CoverImageUrl.Length > 0)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(CoverImageUrl.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = Path.Combine(resource, "wwwroot/images", imageName);
+
+                using (var stream = new FileStream(saveLocation, FileMode.Create))
+                {
+                    CoverImageUrl.CopyTo(stream);
+                }
+
+                article.CoverImageUrl = $"/images/{imageName}";
+            }
+            else if (article.CoverImageUrl == null)
+            {
+                article.CoverImageUrl = $"/images/no-image.jpg";
+            }
+            article.UpdateDate = DateTime.Now;
+            _articleService.TUpdate(article);
+            return RedirectToAction("Index");
         }
+        [Route("CreateBlog")]
         [HttpGet]
         public IActionResult CreateBlog()
         {
 
-            List<SelectListItem> values = (from x in _categoryService.TGetListAll()
-                                           select new SelectListItem
-                                           {
-                                               Text = x.CategoryName,
-                                               Value = x.CategoryId.ToString()
-                                           }).ToList();
-            ViewBag.categories = values;
+            var categories = _categoryService.TGetListAll();
+            List<SelectListItem> cat = (from x in categories.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.CategoryName,
+                                            Value = x.CategoryId.ToString()
+                                        }).ToList();
+            ViewBag.categories = cat;
             return View();
         }
+        [Route("CreateBlog")]
         [HttpPost]
-        public async Task<IActionResult> CreateBlog(Article model)
+        public IActionResult CreateBlog(Article article, IFormFile CoverImageUrl)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            model.CreatedDate = DateTime.Now;
-            model.AppUserId = user.Id;
-            _articleService.TInsert(model);
-            return RedirectToAction("MyBlogList");
+            if (CoverImageUrl != null && CoverImageUrl.Length > 0)
+            {
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(CoverImageUrl.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = Path.Combine(resource, "wwwroot/images", imageName);
+
+                using (var stream = new FileStream(saveLocation, FileMode.Create))
+                {
+                    CoverImageUrl.CopyTo(stream);
+                }
+
+                article.CoverImageUrl = $"/images/{imageName}";
+            }
+            else if (article.CoverImageUrl == null)
+            {
+                article.CoverImageUrl = $"/images/no-image.jpg";
+            }
+            article.CreatedDate = DateTime.Now;
+            _articleService.TInsert(article);
+            return RedirectToAction("Index");
         }
     }
 }

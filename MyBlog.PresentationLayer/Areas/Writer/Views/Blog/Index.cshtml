@@ -1,5 +1,6 @@
-﻿@model List<MyBlog.EntityLayer.Concrete.Article>
+﻿@model List<Article>
 @{
+    ViewData["Title"] = "Index";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
 }
 
@@ -9,19 +10,16 @@
             <h3 class="page-title">Blog Sayfası</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Bloglar</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> Benim Bloglarım </li>
+                    <li class="breadcrumb-item"><a href="#">Bloglarım</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Bloglar</li>
                 </ol>
             </nav>
         </div>
+
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Blog Listesi</h4>
-                        <p class="card-description">
-                           Yazmış olduğunuz bloglarla ilgili işlemleri aşağıdaki panelden gerçekleştirebilirsiniz.
-                        </p>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -30,6 +28,8 @@
                                         <th>Başlık</th>
                                         <th>Categori</th>
                                         <th>Oluşturulma Tarihi</th>
+                                        <th>Yorum Sayısı</th>
+                                        <th>Yayına Git</th>
                                         <th>Sil</th>
                                         <th>Güncelle</th>
                                     </tr>
@@ -42,13 +42,14 @@
                                             <td>@item.Title</td>
                                             <td>@item.Category.CategoryName</td>
                                             <td>@item.CreatedDate</td>
+                                            <td>@item.Comments.Count()</td>
+                                            <td><a href="/Blog/BlogDetail/@item.ArticleId" class="btn btn-outline-warning"><i class="mdi mdi-send"></i></a></td>
                                             <td><a href="/Writer/Blog/DeleteBlog/@item.ArticleId" class="btn btn-outline-danger">Sil</a> </td>
-                                           <td><a href="/Writer/Blog/UpdateBlog/@item.ArticleId" class="btn btn-outline-success">Güncelle</a> </td>
+                                            <td><a href="/Writer/Blog/UpdateBlog/@item.ArticleId" class="btn btn-outline-success">Güncelle</a> </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                            <button class="btn btn-outline-info">Yeni Blog Girişi</button>
                         </div>
                     </div>
                 </div>

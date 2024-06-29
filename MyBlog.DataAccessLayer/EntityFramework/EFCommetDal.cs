@@ -49,5 +49,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Comments.Where(x => x.CreatedDate >= startOfDay && x.CreatedDate <= endOfDay).Count();
             return values;
         }
+        public List<Comment> GetListAllWithArticleByAuthorId(int id)
+        {
+            var values = context.Comments.Where(x=>x.Article.AppUserId==id).Include(x => x.Article).Include(x => x.AppUser).ToList();
+            return values;
+        }
     }
 }

@@ -67,5 +67,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _commentDal.GetCommentCountByToday();
         }
+
+        public List<Comment> TGetListAllWithArticleByAuthorId(int id)
+        {
+            return _commentDal.GetListAllWithArticleByAuthorId(id);
+        }
     }
 }

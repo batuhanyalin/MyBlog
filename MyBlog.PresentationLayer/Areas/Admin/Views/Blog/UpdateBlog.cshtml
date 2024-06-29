@@ -11,7 +11,6 @@
         <div class="row">
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
-                    <input type="hidden" />
                     <input type="hidden" asp-for="ArticleId" />
                     <input type="hidden" asp-for="CoverImageUrl" />
                     <div class="mb-3">
@@ -46,7 +45,7 @@
                     <br />
                     <div class="col">
                         <label class="form-label">Görseli Değiştir</label>
-                        <input type="file" class="form-control" asp-for="CoverImageUrl">                         
+                        <input type="file" class="form-control" asp-for="CoverImageUrl">
                     </div>
                     <br />
                     <div class="col">
@@ -75,7 +74,7 @@
         <br />
         <div class="row">
             <div class="bg-light rounded h-200 p-4">
-                    <h7 class="mb-4">İçerik</h7>
+                <h7 class="mb-4">İçerik</h7>
                 <div>
                     <textarea class="form-control" asp-for="Detail" id="summernote"></textarea>
                 </div>

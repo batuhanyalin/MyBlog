@@ -1,8 +1,71 @@
-﻿
+﻿@model Message
 @{
     ViewData["Title"] = "ShowSentMessageDetail";
     Layout = "~/Areas/Writer/Views/WriterLayout/Index.cshtml";
 }
 
-<h1>ShowSentMessageDetail</h1>
 
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title">Mesaj Detay Sayfası</h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Mesajlar</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> Mesaj Detay Sayfası </li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <a class="btn btn-info" href="/Writer/Message/SentMessage/">Gönderilen Dön</a>
+                        </div>
+                        <br />
+                        <input type="hidden" asp-for="MessageId" />
+                        <input type="hidden" asp-for="SenderId" />
+                        <input type="hidden" asp-for="ReceiverId" />
+                        <input type="hidden" asp-for="IsRead" />
+                        <input type="hidden" asp-for="IsDraft" />
+                        <input type="hidden" asp-for="IsImportant" />
+                        <input type="hidden" asp-for="IsJunk" />
+                        <div class="mb-3">
+                            <label class="form-label">Mesaj Başlığı: </label><label class="form-label">@Model.Subject</label>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Alıcı: </label><label class="form-label">@Model.Receiver.Name @Model.Receiver.Surname</label>
+                        </div>
+                        <div class="mb-3">
+                            <h5>Mesaj Tarihi:</h5>
+                            <label class="form-label">@Model.SendingTime.ToString("dd.MM.yyy HH:mm:ss")</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-4">İçerik</h4>
+                        <div>
+                            <textarea class="form-label" id="summernote">@Model.Text</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#summernote').summernote({
+        height: 200,                 // set editor height
+        minHeight: null,             // set minimum height of editor
+        maxHeight: null,             // set maximum height of editor
+        focus: true                  // set focus to editable area after initializing summernote
+    });
+    function setDraftStatus(isDraft) {
+        document.getElementById('isDraftInput').value = isDraft;
+    }
+</script>

@@ -43,13 +43,13 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         public async Task<IActionResult> EditProfile(UserEditViewModel p, IFormFile Image)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-          
+
             if (Image != null)
             {
-                var resource = Directory.GetCurrentDirectory(); //başlangıçtaki proje yolunu al.
-                var extension = Path.GetExtension(p.Image.FileName); //Dosyadan gelen adın extension ını al.
-                var imageName = Guid.NewGuid() + extension; //Burada Guid türetilerek aynı isimde dosya eklenip üst üste yazılma durumu önleniyor.
-                var saveLocation = resource + "/wwwroot/images/" + imageName; //Dosya yolu belirleniyor.//Dosya okuma ve yazma izinleri için kullanılan bir sınıftır (2. overloadına gidiliyor)
+                var resource = Directory.GetCurrentDirectory();
+                var extension = Path.GetExtension(p.Image.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var saveLocation = resource + "/wwwroot/images/" + imageName;
 
                 using (var stream = new FileStream(saveLocation, FileMode.Create))
                 {
@@ -61,18 +61,23 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
             {
                 user.ImageUrl = $"/images/no-image.jpg";
             }
-           
+
             user.Name = p.Name;
             user.Surname = p.Surname;
             user.PhoneNumber = p.PhoneNumber;
             user.City = p.City;
             user.Email = p.Email;
             user.About = p.About;
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password); //password şifrelenerek alınıyor.
+
+            if (p.Password != null)
+            {
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
+            }
+
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                RedirectToAction("Index", "Dashboard", new { Area = "Writer" });
+                return RedirectToAction("Index", "Dashboard", new { Area = "Writer" });
             }
             else
             {
@@ -81,7 +86,12 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
                     ModelState.AddModelError("", item.Description);
                 }
             }
-            return View();
+
+            p.ImageUrl = user.ImageUrl; // Güncel ImageUrl değerini ViewModel'e atayın
+            ViewBag.commentscount = _userService.TGetCommentsCountByAuthor(user.Id);
+            ViewBag.articlecount = _userService.TGetArticleCountByAuthor(user.Id);
+            return View(p);
         }
+
     }
 }

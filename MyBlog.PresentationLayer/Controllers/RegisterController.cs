@@ -31,6 +31,7 @@ namespace MyBlog.PresentationLayer.Controllers
                 Email = model.Email,
                 Surname = model.Surname,
                 UserName = model.Username,
+                City = model.City,
                 PhoneNumber=model.Phone,
                 Profession=model.Profession,
             };

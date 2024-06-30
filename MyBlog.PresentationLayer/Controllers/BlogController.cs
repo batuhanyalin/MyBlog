@@ -10,13 +10,15 @@ namespace MyBlog.PresentationLayer.Controllers
     {
         private readonly IArticleService _articleService;
         private readonly ICategoryService _categoryService;
+        private readonly ICommentService _commentService;
 
-        public BlogController(IArticleService articleService, ICategoryService categoryService)
+        public BlogController(IArticleService articleService, ICategoryService categoryService, ICommentService commentService)
         {
             _articleService = articleService;
             _categoryService = categoryService;
+            _commentService = commentService;
         }
-
+        [HttpGet]
         public IActionResult BlogDetail(int id)
         {
             var values = _articleService.TGetById(id);
@@ -33,11 +35,28 @@ namespace MyBlog.PresentationLayer.Controllers
             ViewBag.username = values2.AppUser.UserName;
             return View(values);
         }
+        [HttpPost]
+        public IActionResult CreateBlogComment(CreateCommentBlogViewModel model)
+        {
+            Comment comment = new Comment()
+            {
+                Name = model.Name,
+                Surname = model.Surname,
+                Email = model.Email,
+                Description = model.Description,
+                ArticleId = model.ArticleId,
+            };
+            comment.CreatedDate = DateTime.Now;
+            comment.IsApproved = false;
+            comment.Status = false;
+            _commentService.TInsert(comment);
+            return RedirectToAction("BlogDetail", new { id = comment.ArticleId });
+        }
         public IActionResult BlogList(int id)
         {
             var values = _articleService.TGetArticlesByWriter(id);
             var y = values.Find(x => x.AppUser.Id == id);
-            if (y==null)
+            if (y == null)
             {
                 ModelState.AddModelError("", "Bu yazarın henüz bloğu bulunmamaktadır.");
                 return RedirectToAction("Index", "Default");

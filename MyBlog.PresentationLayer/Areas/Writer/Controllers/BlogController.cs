@@ -99,8 +99,9 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         }
         [Route("CreateBlog")]
         [HttpPost]
-        public IActionResult CreateBlog(Article article, IFormFile CoverImageUrl)
+        public async Task<IActionResult> CreateBlog(Article article, IFormFile CoverImageUrl)
         {
+            var user = _userManager.FindByNameAsync(User.Identity.Name);
             if (CoverImageUrl != null && CoverImageUrl.Length > 0)
             {
                 var resource = Directory.GetCurrentDirectory();
@@ -119,6 +120,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
             {
                 article.CoverImageUrl = $"/images/no-image.jpg";
             }
+            article.AppUserId = user.Id;
             article.CreatedDate = DateTime.Now;
             _articleService.TInsert(article);
             return RedirectToAction("Index");

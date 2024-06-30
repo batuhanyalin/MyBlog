@@ -28,5 +28,6 @@ namespace MyBlog.BusinessLayer.Abstract
         public int TGetArticleCountByAuthorId(int id);
         public List<CategoryBlogCountChartDto> TGetChartData();
         public int TGetArticleCountByToday();
+        public List<Article> TGetCategoryCountByAuthorId(int id);
     }
 }

@@ -15,5 +15,6 @@ namespace MyBlog.BusinessLayer.Abstract
         public int TGetCommentCountByGuestNameSurname(string Name, string Surname);
         public int TGetCommentCountByToday();
         public List<Comment> TGetListAllWithArticleByAuthorId(int id);
+        public int TGetCommentCountByAuthorId(int id);
     }
 }

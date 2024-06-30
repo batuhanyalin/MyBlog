@@ -31,7 +31,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public Category GetCategoryByCategoryId(int id)
         {
-            var values = context.Categories.Where(x => x.CategoryId == id).Include(x=>x.Articles).FirstOrDefault();
+            var values = context.Categories.Where(x => x.CategoryId == id).Include(x => x.Articles).FirstOrDefault();
             return values;
         }
 

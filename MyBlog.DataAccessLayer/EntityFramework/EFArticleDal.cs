@@ -186,5 +186,9 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Articles.Where(x => x.CreatedDate >= startOfDay && x.CreatedDate <= endOfDay).Count();
             return values;
         }
+        public List<Article> GetCategoryCountByAuthorId(int id)
+        {
+            return context.Articles.Where(x => x.AppUserId == id).Include(x => x.Category).ToList();
+        }
     }
 }

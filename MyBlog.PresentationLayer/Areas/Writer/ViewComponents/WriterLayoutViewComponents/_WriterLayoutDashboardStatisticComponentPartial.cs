@@ -11,23 +11,25 @@ namespace MyBlog.PresentationLayer.Areas.Writer.ViewComponents.WriterLayoutViewC
         private readonly IArticleService _articleService;
         private readonly ICommentService _commentService;
         private readonly ICategoryService _categoryService;
+        private readonly IMessageService _messageService;
 
-        public _WriterLayoutDashboardStatisticComponentPartial(UserManager<AppUser> userManager, IArticleService articleService, ICommentService commentService, ICategoryService categoryService)
+        public _WriterLayoutDashboardStatisticComponentPartial(UserManager<AppUser> userManager, IArticleService articleService, ICommentService commentService, ICategoryService categoryService, IMessageService messageService)
         {
             _userManager = userManager;
             _articleService = articleService;
             _commentService = commentService;
             _categoryService = categoryService;
+            _messageService = messageService;
         }
 
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.articleCount = (user.Id);
-            ViewBag.commentCount = (user.Id);
-            ViewBag.categoryCount = (user.Id);
-            ViewBag.InboxMessageCount = (user.Id);
+            ViewBag.articleCount = _articleService.TGetArticleCountByAuthorId(user.Id);
+            ViewBag.commentCount = _commentService.TGetCommentCountByAuthorId(user.Id);
+            ViewBag.categoryCount = _articleService.TGetCategoryCountByAuthorId(user.Id).Count();
+            ViewBag.InboxMessageCount = _messageService.TGetSideBarInboxMessageCountByUserId(user.Id);
             return View();
         }
     }

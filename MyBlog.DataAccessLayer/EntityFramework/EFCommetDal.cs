@@ -54,5 +54,10 @@ namespace MyBlog.DataAccessLayer.EntityFramework
             var values = context.Comments.Where(x=>x.Article.AppUserId==id).Include(x => x.Article).Include(x => x.AppUser).ToList();
             return values;
         }
+        public int GetCommentCountByAuthorId(int id)
+        {
+           return context.Comments.Where(x=>x.Article.AppUserId==id).Count();
+           
+        }
     }
 }

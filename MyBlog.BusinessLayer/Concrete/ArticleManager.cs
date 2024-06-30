@@ -127,5 +127,10 @@ namespace MyBlog.BusinessLayer.Concrete
         {
             return _articleDal.GetArticleCountByToday();
         }
+
+        public List<Article> TGetCategoryCountByAuthorId(int id)
+        {
+            return _articleDal.GetCategoryCountByAuthorId(id);
+        }
     }
 }

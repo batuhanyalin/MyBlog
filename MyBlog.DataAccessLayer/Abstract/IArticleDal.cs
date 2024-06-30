@@ -31,6 +31,7 @@ namespace MyBlog.DataAccessLayer.Abstract
         public int GetArticleCountByAuthorId(int id);
         public List<CategoryBlogCountChartDto> GetChartData();
         public int GetArticleCountByToday();
+        public List<Article> GetCategoryCountByAuthorId(int id);
 
     }
 }

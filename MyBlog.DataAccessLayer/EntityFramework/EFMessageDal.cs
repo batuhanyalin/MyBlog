@@ -172,12 +172,12 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public Task<List<Message>> GetMessageByReceiverIdByIsReadForNavBarMessage(int id)
         {
-            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false && x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Sender).Include(x => x.Receiver).ToListAsync();
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false && x.IsDraft == false && x.IsJunk == false && x.IsImportant == false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x=>x.SendingTime).ToListAsync();
             return values;
         }        
         public List<Message> GetMessageByReceiverIdByIsReadForNavBarMessageToList(int id)
         {
-            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false&&x.IsDraft==false&&x.IsJunk==false&&x.IsImportant==false).Include(x => x.Sender).Include(x => x.Receiver).ToList();
+            var values = context.Messages.Where(x => x.ReceiverId == id).Where(x => x.IsRead == false&&x.IsDraft==false&&x.IsJunk==false&&x.IsImportant==false).Include(x => x.Sender).Include(x => x.Receiver).OrderByDescending(x => x.SendingTime).ToList();
             return values;
         }
         public int GetSideBarInboxIsReadFalseMessageCountByUserId(int id)

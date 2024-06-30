@@ -63,6 +63,11 @@ namespace MyBlog.BusinessLayer.Concrete
             return _appUserDal.GetListAll();
         }
 
+        public List<AppUser> TGetListAuthorById(int id)
+        {
+            return _appUserDal.GetListAuthorById(id);
+        }
+
         public void TInsert(AppUser entity)
         {
             _appUserDal.Insert(entity);

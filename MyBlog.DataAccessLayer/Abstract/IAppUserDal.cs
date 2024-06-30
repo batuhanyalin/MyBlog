@@ -15,6 +15,8 @@ namespace MyBlog.DataAccessLayer.Abstract
         public List<AppUser> GetAuthorWithCommentArticle();
         public List<AppUser> GetAuthorWithCommentArticleByIsApproved();
         public List<AppUser> GetAdminWithCommentArticle();
+        public List<AppUser> GetListAuthorById(int id);
 
-	}
+
+    }
 }

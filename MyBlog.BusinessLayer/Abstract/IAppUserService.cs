@@ -15,6 +15,7 @@ namespace MyBlog.BusinessLayer.Abstract
         public List<AppUser> TGetAuthorWithCommentArticle();
         public List<AppUser> TGetAuthorWithCommentArticleByIsApproved();
         public List<AppUser> TGetAdminWithCommentArticle();
+        public List<AppUser> TGetListAuthorById(int id);
 
-	}
+    }
 }

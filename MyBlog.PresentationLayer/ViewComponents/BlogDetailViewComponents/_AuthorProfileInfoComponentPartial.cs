@@ -7,16 +7,16 @@ namespace MyBlog.PresentationLayer.ViewComponents.BlogDetailViewComponents
     public class _AuthorProfileInfoComponentPartial : ViewComponent
     {
 
-       private readonly IArticleService _articleService;
+  private readonly IAppUserService _appUserService;
 
-        public _AuthorProfileInfoComponentPartial(IArticleService articleService)
+        public _AuthorProfileInfoComponentPartial(IAppUserService appUserService)
         {
-            _articleService = articleService;
+            _appUserService = appUserService;
         }
 
         public IViewComponentResult Invoke(int id)
         {
-            var values=_articleService.TGetAppUserInfoByArticleId(id);
+            var values = _appUserService.TGetListAuthorById(id);
             return View(values);
         }
     }

@@ -49,5 +49,16 @@ namespace MyBlog.PresentationLayer.Controllers
             }
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Login");
+        }
+        [HttpGet]
+        public IActionResult error403()
+        {
+            return View();
+        }
     }
 }

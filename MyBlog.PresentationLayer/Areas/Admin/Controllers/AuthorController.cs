@@ -5,9 +5,11 @@ using MyBlog.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     [Area("Admin")]
     [Route("Admin/[controller]")]
     public class AuthorController : Controller

@@ -69,18 +69,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-////Authentication
-//var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-//builder.Services.AddControllersWithViews(opt =>
-//{
-//    opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
-//});
-//builder.Services.ConfigureApplicationCookie(opts =>
-//{
-//    opts.LoginPath = "/Login/Index";
-//    opts.AccessDeniedPath = new PathString("/Login/AccessDeniedPath");
-//});
-
 app.UseStatusCodePagesWithReExecute("/ErrorPage/error404","?code={0}"); //404 sayfasý için
 
 app.UseHttpsRedirection();

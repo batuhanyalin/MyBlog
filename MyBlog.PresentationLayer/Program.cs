@@ -81,6 +81,8 @@ if (!app.Environment.IsDevelopment())
 //    opts.AccessDeniedPath = new PathString("/Login/AccessDeniedPath");
 //});
 
+app.UseStatusCodePagesWithReExecute("/ErrorPage/error404","?code={0}"); //404 sayfasý için
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

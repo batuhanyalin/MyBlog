@@ -9,7 +9,20 @@
         <div class="single-post__author__profile__text">
             <a href="/Blog/BlogList/@item.Id"><h4>@item.Name @item.Surname</h4></a>
             <p>
-                @item.About
+                @{
+                    if (item.About?.Length > 200)
+                    {
+                        var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 200);
+                        @Html.Raw(summary)
+                        ;
+                    }
+                    else
+                    {
+                        var summary = CustomHtmlHelper.GetPlainTextFromHtml(item.About, 200);
+                        @Html.Raw(summary)?.ToString()
+                        ;
+                    }
+                }...
             </p>
             <div class="single-post__author__profile__social">
                 <a href="@item.FacebookUrl"><i class="fa fa-facebook"></i></a>

@@ -4,7 +4,7 @@ using MyBlog.BusinessLayer.Abstract;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
-    [Authorize(Roles = "Writer")]
+    [Authorize(Roles = "Admin,Writer")]
     [Area("Writer")]
     [Route("Writer/[controller]")]
     public class NotificationController : Controller

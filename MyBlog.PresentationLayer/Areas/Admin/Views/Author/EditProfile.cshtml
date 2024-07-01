@@ -1,4 +1,4 @@
-﻿@model AppUser
+﻿@model MyBlog.PresentationLayer.Areas.Admin.Models.EditAdminProfileViewModel
 @{
     ViewData["Title"] = "EditProfile";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -11,12 +11,9 @@
         <div class="row">
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
-                    <input type="hidden" asp-for="UserName" />
-                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Username" />
                     <input type="hidden" asp-for="ImageUrl" />
-                    <input type="hidden" asp-for="IsApproved" />
                     <input type="hidden" asp-for="AppRoleId" />
-                    <input type="hidden" name="RowVersion" value="@Convert.ToBase64String(Model.RowVersion)" />
                     <div class="mb-3">
                         <label class="form-label">Adı</label>
                         <input type="text" class="form-control" asp-for="Name">
@@ -36,6 +33,14 @@
                     <div class="mb-3">
                         <label class="form-label">Meslek</label>
                         <input type="text" class="form-control" asp-for="Profession">
+                    </div>   
+                    <div class="mb-3">
+                        <label class="form-label">Telefon Numarası</label>
+                        <input type="text" class="form-control" asp-for="PhoneNumber">
+                    </div>   
+                    <div class="mb-3">
+                        <label class="form-label">Şifreni Değiştir:</label>
+                        <input type="text" class="form-control" asp-for="Password">
                     </div>
                 </div>
             </div>

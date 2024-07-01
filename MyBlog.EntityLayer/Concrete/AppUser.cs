@@ -14,8 +14,6 @@ namespace MyBlog.EntityLayer.Concrete
         public string Surname { get; set; }
         public string? City { get; set; }
         public string? ImageUrl { get; set; }
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
         public string? About { get; set; }
         public string? Profession { get; set; }
         public string? InstagramUrl { get; set; }

@@ -10,7 +10,7 @@ using NuGet.Protocol.Core.Types;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
-    [Authorize(Roles = "Writer")]
+    [Authorize(Roles = "Admin,Writer")]
     [Area("Writer")] //Area tanıtılıyor.
     [Route("Writer/[controller]")]
     public class BlogController : Controller

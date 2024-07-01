@@ -19,12 +19,6 @@ namespace MyBlog.DataAccessLayer.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            // AppUser RowVersion özelliği
-
-            modelBuilder.Entity<AppUser>()
-                .Property(u => u.RowVersion)
-                .IsRowVersion();
-
             // AppUser - Message ilişkileri
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.Sender)

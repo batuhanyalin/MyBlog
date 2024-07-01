@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.EntityLayer.Concrete;
 using MyBlog.PresentationLayer.Areas.Writer.Models;
+using MyBlog.PresentationLayer.Models;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
-    [Authorize(Roles = "Writer")]
+    [Authorize(Roles = "Admin,Writer")]
     [Area("Writer")]
     [Route("Writer/Profile")] //Burada yönlendirme yapıyoruz. Area adı/Controller adı
     public class ProfileController : Controller
@@ -26,9 +27,10 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         public async Task<IActionResult> EditProfile()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            UserEditViewModel model = new UserEditViewModel();
+            EditWriterProfileViewModel model = new EditWriterProfileViewModel();
             model.Name = values.Name;
             model.Email = values.Email;
+            model.Profession = values.Profession;
             model.PhoneNumber = values.PhoneNumber;
             model.ImageUrl = values.ImageUrl;
             model.City = values.City;
@@ -41,7 +43,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
         }
         [HttpPost]
         [Route("EditProfile")]
-        public async Task<IActionResult> EditProfile(UserEditViewModel p, IFormFile Image)
+        public async Task<IActionResult> EditProfile(EditWriterProfileViewModel p, IFormFile Image)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
@@ -68,6 +70,7 @@ namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
             user.PhoneNumber = p.PhoneNumber;
             user.City = p.City;
             user.Email = p.Email;
+            user.Profession = p.Profession;
             user.About = p.About;
 
             if (p.Password != null)

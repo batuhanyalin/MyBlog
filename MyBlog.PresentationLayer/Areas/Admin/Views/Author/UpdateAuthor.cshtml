@@ -1,4 +1,4 @@
-﻿@model AppUser
+﻿@model EditAuthorProfileViewModel
 @{
     ViewData["Title"] = "UpdateAuthor";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -11,10 +11,12 @@
         <div class="row">
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
-                    <input type="hidden" asp-for="UserName" />
                     <input type="hidden" asp-for="Id" />
                     <input type="hidden" asp-for="ImageUrl" />
-                    <input type="hidden" name="RowVersion" value="@Convert.ToBase64String(Model.RowVersion)" />
+                    <div class="mb-3">
+                        <label class="form-label">Adı</label>
+                        <input type="text" class="form-control" asp-for="Username">
+                    </div>
                     <div class="mb-3">
                         <label class="form-label">Adı</label>
                         <input type="text" class="form-control" asp-for="Name">
@@ -82,6 +84,10 @@
                     <div class="col">
                         <label class="form-label">Toplam Aldığı Yorum Sayısı:</label>
                         <label class="form-label">@ViewBag.commentscount</label>
+                    </div>
+                    <div class="">
+                        <label class="form-label">Şifreyi Sıfırla:</label>
+                        <input class="form-control" type="text" asp-for="Password" />
                     </div>
                 </div>
             </div>

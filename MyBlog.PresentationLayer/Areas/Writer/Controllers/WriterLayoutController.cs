@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin,Writer")]
     [Area("Writer")] //Areanın tanıtılması gerekiyor.
     public class WriterLayoutController : Controller
     {

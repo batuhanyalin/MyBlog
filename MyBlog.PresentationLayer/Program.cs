@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.BusinessLayer.Concrete;
@@ -14,7 +15,6 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//DEPENDENCY INJECTIONIN GEÇERLÝ OLABÝLMESÝ ÝÇÝN DIÞARIDAN DAHÝL EDÝLECEK ALANLAR BU ÞEKÝLDE GÖSTERÝLÝYOR, ENJEKTE EDÝLÝYOR.
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICategoryDal, EFCategoryDal>();
 
@@ -36,24 +36,26 @@ builder.Services.AddScoped<IContactDal, EFContactDal>();
 builder.Services.AddScoped<IAppUserService, AppUserManager>();
 builder.Services.AddScoped<IAppUserDal, EFAppUserDal>();
 
-
 builder.Services.AddScoped<IArticleTagService, ArticleTagManager>();
-builder.Services.AddScoped<IArticleTagDal,EFArticleTagDal>();
+builder.Services.AddScoped<IArticleTagDal, EFArticleTagDal>();
 
 builder.Services.AddScoped<INotificationService, NotificationManager>();
-builder.Services.AddScoped<INotificationDal,EFNotificationDal>();
+builder.Services.AddScoped<INotificationDal, EFNotificationDal>();
 
 builder.Services.AddScoped<IMessageService, MessageManager>();
-builder.Services.AddScoped<IMessageDal,EFMessageDal>();
+builder.Services.AddScoped<IMessageDal, EFMessageDal>();
 
-
-//Burada da DbContext olarak BlogContexti bildiriyoruz.
 builder.Services.AddDbContext<BlogContext>();
-//Burada identity projeye tanýtýlýp ilgili sýnýflar gösteriliyor ve AddEntityFrameworkStores la çalýþýlan context sýnýfý yazýlýyor.
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<BlogContext>().AddErrorDescriber<CustomIdentityValidator>();
-//EntityFrameworkStores metodu identitynin hangi contexten geldiðini belirtir.
+builder.Services.AddIdentity<AppUser, AppRole>()
+    .AddEntityFrameworkStores<BlogContext>()
+    .AddErrorDescriber<CustomIdentityValidator>()
+    .AddDefaultTokenProviders();
 
-//Arealarda viewcomponent kullanýmý
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Login/error403";
+});
+
 builder.Services.AddControllersWithViews().AddRazorOptions(options =>
 {
     options.ViewLocationExpanders.Add(new CustomViewLocationExpander());
@@ -61,37 +63,43 @@ builder.Services.AddControllersWithViews().AddRazorOptions(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
-app.UseStatusCodePagesWithReExecute("/ErrorPage/error404","?code={0}"); //404 sayfasý için
+app.UseStatusCodePagesWithReExecute("/ErrorPage/error404", "?code={0}");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication(); //Login iþlemi için verilen registration. Middleware olarak geliyor, yönlendirme saðlar.
-
+app.UseAuthentication();
 app.UseAuthorization();
+
+// 403 Forbidden için middleware ekliyorum
+app.Use(async (context, next) =>
+{
+    await next();
+
+    if (context.Response.StatusCode == StatusCodes.Status403Forbidden)
+    {
+        context.Response.Redirect("/Login/error403");
+    }
+});
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Default}/{action=Index}/{id?}");
 
-//Projede area kullanýldýðýný belirtiyoruz.
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+        name: "areas",
+        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
     );
 });
-
 
 app.Run();

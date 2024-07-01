@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using MyBlog.EntityLayer.Concrete;
 using MyBlog.PresentationLayer.Models;
 
@@ -58,7 +59,7 @@ namespace MyBlog.PresentationLayer.Controllers
             return RedirectToAction("Index", "Login");
         }
         [HttpGet]
-        public IActionResult error403()
+        public async Task<IActionResult> error403()
         {
             return View();
         }

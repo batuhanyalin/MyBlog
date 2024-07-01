@@ -35,7 +35,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public int GetCommentsCountByAuthor(int id)
         {
-            var values = context.Comments.Where(x => x.AppUserId == id).Count();
+            var values = context.Comments.Where(x => x.Article.AppUserId == id).Include(x => x.Article).ThenInclude(a => a.Comments).Count();
             return values;
         }
         public int GetArticleCountByAuthor(int id)
@@ -45,17 +45,17 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         }
         public List<AppUser> GetAuthorWithCommentArticle()
         {
-            var values= context.Users.Where(x=>x.AppRoleId==1).Include(x=>x.Articles).Include(x=>x.Comments).ToList();
+            var values = context.Users.Where(x => x.AppRoleId == 1).Include(x => x.Articles).ThenInclude(a => a.Comments).OrderBy(x => x.Name + x.Surname).ToList();
             return values;
-        }   
+        }
         public List<AppUser> GetAdminWithCommentArticle()
         {
-            var values= context.Users.Where(x=>x.AppRoleId==3 ||x.AppRoleId==2).Include(x=>x.Articles).Include(x=>x.Comments).ToList();
+            var values = context.Users.Where(x => x.AppRoleId == 3 || x.AppRoleId == 2).Include(x => x.Articles).Include(x => x.Comments).ToList();
             return values;
         }
         public List<AppUser> GetAuthorWithCommentArticleByIsApproved()
         {
-            var values=context.Users.Where(x=>x.IsApproved==true).Include(x => x.Articles).Include(x => x.Comments).OrderBy(x=>x.Name+x.Surname).ToList();
+            var values = context.Users.Where(x => x.IsApproved == true).Include(x => x.Articles).Include(x => x.Comments).OrderBy(x => x.Name + x.Surname).ToList();
             return values;
         }
         public List<AppUser> GetListAuthorById(int id)

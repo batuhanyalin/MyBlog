@@ -85,14 +85,8 @@
                                 </td>
                                 <td>
                                     @{
-                                        if (item.Comments?.Count() == 0)
-                                        {
-                                            <span>0</span>
-                                        }
-                                        else
-                                        {
-                                            @item.Comments.Count()
-                                        }
+                                        var totalComments = item.Articles.Sum(a => a.Comments.Count);
+                                        <span>@totalComments</span>
                                     }
                                 </td>
                                 <td><a class="btn btn-outline-warning" href="/Blog/BlogList/@item.Id"><i class="fas fa-paper-plane"></i></a></td>

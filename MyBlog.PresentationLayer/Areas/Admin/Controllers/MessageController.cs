@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
@@ -19,6 +20,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService = messageService;
             _userManager = userManager;
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("CreateMessage")]
         [HttpGet]
         public ActionResult CreateMessage()
@@ -33,6 +35,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             ViewBag.receiver = receiverList;
             return View();
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("CreateMessage")]
         [HttpPost]
         public async Task<ActionResult> CreateMessage(Message message)
@@ -51,7 +54,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             }
 
         }
-
+        [Authorize(Roles = "Editor,Admin")]
         [Route("InboxMessage")]
         public async Task<IActionResult> InboxMessage()
         {
@@ -59,7 +62,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetInboxMessage(user.Id);
             return View(message);
         }
-
+        [Authorize(Roles = "Editor,Admin")]
         [Route("DraftMessage")]
         public async Task<IActionResult> DraftMessage()
         {
@@ -67,6 +70,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetDraftMessage(user.Id);
             return View(message);
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("EditDraftMessage/{id:int}")]
         [HttpGet]
         public async Task<IActionResult> EditDraftMessage(int id)
@@ -82,6 +86,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = _messageService.TEditDraftMessage(id);
             return View(message);
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("EditDraftMessage/{id}")]
         [HttpPost]
         public async Task<IActionResult> EditDraftMessage(Message message)
@@ -89,6 +94,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TUpdate(message);
             return RedirectToAction("InboxMessage");
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("ImportantMessage")]
         public async Task<IActionResult> ImportantMessage()
         {
@@ -96,7 +102,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetImportantMessage(user.Id);
             return View(message);
         }
-
+        [Authorize(Roles = "Editor,Admin")]
         [Route("SentMessage")]
         public async Task<IActionResult> SentMessage()
         {
@@ -104,7 +110,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetSentMessage(user.Id);
             return View(message);
         }
-
+        [Authorize(Roles = "Editor,Admin")]
         [Route("JunkMessage")]
         public async Task<IActionResult> JunkMessage()
         {
@@ -112,37 +118,42 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var message = await _messageService.TGetJunkMessage(user.Id);
             return View(message);
         }
-
+        [Authorize(Roles = "Editor,Admin")]
         [Route("ChangeIsImportantMessage/{id:int}")]
         public IActionResult ChangeIsImportantMessage(int id)
         {
             _messageService.TChangeIsImportantMessageById(id);
             return RedirectToAction("InboxMessage");
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("ChangeIsJunkMessage/{id:int}")]
         public IActionResult ChangeIsJunkMessage(int id)
         {
             _messageService.TChangeIsJunkMessageById(id);
             return RedirectToAction("InboxMessage");
         }
+        [Authorize(Roles = "Admin")]
         [Route("AdminListMessage")]
         public IActionResult AdminListMessage()
         {
             var values = _messageService.TGetListAllMessageWithSenderReceiver();
             return View(values);
         }
+        [Authorize(Roles = "Admin")]
         [Route("ChangeIsReadMessageForAdminListMessage/{id:int}")]
         public IActionResult ChangeIsReadMessageForAdminListMessage(int id)
         {
             var values = _messageService.TChangeIsReadMessageForAdminListMessagePanel(id);
             return RedirectToAction("AdminListMessage");
         }
+        [Authorize(Roles = "Admin")]
         [Route("ChangeIsReadMessage2/{id:int}")]
         public IActionResult ChangeIsReadMessage2(int id)
         {
             var values = _messageService.TChangeIsReadMessage2(id);
             return RedirectToAction("InboxMessage");
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("DetailMessage/{id:int}")]
         public IActionResult DetailMessage(int id)
         {
@@ -150,18 +161,21 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TChangeIsReadMessageByMessageId(id);
             return View(values);
         }
+        [Authorize(Roles = "Admin")]
         [Route("DeleteMessage/{id:int}")]
         public IActionResult DeleteMessage(int id)
         {
             _messageService.TDelete(id);
             return RedirectToAction("AdminListMessage");
-        }       
+        }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("DeleteDraftMessage/{id:int}")]
         public IActionResult DeleteDraftMessage(int id)
         {
             _messageService.TDelete(id);
             return RedirectToAction("DraftMessage");
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("UpdateMessage/{id:int}")]
         public IActionResult UpdateMessage(int id)
@@ -179,6 +193,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             var values = _messageService.TGetById(id);
             return View(values);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("UpdateMessage/{id}")]
         public IActionResult UpdateMessage(Message message)
@@ -186,6 +201,7 @@ namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
             _messageService.TUpdate(message);
             return RedirectToAction("AdminListMessage");
         }
+        [Authorize(Roles = "Editor,Admin")]
         [Route("ShowSentMessageDetail/{id:int}")]
         public IActionResult ShowSentMessageDetail(int id)
         {

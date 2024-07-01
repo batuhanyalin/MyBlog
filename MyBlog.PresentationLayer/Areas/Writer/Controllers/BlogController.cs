@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
@@ -9,6 +10,7 @@ using NuGet.Protocol.Core.Types;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
+    [Authorize(Roles = "Writer")]
     [Area("Writer")] //Area tanıtılıyor.
     [Route("Writer/[controller]")]
     public class BlogController : Controller

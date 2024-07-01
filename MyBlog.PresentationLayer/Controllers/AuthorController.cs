@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyBlog.BusinessLayer.Abstract;
@@ -6,6 +7,7 @@ using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Controllers
 {
+    [AllowAnonymous]
     public class AuthorController : Controller
     {
         private readonly UserManager<AppUser> _userManager;

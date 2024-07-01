@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
+    [Authorize(Roles = "Writer")]
     [Area("Writer")]
     [Route("Writer/[controller]")]
     public class NotificationController : Controller

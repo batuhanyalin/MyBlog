@@ -7,6 +7,7 @@ using MyBlog.PresentationLayer.Areas.Writer.Models;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
+    [Authorize(Roles = "Writer")]
     [Area("Writer")]
     [Route("Writer/Profile")] //Burada yönlendirme yapıyoruz. Area adı/Controller adı
     public class ProfileController : Controller

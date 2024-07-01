@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
-	[Area("Admin")]
+    [Authorize(Roles = "Admin")]
+    [Area("Admin")]
 	[Route("Admin/{controller}")]
 	public class StatisticController : Controller
 	{

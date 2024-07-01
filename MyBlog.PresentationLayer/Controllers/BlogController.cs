@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.DataAccessLayer.EntityFramework;
 using MyBlog.EntityLayer.Concrete;
@@ -6,6 +7,7 @@ using MyBlog.PresentationLayer.Models;
 
 namespace MyBlog.PresentationLayer.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : Controller
     {
         private readonly IArticleService _articleService;

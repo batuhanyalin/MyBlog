@@ -1,0 +1,89 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <form asp-action="EditProfile" asp-controller="Author" asp-area="Admin" method="post" enctype="multipart/form-data">
+        <br />
+        <h1>Kullanıcı Güncelleme</h1>
+        <div class="row">
+            <div class="col-sm-6 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <input type="hidden" asp-for="UserName" />
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="ImageUrl" />
+                    <input type="hidden" asp-for="IsApproved" />
+                    <input type="hidden" asp-for="AppRoleId" />
+                    <input type="hidden" name="RowVersion" value="@Convert.ToBase64String(Model.RowVersion)" />
+                    <div class="mb-3">
+                        <label class="form-label">Adı</label>
+                        <input type="text" class="form-control" asp-for="Name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Soyadı</label>
+                        <input type="text" class="form-control" asp-for="Surname">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">E-posta</label>
+                        <input type="text" class="form-control" asp-for="Email">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Şehir</label>
+                        <input type="text" class="form-control" asp-for="City">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Meslek</label>
+                        <input type="text" class="form-control" asp-for="Profession">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="col">
+                        <h5>Güncel Yazar Görseli</h5>
+                        <img height="150" width="110" src="@Model.ImageUrl" />
+                    </div>
+                    <br />
+                    <div class="col">
+                        <label class="form-label">Görseli Değiştir</label>
+                        <input type="file" class="form-control" name="Image">
+                    </div>
+                    <br />
+                    <div class="col">
+                        <label class="form-label">Toplam Makale Sayısı:</label>
+                        <label class="form-label">@ViewBag.articlecount</label>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Toplam Aldığı Yorum Sayısı:</label>
+                        <label class="form-label">@ViewBag.commentscount</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="bg-light rounded h-200 p-4">
+                <h7 class="mb-4">İçerik</h7>
+                <div>
+                    <textarea class="form-control" asp-for="About" id="summernote"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="bg-light rounded h-200 p-4">
+                <button class="btn btn-success" type="submit">Güncelle</button>
+            </div>
+        </div>
+        <br />
+    </form>
+</div>
+<script>
+    $('#summernote').summernote({
+        height: 200,
+        minHeight: null,
+        maxHeight: null,
+        focus: true
+    });
+</script>

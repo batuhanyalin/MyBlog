@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
@@ -7,6 +8,7 @@ using MyBlog.PresentationLayer.Areas.Admin.Models;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Editor,Admin")]
     [Area("Admin")]
     [Route("Admin/[controller]")] // Yönlendirmeyi controllera yapıyorum.
     public class BlogController : Controller

@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
-	[Area("Admin")]
+    [Authorize(Roles = "Admin")]
+    [Area("Admin")]
 	[Route("Admin/{controller}")]
 	public class CategoryController : Controller
 	{

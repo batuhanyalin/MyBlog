@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
@@ -6,6 +7,7 @@ using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
+    [Authorize(Roles = "Writer")]
     [Area("Writer")]
     [Route("Writer/[controller]")]
     public class MessageController : Controller

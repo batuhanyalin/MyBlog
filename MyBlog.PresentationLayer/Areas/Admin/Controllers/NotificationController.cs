@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient.DataClassification;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.EntityLayer.Concrete;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Editor,Admin")]
     [Area("Admin")]
     [Route("Admin/[controller]")]
     public class NotificationController : Controller

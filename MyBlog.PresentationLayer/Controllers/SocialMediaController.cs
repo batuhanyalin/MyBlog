@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.EntityLayer.Concrete;
 using System.Security.Permissions;
 
 namespace MyBlog.PresentationLayer.Controllers
 {
+    [Authorize]
     public class SocialMediaController : Controller
     {
         private ISocialMediaService _socialMediaService;

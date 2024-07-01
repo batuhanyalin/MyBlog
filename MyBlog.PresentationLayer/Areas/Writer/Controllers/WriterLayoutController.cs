@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyBlog.PresentationLayer.Areas.Writer.Controllers
 {
+    [AllowAnonymous]
     [Area("Writer")] //Areanın tanıtılması gerekiyor.
     public class WriterLayoutController : Controller
     {

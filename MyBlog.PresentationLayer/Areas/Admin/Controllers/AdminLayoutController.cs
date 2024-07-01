@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.Controllers
 {
+    [AllowAnonymous]
     [Area("Admin")]
     public class AdminLayoutController : Controller
     {

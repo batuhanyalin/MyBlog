@@ -33,6 +33,11 @@ namespace MyBlog.BusinessLayer.Concrete
             return _tagDal.GetListAll();
         }
 
+        public List<Tag> TGetListTagWithArticle()
+        {
+            return _tagDal.GetListTagWithArticle();
+        }
+
         public void TInsert(Tag entity)
         {
             _tagDal.Insert(entity);

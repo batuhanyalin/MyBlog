@@ -9,5 +9,6 @@ namespace MyBlog.DataAccessLayer.Abstract
 {
     public interface ITagDal:IGenericDal<Tag>
     {
+        public List<Tag> GetListTagWithArticle();
     }
 }

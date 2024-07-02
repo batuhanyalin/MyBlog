@@ -1,0 +1,56 @@
+﻿@model List<Tag>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<h1>Etiketler</h1>
+<div class="container">
+    <a href="/Admin/Tag/CreateTag" class="btn btn-outline-primary">Yeni Etiket Girişi</a>
+    <br />
+    <br />
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>#</th>
+            <th>Etiket Adı</th>
+            <th>Etikete Ait Blog Sayısı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.TagTitle</td>
+                <td>
+                    @{
+                        // item.Articles null olup olmadığını kontrol ediyorum
+                        if (item.ArticleTags.Count() == null || !item.ArticleTags.Any())
+                        {
+                            <span>0</span>
+                        }
+                        else
+                        {
+                            <span>@item.ArticleTags.Count()</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @{
+                        if (item.ArticleTags?.Count > 0)
+                        {
+                            <span>Etikete bağlı bloglar varken etiket silinemez.</span>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-danger" href="/Admin/Tag/DeleteTag/@item.TagId">Sil</a>
+                        }
+                    }
+                </td>
+                <td><a class="btn btn-outline-success" href="/Admin/Tag/UpdateTag/@item.TagId">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+</div>

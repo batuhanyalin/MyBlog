@@ -9,5 +9,6 @@ namespace MyBlog.BusinessLayer.Abstract
 {
     public interface ITagService:IGenericService<Tag>
     {
+        public List<Tag> TGetListTagWithArticle();
     }
 }

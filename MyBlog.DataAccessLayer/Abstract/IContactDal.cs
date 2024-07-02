@@ -9,5 +9,6 @@ namespace MyBlog.DataAccessLayer.Abstract
 {
     public interface IContactDal:IGenericDal<Contact>
     {
+        public Contact ChangeIsReadContact(int id);
     }
 }

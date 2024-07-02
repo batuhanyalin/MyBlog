@@ -14,6 +14,7 @@ namespace MyBlog.EntityLayer.Concrete
         public string Email { get; set; }
         public string Subject { get; set; }
         public string Text { get; set; }
+        public DateTime SendingTime { get; set; }
         public bool IsRead { get; set; }
     }
 }

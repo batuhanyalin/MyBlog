@@ -9,5 +9,6 @@ namespace MyBlog.BusinessLayer.Abstract
 {
     public interface IContactService:IGenericService<Contact>
     {
+        public Contact TChangeIsReadContact(int id);
     }
 }

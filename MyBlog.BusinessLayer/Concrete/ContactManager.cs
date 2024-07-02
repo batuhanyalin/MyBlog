@@ -18,6 +18,11 @@ namespace MyBlog.BusinessLayer.Concrete
             _contactDal = contactDal;
         }
 
+        public Contact TChangeIsReadContact(int id)
+        {
+            return _contactDal.ChangeIsReadContact(id);
+        }
+
         public void TDelete(int id)
         {
             _contactDal.Delete(id);

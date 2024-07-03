@@ -2,6 +2,7 @@
 M&Y Yazılım Akademi Danışmanlıktan aldığım eğitim kapsamında geliştirmiş olduğum 3. proje olan blog sitesi projesidir. Proje bir blog sitesinde bütün ihtiyaçlara cevap verecek şekilde oluşturulmuştur. Okurların okumalarını yapabilecekleri, yazarları, kategorilere göre yazıları görüntüleyebilecekleri ve diğer özelliklere sahip kullanıcı paneli, mesajlaşma sistemine ve blog oluşturma yazara ait blogları düzenleme özelliklerine sahip yazarlar paneli, ve bütün bunları yönetebilen, Editörler ve Adminlerin kullanabildiği bir admin paneliyle birlikte 3 adet paneli mevcuttur.
 ## Projeye Ait Bazı Özellikler;
 * Proje Asp.Net 6.0 MVC mimarisinde CodeFirst yaklaşımıyla yapıldı.
+* Identity kütüphanesiyle login-logout-register sistemi kullanıldı.
 * Projede bol bol iç içe layout ve ViewComponent yapısı kullanıldı.
 * Blog sayfasında okuma süreleri ve yorumları görüntülenebilmektedir. 
 * Okur yazıları kategorilerine göre göre listeyebilmektedir.

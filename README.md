@@ -44,57 +44,70 @@ M&Y Yazılım Akademi Danışmanlıktan aldığım eğitim kapsamında geliştir
 * Login sistemi
 * Linq sorguları
 
-# Vertabanı
+# Veritabanı
 ![Veritabanı](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/database.png?raw=true)
 
-# Yönetici Paneli
-#### Dashboard
-![Dashboard](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/dashboard.png?raw=true)
+# Okur Paneli
+#### Anasayfa
+![Anasayfa](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-home.png?raw=true)
+![Anasayfa](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-home2.png?raw=true)
+#### Yazarlar
+![Yazarlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-authorlist.png?raw=true)
+#### Kategoriye Göre Bloglar
+![Kategoriye Göre Bloglar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-bloglist-forcategory.png?raw=true)
+#### Yorum Yapma
+![Yorum Yapma](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-comment-create.png?raw=true)
+#### İletişim
+![İletişim](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-contact.png?raw=true)
+#### Giriş Ekranı
+![Giriş Ekranı](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/login.png?raw=true)
+#### Üyelik Ekranı
+![Üyelik Ekranı](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/register.png?raw=true)
 
 # Yazar Paneli
 #### Dashboard
-![Dashboard](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/dashboard.png?raw=true)
-#### Dashboard Bildirim
-![Dashboard Bildirim](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/dashboardnotif.png?raw=true)
-#### Kategoriler
-![Kategoriler](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/categorylist.png?raw=true)
-#### Ürünler
-![Ürünler](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/productlist.png?raw=true)
-#### Şefler
-![Şefler](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/cheflist.png?raw=true)
-#### Rezervasyonlar
-![Rezervasyonlar](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/reservationlist.png?raw=true)
-#### Rezervasyon Güncelleme
-![Rezervasyon Güncelleme](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/reservationupdate.png?raw=true)
-#### Bildirimler
-![Bildirimler](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/notificationlist.png?raw=true)
-#### İletişim Bilgileri
-![İletişim Bilgileri](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/contactlist.png?raw=true)
-#### Hakkımızda Bilgileri
-![Hakkımızda Bilgileri](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/aboutlist.png?raw=true)
-#### Adres Bilgileri
-![Adres Bilgileri](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/addresslist.png?raw=true)
-#### Çalışma Saat Bilgileri
-![Çalışma Saati Bilgileri](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/workhourlist.png?raw=true)
-#### Profil Güncelleme
-![Profil Güncelleme](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/profileupdate.png?raw=true)
+![Dashboard](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-dashboard.png?raw=true)
+#### Dashboard Mesaj Bildirimi
+![Dashboard Mesaj Bildirimi](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-dashboard-message.png?raw=true)
+#### Mesajlar Gelen Kutusu
+![Mesajlar Gelen Kutusu](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-messageinbox.png?raw=true)
+#### Profil
+![Profil](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-profile.png?raw=true)
+#### Yorumlar
+![Profil](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-comment.png?raw=true)
+#### Blog Oluştur
+![Profil](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-blogcreate.png?raw=true)
+#### Bloglar
+![Profil](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-bloglist.png?raw=true)
+#### Blog Güncelle
+![Profil](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/writer-blogupdate.png?raw=true)
 
 # Yönetici Paneli
+#### Dashboard
+![Dashboard](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-dashboard.png?raw=true)
+#### Dashboard Mesaj Bildirimi
+![Dashboard Mesaj Bildirimi](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-dashboard-message.png?raw=true)
+#### Mesajlar
+##### Bütün Mesajlar
+![Bütün Mesajlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-all.png?raw=true)
+##### Gelen Mesajlar
+![Gelen Mesajlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-inbox.png?raw=true)
+##### Taslak Mesajlar
+![Taslak Mesajlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-junk.png?raw=true)
+##### Silinen Mesajlar
+![Silinen Mesajlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-trash.png?raw=true)
+##### Mesaj Güncelleme
+![Mesaj Güncelleme](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-update.png?raw=true)
+##### Mesaj Detay Sayfası
+![Mesaj Detay Sayfası](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-detail.png?raw=true)
 
-### Slider
-![Slider](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/slider.png?raw=true)
-### Hakkımızda
-![Hakkımızda](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/about.png?raw=true)
-### Şefler
-![Şefler](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/chef.png?raw=true)
-### Menü
-![Şefler](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/menu.png?raw=true)
-### İletişim
-![İletişim](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/contact.png?raw=true)
-### Yorumlar
-![Yorumlar](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/testimonial.png?raw=true)
-### Rezervasyon
-![Rezervasyon](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/reservation.png?raw=true)
-### Footer
-![Footer](https://github.com/batuhanyalin/TasteFoodIt/blob/master/TestFoodIt/ScreenShots/footer.png?raw=true)
+
+#### Yöneticiler
+![Yöneticiler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-adminlist.png?raw=true)
+#### Yazarlar
+![Yazarlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-author.png?raw=true)
+#### Kategoriler
+![Yöneticiler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-category.png?raw=true)
+#### Yorumlar
+![Yöneticiler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-comment-all.png?raw=true)
 

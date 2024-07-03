@@ -51,6 +51,8 @@ M&Y Yazılım Akademi Danışmanlıktan aldığım eğitim kapsamında geliştir
 #### Anasayfa
 ![Anasayfa](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-home.png?raw=true)
 ![Anasayfa](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-home2.png?raw=true)
+#### Blog Detay Sayfası
+![Blog Detay Sayfası](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-blog-detail.png?raw=true)
 #### Yazarlar
 ![Yazarlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/default-authorlist.png?raw=true)
 #### Kategoriye Göre Bloglar
@@ -87,6 +89,8 @@ M&Y Yazılım Akademi Danışmanlıktan aldığım eğitim kapsamında geliştir
 ![Dashboard](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-dashboard.png?raw=true)
 #### Dashboard Mesaj Bildirimi
 ![Dashboard Mesaj Bildirimi](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-dashboard-message.png?raw=true)
+#### Kullanıcı Güncelleme
+![Kullanıcı Güncelleme](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-user-update.png?raw=true)
 #### Mesajlar
 ##### Bütün Mesajlar
 ![Bütün Mesajlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-all.png?raw=true)
@@ -100,14 +104,19 @@ M&Y Yazılım Akademi Danışmanlıktan aldığım eğitim kapsamında geliştir
 ![Mesaj Güncelleme](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-update.png?raw=true)
 ##### Mesaj Detay Sayfası
 ![Mesaj Detay Sayfası](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-message-detail.png?raw=true)
-
-
 #### Yöneticiler
 ![Yöneticiler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-adminlist.png?raw=true)
+#### İstatistikler
+![İstatistikler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-statistic.png?raw=true)
+#### İletişim Mesajları
+![İletişim Mesajları](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-contact-all.png?raw=true)
 #### Yazarlar
 ![Yazarlar](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-author.png?raw=true)
 #### Kategoriler
 ![Yöneticiler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-category.png?raw=true)
 #### Yorumlar
 ![Yöneticiler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-comment-all.png?raw=true)
-
+#### Bildirimler
+![Bildirimler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-notification.png?raw=true)
+#### Etiketler
+![Etiketler](https://github.com/batuhanyalin/MyBlog/blob/master/MyBlog.PresentationLayer/wwwroot/projectScreenshots/admin-tag.png?raw=true)

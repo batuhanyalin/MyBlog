@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MyBlog.BusinessLayer.Abstract;
 using MyBlog.DataAccessLayer.EntityFramework;
 using MyBlog.EntityLayer.Concrete;
@@ -35,6 +36,7 @@ namespace MyBlog.PresentationLayer.Controllers
             var values2 = _articleService.TGetCategoryNameByArticleId(id);
             ViewBag.categoryname = values2.Category.CategoryName;
             ViewBag.username = values2.AppUser.UserName;
+
             return View(values);
         }
         [HttpPost]

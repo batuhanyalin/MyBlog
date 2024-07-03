@@ -17,7 +17,7 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         BlogContext context = new BlogContext();
         public List<Tag> GetTagsByArticleId(int id)
         {
-            return context.ArticleTags.Where(x => x.ArticleId == id).Select(x => x.Tag).ToList();
+            return context.ArticleTags.Where(x => x.ArticleId == id).Include(x=>x.Article).Include(x=>x.Tag).Select(x => x.Tag).ToList();
 
         }
         public ArticleTag GetByArticleIdAndTagId(int articleId, int tagId)

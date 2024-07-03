@@ -1,0 +1,27 @@
+﻿@model Tag
+@{
+    ViewData["Title"] = "UpdateTag";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <form asp-action="UpdateTag" asp-controller="Tag" asp-area="Admin" method="post">
+        <br />
+        <h1 class="mb-4">Etiket Güncelleme Sayfası</h1>
+        <div class="row">
+            <div class="col-sm-6 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                    <div class="mb-3">
+                        <input type="hidden" asp-for="TagId" />
+                        <label class="form-label">Etiket Adı</label>
+                        <input type="text" class="form-control" asp-for="TagTitle">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-success" type="submit">Güncelle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </form>
+</div>

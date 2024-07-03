@@ -7,6 +7,7 @@ using MyBlog.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -190,5 +191,6 @@ namespace MyBlog.DataAccessLayer.EntityFramework
         {
             return context.Articles.Where(x => x.AppUserId == id).Include(x => x.Category).ToList();
         }
+
     }
 }

@@ -1,0 +1,17 @@
+﻿@model List<Tag>
+<br />
+<div class="form-group">
+    <label class="form-label">Etiketler</label>
+    <div class="row">
+        @foreach (var tag in Model)
+        {
+            <div class="col">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="tag_@tag.TagId" name="selectedTags" value="@tag.TagId">
+                    <label class="form-check-label" for="tag_@tag.TagId">@tag.TagTitle</label>
+                </div>
+            </div>
+        }
+        </di>
+    </div>

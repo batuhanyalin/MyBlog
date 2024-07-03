@@ -1,21 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyBlog.BusinessLayer.Abstract;
+using MyBlog.EntityLayer.Concrete;
+using MyBlog.PresentationLayer.Areas.Admin.Models;
+using System.Collections.Generic;
 
 namespace MyBlog.PresentationLayer.Areas.Admin.ViewComponents.AdminBlogViewComponents
 {
-    public class _AdminBlogUpdateTagComponentPartial:ViewComponent
+    public class _AdminBlogUpdateTagComponentPartial : ViewComponent
     {
-        private readonly IArticleTagService _articleTagService;
+        private readonly ITagService _tagService;
 
-        public _AdminBlogUpdateTagComponentPartial(IArticleTagService articleTagService)
+        public _AdminBlogUpdateTagComponentPartial(ITagService tagService)
         {
-            _articleTagService = articleTagService;
+            _tagService = tagService;
         }
 
+        [HttpGet]
         public IViewComponentResult Invoke()
         {
-
-            return View();
+            var tags = _tagService.TGetListAll();
+            return View(tags);
         }
     }
 }

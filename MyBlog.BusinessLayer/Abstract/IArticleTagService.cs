@@ -9,5 +9,8 @@ namespace MyBlog.BusinessLayer.Abstract
 {
     public interface IArticleTagService:IGenericService<ArticleTag>
     {
+        public List<Tag> TGetTagsByArticleId(int id);
+        ArticleTag TGetByArticleIdAndTagId(int articleId, int tagId);
+        void TDeleteArticleTag(ArticleTag articleTag);
     }
 }

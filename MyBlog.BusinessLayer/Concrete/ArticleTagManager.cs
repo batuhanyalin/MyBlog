@@ -23,6 +23,16 @@ namespace MyBlog.BusinessLayer.Concrete
             _articleTagDal.Delete(id);
         }
 
+        public void TDeleteArticleTag(ArticleTag articleTag)
+        {
+            _articleTagDal.DeleteArticleTag(articleTag);
+        }
+
+        public ArticleTag TGetByArticleIdAndTagId(int articleId, int tagId)
+        {
+            return _articleTagDal.GetByArticleIdAndTagId(articleId, tagId);
+        }
+
         public ArticleTag TGetById(int id)
         {
             return _articleTagDal.GetById(id);
@@ -31,6 +41,11 @@ namespace MyBlog.BusinessLayer.Concrete
         public List<ArticleTag> TGetListAll()
         {
             return _articleTagDal.GetListAll();
+        }
+
+        public List<Tag> TGetTagsByArticleId(int id)
+        {
+            return _articleTagDal.GetTagsByArticleId(id);
         }
 
         public void TInsert(ArticleTag entity)

@@ -7,7 +7,7 @@
 <div class="container">
     <form asp-action="CreateBlog" asp-controller="Blog" asp-area="Admin" method="post" enctype="multipart/form-data">
         <br />
-        <h6 class="mb-4">Yeni Blog Sayfası</h6>
+        <h2 class="mb-4">Yeni Blog Sayfası</h2>
         <div class="row">
             <div class="col-sm-6 col-xl-6">
                 <div class="bg-light rounded h-100 p-4">
@@ -41,10 +41,14 @@
                         <label class="form-label">Görseli Değiştir</label>
                         <input type="file" class="form-control" asp-for="CoverImageUrl">
                     </div>
+                    <div class="col">
+                    @await Component.InvokeAsync("_AdminBlogUpdateTagComponentPartial")
+                    </div>
                     <br />
                 </div>
             </div>
         </div>
+        <br />
         <br />
         <div class="row">
             <div class="bg-light rounded h-200 p-4">
